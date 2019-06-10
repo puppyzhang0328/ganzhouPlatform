@@ -1,0 +1,143 @@
+.panel.container-fluid
+    .panel-heading 用户管理
+    .colM(style="height: 88%;overflow-y: auto;width: 100%;")
+        h1.text-alpha 修改用户
+        div.content-main(id="content" ng-controller="ModifyCollectorController as vm")
+            ul.object-tools
+                a.historylink(ui-sref='app.collector')
+                    i.fa.fa-reply 返回用户管理页
+            form(enctype="multipart/form-data"  method="post" id="user_form"  novalidate)
+                div
+                    fieldset.module.aligned
+                        div.form-row.field-username
+                            div
+                                label.required(for="id_username") 用户名
+                                input.vTextField(id="id_username" maxlength="150" name="username" type="text" ng-model="vm.currentCollector.username" ng-init="vm.currentCollector.username = '{{ vm.currentCollector.username }}'"  required)
+                                p.help 小提示
+                    fieldset.module.aligned
+                        h2 个人信息
+                        div.form-row.field-last-name
+                            div
+                                label(for="id_last_name") 姓氏
+                                input.vTextField(id="id_last_name" maxlength="30" type="text" name="last_name" ng-model="vm.currentCollector.first_name" ng-init="vm.currentCollector.first_name = '{{ vm.currentCollector.first_name }}'")
+                        div.form-row.field-first-name
+                            div
+                                label(for="id_first_name") 名字
+                                input.vTextField(id="id_first_name" maxlength="30" type="text" name="first_name" ng-model="vm.currentCollector.last_name" ng-init="vm.currentCollector.last_name = '{{ vm.currentCollector.last_name }}'")
+                        div.form-row.field-email
+                            div
+                                label(for="id_email") 电子邮件地址
+                                input.vTextField(id="id_email" maxlength="254" type="email" name="email" ng-model="vm.currentCollector.email" ng-init="vm.currentCollector.email= '{{ vm.currentCollector.email }}'")
+                    fieldset.module.aligned
+                        //h2 权限
+                        //div.form-row.field-is_staff
+                            div.checkbox-row
+                                input(type="checkbox" checked="checked" id="id_is_active" name="is_active")
+                                label.vCheckboxLabel(for="id_is_active") 有效
+                                p.help 指明用户是否被认为是活跃的。以反选代替删除账号。
+                        //div.form-row.field-is_superuser
+                            div.checkbox-row
+                                input(type="checkbox" checked="checked" id="id_is_staff" name="is_staff")
+                                label.vCheckboxLabel(for="id_is_staff") 职员状态
+                                p.help 指明用户是否可以登录到这个管理站点。
+                        //div.form-row.field-groups
+                            div
+                                label(for="id_groups") 用户组
+                                div.related-widget-wrapper(id="id_groups")
+                                    div.selector
+                                        div.selector-available
+                                            h2 可用组
+                                                span.help.help-tooltip.help-icon(title="这是可用的组列表，你可以在选择框下面进行选择,然后点击两选择框之间的选择箭头")
+                                            p.selector-filter(id="id_groups_filter")
+                                                label(for="id_groups_input")
+                                                    span.help-tooltip.search-label-icon(title="在此框中键入以过滤可用的组列表")
+                                                input(type="text" placeholder="过滤" id="id_groups_input" ng-model="vm.groupSearchText")
+                                            select.filtered(multiple="multiple" id="id_groups_from"  name="groupinfo" ng-model="vm.GroupSelectedAvailItems" ng-options="i as i.groupname for i in vm.GroupAvailableListItems | orderBy:'groupname' | filter: vm.groupSearchText")
+                                            a.selector-chooseall.active(title="点击选择全部组"  id="id_groups_add_all_link" ng-click="vm.GroupBtnAllRight()") 全选
+                                        ul.selector-chooser
+                                            li
+                                                a.selector-add.active(title="选择"  id="id_groups_add_link" ng-click="vm.GroupBtnRight()")
+                                                a.selector-remove.active(title="删除"  id="id_groups_remove_link" ng-click="vm.GroupBtnLeft()")
+                                        div.selector-chosen
+                                            h2 已选的组
+                                                span.help.help-icon.help-tooltip(title="这是选中组的列表。你可以在选择框下面进行选择，然后点击两选框之间的的删除箭头进行删除")
+                                            select.filtered(id="id_groups_to" multiple="multiple" size="0" name="groups" ng-model="vm.GroupSelectedSelectedListItems" ng-options="i as i.groupname for i  in vm.GroupSelectedListItems | orderBy:'groupname'")
+                                            a.selector-clearall.active(title="全部移除" ng-click="vm.GroupBtnAllLeft()") 全部移除
+                                p.help 该用户归属的组。一个用户将得到其归属的组的所有权限。 按住 ”Control“，或者Mac上的 “Command”，可以选择多个。
+                        div.form-row.field-user_permissions
+                            div
+                                label(for="id_user_parkings") 用户可查看停车场:
+                                div.related-widget-wrapper(id="id_user_parkings")
+                                    div.selector
+                                        div.selector-available
+                                            h2 可用 停车场
+                                                span.help.help-tooltip.help-icon(title="这是可分配的停车场列表。你可以在选择框下面进行选择，然后点击两选框之间的“选择”箭头。")
+                                            p.selector-filter(id="id_user_parkings_filter")
+                                                label(for="id_user_parkings_input")
+                                                    span.help-tooltip.search-label-icon(title="在此框中键入以过滤可用的停车场列表" )
+                                                input(type="text" placeholder="过滤" id="id_user_parkings_input" ng-model="vm.parkSearchText" )
+                                            select.filtered(multiple="multiple" id="id_user_parking_from"  name="parking_lots"  ng-model="vm.ParkSelectedAvailItems" ng-options="i as i.parking_name for i in vm.ParkAvailableListItems | orderBy:'parking_name' | filter: vm.parkSearchText")
+                                            a.selector-chooseall.active(title="点击选择全部组"  id="id_user_parkings_add_all_link" ng-click="vm.ParkBtnAllRight()") 全选
+                                        ul.selector-chooser
+                                            li
+                                                a.selector-add.active(title="选择" id="id_user_parkings_add_link" ng-click="vm.ParkBtnRight()")
+                                                a.selector-remove.active(title="删除" id="id_user_parkings_remove_link" ng-click="vm.ParkBtnLeft()")
+                                        div.selector-chosen
+                                            h2 已选停车场
+                                                span.help.help-icon.help-tooltip(title="这是选中组的列表。你可以在选择框下面进行选择，然后点击两选框之间的的删除箭头进行删除")
+                                            select.filtered(id="id_user_parkings_to" multiple="multiple" name="user_parking"  ng-model="vm.ParkSelectedSelectedListItems" ng-options="i as i.parking_name for i  in vm.ParkSelectedListItems | orderBy:'parking_name'")
+                                            a.selector-clearall.active(title="全部移除" ng-click="vm.ParkBtnAllLeft()") 全部移除
+                                p.help 该用户所能查看等停车场。一个用户将得到其归属的组的所有停车场。 按住 ”Control“，或者Mac上的 “Command”，可以选择多个。
+                        fieldset.module.aligned
+                            h2 重要日期
+                            div.form-row.field-last_login
+                                div
+                                    label(for="id_last_login_0") 上次登录
+                                    p.datetime 日期
+                                        input.vDateField(id="id_last_login_0" name="last_login_0" size="10" type="text")
+                                        span.datetimeshortcuts
+                                            | &nbsp;
+                                            a(href="#") 今天
+                                            | &nbsp;|&nbsp;
+                                            a(href="#" id="calendarlink0")
+                                                span.date-icon(title="选择一个日期")
+                                        br
+                                        | 时间
+                                        input.vDateField(id="id_last_login_1" name="last_login_1" size="8" type="text")
+                                        span.datetimeshortcuts
+                                            | &nbsp;
+                                            a(href="#") 现在
+                                            | &nbsp;|&nbsp;
+                                            a(href="#" id="clocklink0")
+                                                span.clock-icon(title="选择一个时间")
+                                        br
+                                        span.timezonewarning 注意：你比服务器时间超前 8 个小时。
+                            div.form-row.field-date_joined
+                                div
+                                    label.required(for="id_last_login_0") 加入日期:
+                                    p.datetime 日期
+                                        input.vDateField(id="id_date_joined_0" name="last_login_0" size="10" type="text")
+                                        span.datetimeshortcuts
+                                            | &nbsp;
+                                            a(href="#") 今天
+                                            | &nbsp;|&nbsp;
+                                            a(href="#" id="calendarlink1")
+                                                span.date-icon(title="选择一个日期")
+                                        br
+                                        | 时间
+                                        input.vDateField(id="id_date_joined_1" name="last_login_1" size="8" type="text")
+                                        span.datetimeshortcuts
+                                            | &nbsp;
+                                            a(href="#") 现在
+                                            | &nbsp;|&nbsp;
+                                            a(href="#" id="clocklink1")
+                                                span.clock-icon(title="选择一个时间")
+                                        br
+                                        span.timezonewarning 注意：你比服务器时间超前 8 个小时。
+                        div.submit-row
+                            input.default(type="submit" value="保存" name="_save" ng-click="vm.BaoCunCollector()")
+                            //- p.deletelink-box
+                            //-     a.deletelink(ng-click="vm.deleteUser()") 删除
+                            //input(type="submit" value="保存并增加另一个" name="_addanother" ng-click="BaoCunCollector()")
+                            //input(type="submit" value="保存并继续编辑" name="_continue")
+br.clear

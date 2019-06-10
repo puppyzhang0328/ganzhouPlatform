@@ -1,0 +1,89 @@
+.panel.panel-default.container-fluid(ng-controller="settlementController as vm")
+    .panel-heading.text-bold 结算查询
+    .panel-body
+        .selectedBox.row(id="topSearchForm")
+            .form-group.form-horizontal.col-md-2
+                .container-fluid
+                    .item-content
+                        ui-select(ng-model="vm.parkingAsync.selected" theme="bootstrap" ng-disable='vm.disable' on-select="vm.onSelectCallback($item)" title="请选择停车场")
+                            ui-select-match(placeholder="请选择要查找的停车场") {{$select.selected.name || $select.selected}}
+                            ui-select-choices(repeat="parking.name as parking in vm.parkingAsync | propsFilter: {name: $select.search, address: $select.search}")
+                                div(ng-bind-html="parking.name | highlight: $select.search")
+                                small
+                                    | 停车场地址：
+                                    span(ng-bind-html="'' + parking.address | highlight: $select.search")
+            .form-group.form-horizontal.col-md-2
+                .container-fluid
+                    .item-content.analysis-padding
+                        .dropdown
+                            a.dropdown-toggle(id="valid_begintime" role="button" data-toggle="dropdown" )
+                                .input-group.date
+                                    input.form-control(type="text" data-ng-model="vm.coupon.valid_begintime" data-date-time-input="YYYY-MM-DD" disabled style="background:#fff;" placeholder="请选择起始时间")
+                                    span.input-group-addon(style="background:#fff;")
+                                        i.fa.fa-calendar
+                            ul.dropdown-menu(role="menu" aria-labelledby="dLabel")
+                                datetimepicker(data-ng-model="vm.coupon.valid_begintime" data-datetimepicker-config="{dropdownSelector: '#valid_begintime', renderOn: 'end-date-changed',minView:'day'}"
+                                data-on-set-time="vm.startDateOnSetTime()" data-before-render="vm.startDateBeforeRender($dates)")
+            .form-group.form-horizontal.col-md-2
+                .container-fluid
+                    .dropdown.analysis-padding
+                        a.dropdown-toggle(id="valid_endtime" role="button" data-toggle="dropdown" )
+                            .input-group.date
+                                input.form-control(type="text" data-ng-model="vm.coupon.valid_endtime" data-date-time-input="YYYY-MM-DD" disabled style="background:#fff;" placeholder="请选择结束时间")
+                                span.input-group-addon(style="background:#fff;")
+                                    i.fa.fa-calendar
+                        ul.dropdown-menu(role="menu" aria-labelledby="dLabel")
+                            datetimepicker(data-ng-model="vm.coupon.valid_endtime" data-datetimepicker-config="{dropdownSelector: '#valid_endtime', renderOn: 'end-date-changed',minView:'day'}"
+                            data-on-set-time="vm.endDateOnSetTime()" data-before-render="vm.startDateBeforeRender($dates)")
+            .form-horizontal.col-md-2
+                .container-fluid
+                    .dropdown.analysis-padding
+                        select.form-control( id="time_type" ng-model="vm.time_type")
+                            option(value="") 请选择时间类型
+                            option(value="day") 日
+                            option(value="month") 月
+                            option(value="year") 年
+            .form-group.form-horizontal.col-md-2
+                button.btn.btn-primary.btn-sm(ng-click="vm.querySettlement()") 搜索
+                button.btn.btn-sm.btn-danger(type="button" ng-click="vm.clearAndRefresh()") 重置
+        //.grid.table-responsive.ui-grid-class(ui-grid="vm.gridOptions" style="width:100%;height:650px;" ui-grid-selection ui-grid-pagination ui-grid-pinning  ui-grid-resize-columns ui-grid-exporter  ui-grid-auto-resize )
+        table.row-bordered.hover.table-striped.table-responsive(datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs")
+            thead
+                tr
+                    th 序列
+                    th 总订单金额
+                    th 支付宝总订单金额
+                    th 支付宝总退款金额
+                    th 支付宝总笔数
+                    th 支付宝结余
+                    th 总结余
+                    th 总退款金额
+                    th 总退款笔数
+                    th 总笔数
+                    th 微信总订单金额
+                    th 微信总退款金额
+                    th 微信总笔数
+                    th 微信结余
+                    th 操作
+            tbody
+                tr(ng-repeat="reconcileDate in vm.reconcileDate track by reconcileDate.id")
+                    td {{:: reconcileDate.number }}
+                    td {{:: reconcileDate.aggregate_amount }}
+                    td {{:: reconcileDate.alipay_amount }}
+                    td {{:: reconcileDate.alipay_refund }}
+                    td {{:: reconcileDate.alipay_stroke_count }}
+                    td {{:: reconcileDate.alipay_surplus }}
+                    td {{:: reconcileDate.general_surplus }}
+                    td {{:: reconcileDate.total_refund }}
+                    td {{:: reconcileDate.total_refund_stroke_count }}
+                    td {{:: reconcileDate.total_stroke_count}}
+                    td {{:: reconcileDate.wechatpay_amount}}
+                    td {{:: reconcileDate.wechatpay_refund}}
+                    td {{:: reconcileDate.wechatpay_stroke_count}}
+                    td {{:: reconcileDate.wechatpay_surplus}}
+                    td
+                        button.btn.btn-sm.btn-warning(type='button', ng-click='vm.deSelectRow()') 修改
+    .panel-footer
+        p
+            small 如发现数据不合理之处，请联系
+                a(href="www.cszhjt.com") {{ app.name }}

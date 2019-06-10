@@ -1,0 +1,21 @@
+//
+   Created by huang on 2017/1/3.
+.modal-header
+    button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+    h4.modal-title 查看停车场密钥
+.modal-body
+    form.form-horizontal
+        .form-group.row
+            label.col-sm-4.control-label(for="identifier") 停车场序号
+            .col-sm-6
+                input.form-control(type="text" id="identifier"  ng-model="vm.identifier" ng-init="vm.identifier = '{{vm.indentifier}}'")
+        .form-group.row
+            label.col-sm-4.control-label(for="parklotName") 停车场名称
+            .col-sm-6
+                input.form-control(type="text" id="parklotName"  ng-model="vm.parklotName" ng-init="vm.parklotName = '{{vm.parklotName}}'")
+        .form-group.row
+            label.col-sm-4.control-label(for="Key") 停车场上传密钥
+            .col-sm-6
+                input.form-control(type="text" id="Key"  ng-model="vm.private_key" ng-init="vm.private_key = '{{vm.private_key}}'")
+.modal-footer
+    button.btn.btn-primary(type="button",ng-click="vm.cancel()",data-dismiss="modal") 确定

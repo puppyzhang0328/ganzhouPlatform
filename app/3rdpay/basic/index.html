@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta charset="utf-8" />
+		<title>徐闻智慧港查堵安检售票</title>
+		<link rel="stylesheet" type="text/css" href="css/themes/default/easyui.css" />
+	    <link rel="stylesheet" type="text/css" href="css/themes/icon.css" />
+	     <link rel="stylesheet" type="text/css" href="css/icon.css" />
+	    <link rel="stylesheet" type="text/css" href="css/common.css" />
+	    <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+		<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+		<script type="text/javascript" src="js/easyui-lang-zh_CN.js"></script>
+	</head>
+	<body class="easyui-layout" id="layout" style="visibility:hidden;">
+		<div region="north" id="header" style="background-image: url(img/bg_header_2.jpg);color: #fff;">
+			<div class="logo" style="font-size: 20px;line-height: 60px;margin-left: 2em;">徐闻智慧港查堵安检售票系统</div>
+			<div class="top-btns">
+				<span>欢迎您，管理员</span>
+				<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-lock'">修改密码</a>
+				<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-clear'">退出系统</a>
+				<select class="easyui-combobox" data-options="editable:false">
+					<option value="0" selected="selected">中文</option>
+					<option value="1">English</option>
+				</select>
+			</div>
+		</div>
+		
+		<div class="wu-sidebar" region="west" split="true" title="导航菜单" id="naver">
+			<div class="easyui-accordion" fit="true" id="navmenu" data-options="border:false,fit:true">
+				<div title="航班售票" data-options="iconCls:'icon-application-cascade'">
+					<ul class="navmenu" >
+						<!--<li class="active"><a href="#">首页</a></li>-->	
+						<!-- <li><a href="#" data-url="html/page01.html">组织机构管理</a></li> -->
+						<li iconCls="icon-chart-organisation">
+							<a class="tree-icon icon-users " href="#" data-url="html/sellticket.html">售票查检</a>
+						</li>
+						<li>
+							<a class="tree-icon icon-chart-organisation" href="#" data-url="html/intercept.html">查堵信息</a>
+						</li>
+						<li>
+							<a class="tree-icon icon-application-osx-error" href="#" data-url="html/retreating.html">车票退改</a>
+						</li>
+						<li>
+							<a class="tree-icon icon-book" href="#" data-url="html/report_query.html">操作员售票报表</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div region="center" id="content">
+			<div class="easyui-tabs" fit="true" id="tt">
+				<div title="首页" iconCls="icon-ok">
+					<div class="easyui-accordion" data-options="fit:true">
+					</div>
+				</div>
+			</div>
+		</div>	
+		<div region="south" id="footer">徐闻智慧港查堵安检售票系统V1.0</div>
+		<script type="text/javascript" src="js/index.js"></script>
+	</body>
+</html>

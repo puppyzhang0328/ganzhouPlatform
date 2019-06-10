@@ -1,0 +1,26 @@
+.panel.container-fluid(ng-controller="addBureauController as vm")
+    .panel-heading.text-bold 新增市局信息
+    .panel-body.row
+        form.form-horizontal(style="padding: 130px 130px 0 130px;")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="cityproperCode") 市局代码：
+                .col-md-8
+                    input.form-control(id="cityproperCode" type="text" placeholder="市局代码" ng-model="vm.bureau.cityproperCode")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="cityproperName") 市局名称：
+                .col-md-8
+                    input.form-control(id="cityproperName" type="text",placeholder="市局名称" ng-model="vm.bureau.cityproperName")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="topSearchForm") 所属于区域代码：
+                div.limit-width.col-md-8(id="topSearchForm")
+                    div.item-content
+                        ui-select(ng-model="vm.regiongAsync.selected" theme="bootstrap" on-select="vm.onSelectCallback($item)"  style="min-width: 300px;" title="请选择停车场")
+                            ui-select-match(placeholder="请选择区域") {{$select.selected.name || $select.selected}}
+                            ui-select-choices(repeat="region.name as region in vm.regiongAsync | propsFilter: {name: $select.search}")
+                                div(ng-bind-html="region.name")
+                                small
+                                    | 区域名称：
+                                    span(ng-bind-html="'' + region.name")
+    .panel-footer
+        button.btn.btn-primary.pull-right(type="button" ng-click= "vm.addBureau()") 确认添加
+        button.btn.btn-danger(type="button" ng-click= "vm.backToPrevious()") 返回上一级菜单

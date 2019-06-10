@@ -1,0 +1,185 @@
+<!-- 指标库列表 -->
+<div class="easyui-layout" data-options="fit:true">
+	<div class="easyui-panel" style="height: 820px" >
+		<table id="dataGrid1" class="easyui-datagrid"  title="车票退改"  fit="true" fitColumns="true" toolbar="#toolbar2"
+			striped="true" rownumbers="true" pagination="true" remoteSort="false">			
+		</table>
+		<div class="toolbar" id="toolbar2">
+			<div class="search-div">
+				<label>车牌号:</label>
+				<input type="text" class="easyui-textbox"  />
+				<label>是否是危险品：</label>
+				<select class="easyui-combobox" data-options="editable:false">
+					<option value="0">是</option>
+					<option value="1">否</option>
+				</select>
+				<label>是否自定义：</label>
+				<select class="easyui-combobox" data-options="editable:false">
+					<option value="0">是</option>
+					<option value="1">否</option>
+				</select>
+				<a href="#" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
+		    </div>
+		</div>
+	</div>
+ </div>
+<div class="easyui-dialog" title="新增/编辑" iconCls="icon-save" modal="true"
+	closed="true" buttons="#dlg-btns" id="dlg">
+	<form id="fm" method="post">
+		<div class="fitem">
+			<label>指标名称：</label>
+			<input class="easyui-textbox" value="利润率" />
+			<label>是否公用：</label>
+			<select class="easyui-combobox">
+				<option value="0">是</option>
+				<option value="1">否</option>
+			</select>
+		</div>
+		<div class="fitem">
+			<label>维护部门：</label>
+			<select class="easyui-combobox">
+				<option value="">财务部</option>
+				<option value="">人事部</option>
+			</select>
+			<label>维护角色：</label>
+			<select class="easyui-combobox">
+				<option value="0">主办会计</option>
+				<option value="1">行政总监</option>
+				<option value="2">总经理</option>
+			</select>
+		</div>
+		<div class="fitem">
+			<label>审核部门：</label>
+			<select class="easyui-combobox">
+				<option value="">总经办</option>
+				<option value="">行政部</option>
+			</select>
+		</div>
+		<div class="fitem">
+			<label>备注说明：</label>
+			<input class="easyui-textbox" multiline="true" style="width:452px;height:52px;" value="考核项目的实际利润情况"  />
+		</div>
+	</form>
+</div>
+<div id="dlg-btns">
+	<a href="#" class="easyui-linkbutton" iconCls="icon-ok" id="saveBtn">保存</a>
+	<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" id="cancelBtn">取消</a>
+</div>
+<script type="text/javascript">
+	$(function() {
+		//打开弹出框
+		$("#addBtn, #editBtn").click(function(e) {
+			e.preventDefault();
+			$("#dlg").dialog("open");
+		});
+		//关闭弹出框
+		$("#saveBtn, #cancelBtn").click(function(e) {
+			e.preventDefault();
+			$("#dlg").dialog("close");
+		});
+		$("#submitForm").click(function(e) {
+			submitForm();
+		});
+		function submitForm(argument) {
+			var data =  {
+		        leavePortCode:'1',
+		        routeCode: '1',
+		        planDepartTimeBegin: '20180814170000',
+		        planDepartTimeEnd: '20180814170000',
+		        scheduleType: "",
+		        scheduleLoadCategory: "",
+		        channelCode: '1',
+		        state: '1',
+		        pageNo: 1,
+		        pageNum: 10,
+		        order: "DESC",
+		        sort:"planDepartTimeBegin",
+		        token:1435434
+		    };
+			$.ajax({
+		        url : 'http://120.25.76.96:9088/tickets/schedule_list',
+		        type : 'post',
+		        dateType : 'json',
+		        data:JSON.stringify(data),
+		        success : function(data) {
+		        	if(data.status == 0){
+			        	var infoData = {
+			        		rows:[],
+			        		total:''
+			        	};
+			        	infoData.rows = data.data;
+			        	infoData.total = 2;
+			            $('#tt1').datagrid('loadData',infoData);
+
+		        	}else{
+		        		alert(data.detail);	
+		        	}
+		        },
+		        error:function (data) {
+					alert("请求失败，请重新请求");
+                }
+			});
+		};
+		function test(){
+			$('#dataGrid1').datagrid({
+				url : 'data/griddata.json',
+				striped : true,
+				rownumbers : true,
+				pagination : true,
+				singleSelect : true,
+				pageSize : 50,
+				pageList : [ 10, 20, 30, 40, 50, 100, 200, 300, 400, 500 ],
+				frozenColumns : [ [ {
+					width : '180',
+					title : '关于我们标题',
+					field : 'car_length',
+					sortable : true
+				}, {
+					width : '180',
+					title : '车牌号',
+					field : 'car_no',
+					sortable : true,
+					formatter : function(value, row, index) {
+						switch (value) {
+						case 1:
+							return 'Android';
+						case 2:
+							return 'iOS';
+						}
+					}
+				},{
+					width : '100',
+					title : '状态',
+					field : 'check_result',
+					sortable : true,
+					formatter : function(value, row, index) {
+						switch (value) {
+						case true:
+							return '启用';
+						case false:
+							return '禁用';
+						}
+					}
+				}, {
+					field : 'action',
+					title : '操作',
+					width : 100,
+					formatter : function(value, row, index) {
+						console.log(123);
+						return '<a href="javascript:void(0)" onclick="deleteFun(\'{0}\');" >删除</a>';
+					}
+				}] ],
+				toolbar : '#toolbar',
+				loadFilter:function(data){
+	               var infoData = {
+	               		rows:[],
+	               		total:''
+	               };
+	              infoData.rows = data.rows;
+	              infoData.total = data.rows.length;
+	              return infoData;
+				}
+			});
+		}
+	});
+</script>

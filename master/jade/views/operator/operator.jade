@@ -1,0 +1,52 @@
+.panel(ng-controller='OperatorManageController as vm')
+    .panel-heading 用户管理
+    .panel-body
+        .container-fluid.ui-container(id="container")
+            .container-fluid.ui-content.fn-clear
+                .ui-grid-25
+                    .record-search-form.record-search-max.limit-width(id="topSearchForm")
+                        .row
+                            .col-md-4
+                                label.text-bold.col-md-3 按群组查找：
+                                .col-md-8
+                                    ui-select(ng-model="vm.roleAsync.selected" theme="bootstrap" ng-disable='vm.disable' on-select="vm.onSelectCallback($item)" title="请选择群组")
+                                        ui-select-match(placeholder="请选择需要查找的群组") {{$select.selected.groupname || $select.selected}}
+                                        ui-select-choices(repeat="role.groupname as role in vm.roleAsync | propsFilter: {groupId: $select.search, groupname: $select.search}")
+                                            div(ng-bind-html="role.groupId | highlight: $select.search")
+                                            small
+                                                | 群组名称：
+                                                span(ng-bind-html="'' + role.groupname | highlight: $select.search")
+                            .col-md-3
+                                .item-content
+                                    button.btn.btn-primary.btn-sm(ng-click="vm.searchUsers()") 点击搜索
+                                    button.btn.btn-labeled.btn-primary(type='submit' ng-click="vm.addNewUser()")
+                                        span.btn-label
+                                            em.fa.fa-plus
+                                        | 新增用户
+        table.row-bordered.hover.table-striped.table-responsive(datatable='ng',dt-options='vm.dtOptions',dt-column-defs='vm.dtColumnDefs')
+            thead
+                tr
+                    th 序号
+                    th 昵称
+                    th 真实姓名
+                    th 注册时间
+                    th 上一次登录时间
+                    th 邮箱
+                    th 操作
+            tbody
+                tr(ng-repeat='user in vm.users track by user.staffid')
+                    td
+                        button.btn.btn-link(type="button" ng-click="vm.queryOperatorDetail(user)") {{user.staffid}}
+                    td {{:: user.username}}
+                    td {{:: user.realname}}
+                    td {{:: user.date_joined}}
+                    td {{:: user.last_login}}
+                    td {{:: user.email}}
+                    td
+                        button.btn.btn-sm.btn-warning(type='button',ng-click='vm.queryOperatorDetail(user)')
+                            em.fa.fa-edit 修改
+                        button.btn.btn-sm.btn-danger(type='button', ng-click='vm.deleteOperator(user)')
+                            em.fa.fa-trash-o 删除
+p
+    small 如发现数据不合理之处，请联系
+        a(href="www.cszhjt.com") {{ :: app.name }}

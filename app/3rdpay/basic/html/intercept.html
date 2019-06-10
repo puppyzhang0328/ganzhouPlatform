@@ -1,0 +1,113 @@
+<!-- 锁定行列 -->
+<div class="easyui-panel" title="查堵信息" style="width:100%;height: 800px">
+	<table id="tt1" class="easyui-datagrid"  fit="true" fitColumns="true" toolbar="#toolbar3" 
+				striped="true" rownumbers="true" pagination="true" remoteSort="false">
+		<thead data-options="frozen:true" >
+			<tr>
+				<th data-options="field:'car_no',align:'center'">车牌号</th>
+			</tr>
+		</thead>
+		<thead>
+			<tr>
+				<th data-options="field:'car_type',align:'center'" sortable="true">车牌类型</th>
+				<th data-options="field:'check_time',align:'center'" sortable="true">安检时间</th>
+				<th data-options="field:'pic_path',align:'center'">安检的图片地址</th>
+				<th data-options="field:'check_result',align:'center'">安检结果 </th>
+				<th data-options="field:'goods_type',align:'center'">货物类型</th>
+				<th data-options="field:'is_danger',align:'center'">是否危险品</th>
+				<th data-options="field:'explains',align:'center'">安检说明</th>
+				<th data-options="field:'flow_number',align:'center'">安检流水号</th>
+				<th data-options="field:'car_length',align:'center'">车长(米)</th>
+				<th data-options="field:'car_width',align:'center'">车宽(米)</th>
+				<th data-options="field:'car_height',align:'center'">车高(米)</th>
+				<th data-options="field:'car_weight',align:'center'">车重(米)</th>
+				<th data-options="field:'description',align:'center'">描述</th>
+			</tr>
+		</thead>
+	</table>
+	<div class="toolbar" id="toolbar3">
+		<div class="search-div">
+			<label>车牌号:</label>
+			<input id="car_no" type="text" class="easyui-textbox"/>
+			<label>开始时间:</label>
+			<input id="query_begintime" class="easyui-datetimebox" name="birthday"
+				   data-options="required:true,showSeconds:false" value="3/4/2010 2:3">
+			<label>结束时间:</label>
+			<input id="query_endtime" class="easyui-datetimebox" name="birthday"
+				   data-options="required:true,showSeconds:false" value="3/4/2010 2:3">
+		     <label>查询类型</label>
+			<select class="easyui-combobox" id="query_type">
+				<option value="">--请选择查询类型</option>
+				<option value="0">车牌号按照时间段查询</option>
+				<option value="1" selected="selected">车牌号查询该车所有安检记录</option>
+				<option value="2">车牌号查询最新安检记录</option>
+				<option value="3">时间段获取在场所有车辆安检信息</option>
+				<option value="4">时间段获取在场所有异常车辆安检信息</option>
+			</select>
+			<!-- <label>是否是危险品：</label> -->
+		<!-- 	<select class="easyui-combobox" data-options="editable:false">
+				<option value="0">是</option>
+				<option value="1">否</option>
+			</select>
+			<label>是否自定义：</label>
+			<select class="easyui-combobox" data-options="editable:false">
+				<option value="0">是</option>
+				<option value="1">否</option>
+			</select> -->
+			<a href="#" class="easyui-linkbutton" iconCls="icon-search" id="queryCarInfo">搜索</a>
+	    </div>
+
+		<!-- <div class="ctrl-div"> -->
+		<!-- 	<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" id="addBtn">新增</a>
+	   		<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" id="editBtn">编辑</a>
+	    	<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true">批量删除</a>
+	    	<a href="#" class="easyui-linkbutton" iconCls="icon-print" plain="true">打印</a>
+	    	<a href="#" class="easyui-linkbutton" iconCls="icon-back" plain="true">导入</a>
+	    	<a href="#" class="easyui-linkbutton" iconCls="icon-redo" plain="true">导出</a> -->
+		<!-- </div> -->
+	</div>
+	<script type="text/javascript">
+		$(function() {
+			//打开弹出框
+			$("#queryCarInfo").click(function(e) {
+				queryCarInfo();
+			});
+			function queryCarInfo(argument) {
+				var data =  {
+			        query_type:$('#query_type').val(),
+			        pageNo: $('#tt1').datagrid('options').pageNumber,
+			        pageNum: $('#tt1').datagrid('options').pageSize,
+			        car_no:$('#car_no').val(),
+			        begin_time:$('#query_begintime').val(),
+			        end_time:$('#query_endtime').val(),
+			        token:'1435434'
+			    };
+				$.ajax({
+			        url : 'http://120.25.76.96:9088/security_check/check_info_query',
+			        type : 'post',
+			        dateType : 'json',
+			        data:JSON.stringify(data),
+			        success : function(data) {
+			            if(data.status == 0){
+                            console.log(data);
+                            var infoData = data;
+                            infoData.rows = data.security_check;
+                            infoData.total = data.security_check.lenght;
+                            console.log(infoData);
+                            $('#tt1').datagrid('loadData',data);
+						}else {
+			                alert(data.detail);
+						}
+			        },
+			        error:function (data) {
+						alert("请求失败，请重新请求");
+                    }
+				});
+			}
+            window.setTimeout(function() {
+                queryCarInfo();
+            }, 800);
+		});
+
+	</script>		
+</div>

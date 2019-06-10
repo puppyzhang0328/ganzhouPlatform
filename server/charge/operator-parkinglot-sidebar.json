@@ -1,0 +1,67 @@
+[
+  {
+    "text": "Menu Heading",
+    "heading": "true",
+    "translate": "sidebar.heading.HEADER"
+  },
+  {
+    "text":"控制台",
+    "icon":"fa fa-desktop",
+    "sref":"app.console"
+  },
+  {
+    "text": "停车信息管理",
+    "sref": "#",
+    "icon": "fa fa-car",
+    "alert": "6",
+    "label": "label label-info",
+    "submenu": [
+      {
+        "text": "停车场分布",
+        "sref": "app.parking-baidu-map"
+      },
+      {
+        "text": "停车场管理",
+        "sref": "app.parking"
+      }
+    ]
+  },
+  {
+    "text": "停车场状态监测",
+    "sref": "#",
+    "icon": "fa fa-ioxhost",
+    "alert": "2",
+    "label": "label label-info",
+    "submenu": [
+      {
+        "text": "网络状态监测",
+        "sref": "app.net-state"
+      },
+      {
+        "text": "上传工具状态监测",
+        "sref": "app.park-state"
+      }
+    ]
+  },
+  {
+    "text": "平台对接管理",
+    "sref": "#",
+    "icon": "fa fa-institution",
+    "alert": "2",
+    "label": "label label-info",
+    "submenu": [
+      {
+        "text": "平台信息管理",
+        "sref": "app.platform"
+      },
+      {
+        "text": "平台权限管理",
+        "sref": "app.platform-power"
+      },
+      {
+        "text": "第三方数据监控",
+        "sref": "app.dataTmp"
+      }
+    ]
+  }
+]

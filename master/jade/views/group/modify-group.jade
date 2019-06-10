@@ -1,0 +1,38 @@
+.panel.panel-default.container-fluid
+    .panel-heading 修改群组
+    .panel-body
+        fieldset.module.aligned
+            div.form-row.filed-name
+                div
+                    label.required(for="id_name") 名称
+                    input.vTextField(id="id_name" ng-maxlength="80" name="name" type="text" required)
+            div.form-row.filed-permissions
+                div
+                    label(for="id_permissions") 可选权限
+                    div.related-widget-wrapper(id="id_permissions")
+                        div.selector
+                            div.selector-available
+                                h2 可选权限
+                                p.selector-filter(id="id_permission_filter")
+                                    label(for="id_permissions_input")
+                                        span.help-tooltip.search-label-icon(title="点击此处可以进行查找")
+                                    input(type="text" placeholder="检索" id="id_permissions_input")
+                                select.filtered(multiple="multiple" ng-model="permissions.perm")
+                                a.selector-chooseall(title="点击选择所有的权限" href="#") 全选
+                            ul.selector-chooser
+                                li
+                                    a.selector-add(title="选择" href="#" id="id_permissions_add_link")
+                                    a.selector-remove(title="移除" href="#" id="id_permissions_remove_link")
+                            div.selector-chosen
+                                h2 已选权限
+                                    span.help.help-tooltip.help-icon(title="这是目前已选择的权限，你可以选择移除某些已有的权限")
+                                select.filtered(multiple="multiple"  id="id_permissions_to")
+                                a.selector-clearall(title="点击移除全部已有权限") 全部移除
+                        p.help.text-info  Windows下按住‘Ctrl’键，Mac下按住‘Command’键，可以选择多个.
+        div.submit-row
+            input.default(type="submit" value="保存" name="_save")
+            p.deletelink-box
+                a.deletelink(ng-click="") 删除
+            //input(type="submit" value="保存并添加另一个" name="_addanother")
+            //input(type="submit" value="保存并完成编辑" name="_continue")
+

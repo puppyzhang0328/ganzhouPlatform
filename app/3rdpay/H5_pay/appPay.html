@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<title>用户充值</title>
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection">
+		<link rel="stylesheet" href="css/appPay.css">
+	</head>
+	<body ontouchstart>
+		<div class="container">
+			<div class="con_input">
+				<input id="amount" type="text" name=""  placeholder="请输入充值金额（元）">
+			</div>
+			<div class="con_input" id="queryPay">
+				<img src="img/appPay.png">
+				<span>微信支付</span>
+				<img style="width: 25px;" src="img/payNext.png">
+			</div>
+			<div class="con_input" id="zhifubaoPay">
+				<img src="img/appPay.png">
+				<span>支付宝支付</span>
+				<img style="width: 25px;" src="img/payNext.png">
+			</div>
+			<a id="winxinName" href = ""></a>
+		</div>
+		<script type="text/javascript" src="js/zepto.min.js"></script>
+		<script type="text/javascript" src="js/appPay.js"></script>
+	</body>
+</html>

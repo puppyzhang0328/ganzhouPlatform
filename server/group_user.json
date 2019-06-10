@@ -1,0 +1,17 @@
+[
+  {
+    "text": "Menu Heading",
+    "heading": "true",
+    "translate": "sidebar.heading.HEADER"
+  },
+  {
+    "text":"账单核算",
+    "icon":"icon-user",
+    "sref": "app.examineGroup"
+  },
+  {
+    "text":"账单查询",
+    "icon":"icon-user",
+    "sref": "app.groupBill"
+  }
+]

@@ -1,0 +1,62 @@
+.panel
+    .panel-heading 用户反馈
+    .panel-body(ng-controller="UserAdviceController as vm")
+        .selectedBox.row(id="topSearchForm")
+            .form-horizontal.col-md-2
+                input.form-control(id="phone_number" type="text" placeholder="请输入手机号" ng-model="vm.phone_number")
+            .form-horizontal.col-md-2
+                .container-fluid
+                    .item-content.analysis-padding
+                        .dropdown
+                            a.dropdown-toggle(id="valid_begintime" role="button" data-toggle="dropdown" )
+                                .input-group.date
+                                    input.form-control(type="text" data-ng-model="vm.coupon.valid_begintime" data-date-time-input="YYYY-MM-DD" disabled style="background:#fff;" placeholder="请选择起始时间")
+                                    span.input-group-addon(style="background:#fff;")
+                                        i.fa.fa-calendar
+                            ul.dropdown-menu(role="menu" aria-labelledby="dLabel")
+                                datetimepicker(data-ng-model="vm.coupon.valid_begintime" data-datetimepicker-config="{dropdownSelector: '#valid_begintime', renderOn: 'end-date-changed',minView:'day'}"
+                                data-on-set-time="vm.startDateOnSetTime()" data-before-render="vm.startDateBeforeRender($dates)")
+            .form-horizontal.col-md-2
+                div.container-fluid
+                    div.dropdown.analysis-padding
+                        a.dropdown-toggle(id="valid_endtime" role="button" data-toggle="dropdown" )
+                            div.input-group.date
+                                input.form-control(type="text" data-ng-model="vm.coupon.valid_endtime" data-date-time-input="YYYY-MM-DD" disabled style="background:#fff;" placeholder="请选择结束时间")
+                                span.input-group-addon(style="background:#fff;")
+                                    i.fa.fa-calendar
+                        ul.dropdown-menu(role="menu" aria-labelledby="dLabel")
+                            datetimepicker(data-ng-model="vm.coupon.valid_endtime" data-datetimepicker-config="{dropdownSelector: '#valid_endtime', renderOn: 'end-date-changed',minView:'day'}"
+                            data-on-set-time="vm.endDateOnSetTime()" data-before-render="vm.startDateBeforeRender($dates)")
+            .form-group.form-horizontal.col-md-2
+                button.btn.btn-primary.btn-sm(ng-click="vm.loadFistPage()") 搜索
+                button.btn.btn-sm.btn-danger(type="button" ng-click="vm.clearAndRefresh()" ng-disabled="vm.phone_number == '' && vm.coupon.valid_begintime =='' && vm.coupon.valid_endtime==''") 重置
+        table.row-bordered.hover.table-striped.table-responsive(datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs")
+            thead
+                tr
+                    th 序列号
+                    th 用户名
+                    th 投诉/建议
+                    th 创建时间
+                    th 回复状态
+                    th 编辑
+            tbody
+                tr(ng-repeat="advice in vm.advice track by advice.comid")
+                    td {{:: advice.comid }}
+                    td {{:: advice.user }}
+                    td {{:: advice.comments }}
+                    td {{:: advice.created_time }}
+                    td
+                        span(ng-show='{{:: advice.handle }}') 已回复
+                        span(ng-hide='{{:: advice.handle }}') 待回复
+                    td
+                        button.btn.btn-sm.btn-warning(type='button', ng-click='vm.replayUser(advice)') 回复
+                            em.fa.fa-edit
+        .ui-grid-next
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.loadFistPage()" id="firstPageBtn") 首页
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.loadPreviousPage()" id="previousPageBtn") 上一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.loadNextPage()" id="nextPageBtn") 下一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.loadLastPage()" id="lastPageBtn") 末页
+    .panel-footer
+        p
+            small 如发现数据不合理之处，请联系
+                a(href="www.cszhjt.com") {{ app.name }}

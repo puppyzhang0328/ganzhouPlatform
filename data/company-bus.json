@@ -1,0 +1,57 @@
+{
+  "update_time": "2017-07-05T17:29:41.803015",
+  "kind": "parking_lots#nearby",
+  "maxid": 114,
+  "status": 0,
+  "companyBus": [
+    {
+      "id": 1,
+      "name": "翠岗公园地下停车场",
+      "pay_number":"粤B23226",
+      "address": "7路",
+      "pay_car": "张三"
+    },
+    {
+      "id": 2,
+      "name": "翠岗公园地下停车场",
+      "pay_number":"粤B56812",
+      "address": "5路",
+      "pay_car": "李四"
+    },
+    {
+      "id": 3,
+      "name": "翠岗公园地下停车场",
+      "pay_number":"粤B23456",
+      "address": "5路",
+      "pay_car": "王五"
+    },
+    {
+      "id": 4,
+      "name": "翠岗公园地下停车场",
+      "pay_number":"粤B23455",
+      "address": "3路",
+      "pay_car": "赵六"
+    },{
+      "id": 5,
+      "name": "翠岗公园地下停车场",
+      "pay_number":"粤B63456",
+      "address": "1路",
+      "pay_car": "谢七"
+    },{
+      "id": 6,
+      "name": "翠岗公园地下停车场",
+      "pay_number":"粤B28856",
+      "address": "6路",
+      "pay_car": "黄九"
+    },
+    {
+      "id": 7,
+      "name": "翠岗公园地下停车场",
+      "pay_number":"粤B23826",
+      "address": "2路",
+      "pay_car": "张一"
+    }
+
+
+  ]
+}

@@ -1,0 +1,52 @@
+.panel(ng-controller='ParkActionController as vm')
+    .panel-heading.text-bold 停车场功能设置
+    .panel-body.newPanel
+        .selectedBox.row(id="topSearchForm")
+            .form-horizontal.col-md-2
+                .container-fluid
+                    .item-content.analysis-padding
+                        ui-select(ng-model="vm.parkingAsync.selected" theme="bootstrap" ng-disable='vm.disable' on-select="vm.onSelectCallback($item)"  title="请选择停车场")
+                            ui-select-match(placeholder="请选择要查找的停车场") {{$select.selected.name || $select.selected}}
+                            ui-select-choices(repeat="parking.name as parking in vm.parkingAsync | propsFilter: {name: $select.search, address: $select.search}")
+                                div(ng-bind-html="parking.name | highlight: $select.search")
+                                small
+                                    | 停车场地址：
+                                    span(ng-bind-html="'' + parking.address | highlight: $select.search")
+            .form-group.form-horizontal.col-md-2
+                button.btn.btn-primary.btn-sm(ng-click="vm.queryParkAction(0)") 搜索
+                button.btn.btn-sm.btn-danger(type="button" ng-click="vm.clearAndRefresh()" ng-disabled="vm.parkingAsync.selected == null") 重置
+        table.row-bordered.hover.table-striped.table-responsive(datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs")
+            thead
+                tr
+                    th 序列号
+                    th 停车场名称
+                    th 功能
+                    th 编辑
+            tbody
+                tr(ng-repeat="parkAction in vm.parkAction track by parkAction.parklot_id")
+                    td {{:: parkAction.parklot_id }}
+                    td {{:: parkAction.parklot_name }}
+                    td {{:: parkAction.funcbase_name }}
+                    td
+                        button.btn.btn-sm.btn-danger(type='button', ng-click='vm.deleteParkAction(parkAction)') 删除
+                            em.fa.fa-trash-o
+        div.ui-grid-next
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.queryParkAction(0)" id="firstPageBtn") 首页
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.queryParkAction(1)" id="previousPageBtn") 上一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.queryParkAction(2)" id="nextPageBtn") 下一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.queryParkAction(3)" id="lastPageBtn") 末页
+    .panel-footer
+        button.btn.btn-labeled.btn-primary(type='submit' ng-click="vm.addParkAction()")
+            span.btn-label
+                em.fa.fa-plus
+            | 停车场功能设置
+    script(type="text/ng-template" id="deleteParkAction.html")
+        .modal-header
+            button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+            h4.modal-title 删除?
+        .modal-body
+            p.text-bold 你确定要删除该平台吗？
+        .modal-footer
+            button.btn.btn-default(type="button",ng-click="vm.cancel()",data-dismiss="modal") 取消
+            button.btn.btn-danger(type="button",ng-click="vm.deleteParkAction()",data-dismiss="modal") 确认
+

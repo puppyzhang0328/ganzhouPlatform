@@ -1,0 +1,240 @@
+<div ng-controller="newConsoleController as vm" class="panel">
+   <div class="console-box">
+      <div class="row">
+         <div class="col-md-2">
+            <div class="row_one row_tit">
+               <div class="console-top-right">
+                  <div class="con-number">{{vm.consoleCount.park_sum}}</div>
+                  <div class="con-font">停车场总数</div>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-2">
+            <div class="row_two row_tit">
+               <div class="console-top-right">
+                  <div class="con-number">{{vm.consoleCount.park_berth_sum}}</div>
+                  <div class="con-font">停车位总数</div>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-2">
+            <div class="row_thr row_tit">
+               <div class="console-top-right">
+                  <div class="con-number">{{vm.consoleCount.vehic_sum}}</div>
+                  <div class="con-font">停车总次数</div>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-2">
+            <div class="row_for row_tit">
+               <div class="console-top-right">
+                  <div class="con-number">{{vm.should_sum}}</div>
+                  <div class="con-font">消费总金额</div>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-2">
+            <div class="row_tit row_fif">
+               <div class="console-top-right">
+                  <div class="con-number">{{vm.consoleCount.plsl_num}}</div>
+                  <div class="con-font">维护总次数</div>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-2">
+            <div class="row_tit row_six">
+               <div class="console-top-right">
+                  <div class="con-number">{{vm.consoleCount.user_num}}</div>
+                  <div class="con-font">用户总数</div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div style="" class="con-two">
+         <div style="width:66%;float: left;" class="console-con">
+            <div class="console-first">停车场区域分布图</div>
+            <div class="regionBox">
+               <regionpiecharts id="regionpiecharts1" data="vm.regionpiecharts1" legend="vm.region_one_pro" class="consolr-region"></regionpiecharts>
+               <div class="regionpiechart">
+                  <em style="background:#e54b4d"></em>
+                  <span>已接入{{vm.region_one}}</span>
+               </div>
+               <div class="regionpiechart">
+                  <em style="background:#f7c9c9"></em>
+                  <span>未接入{{vm.region_one_no}}</span>
+               </div>
+            </div>
+            <div class="regionBox">
+               <regionpiecharts id="regionpiecharts2" data="vm.regionpiecharts2" legend="vm.region_two_pro" class="consolr-region"></regionpiecharts>
+               <div class="regionpiechart">
+                  <em style="background:#cb5b41"></em>
+                  <span>已接入{{vm.region_two}}</span>
+               </div>
+               <div class="regionpiechart">
+                  <em style="background:#efcdc6"></em>
+                  <span>未接入{{vm.region_two_no}}</span>
+               </div>
+            </div>
+            <div class="regionBox">
+               <regionpiecharts id="regionpiecharts3" data="vm.regionpiecharts3" legend="vm.region_thr_pro" class="consolr-region"></regionpiecharts>
+               <div class="regionpiechart">
+                  <em style="background:#ae9946"></em>
+                  <span>已接入{{vm.region_thr}}</span>
+               </div>
+               <div class="regionpiechart">
+                  <em style="background:#e7e0c7"></em>
+                  <span>未接入{{vm.region_thr_no}}</span>
+               </div>
+            </div>
+            <div class="regionBox">
+               <regionpiecharts id="regionpiecharts4" data="vm.regionpiecharts4" legend="vm.region_fou_pro" class="consolr-region"></regionpiecharts>
+               <div class="regionpiechart">
+                  <em style="background:#53998e"></em>
+                  <span>已接入{{vm.region_fou}}</span>
+               </div>
+               <div class="regionpiechart">
+                  <em style="background:#cbe0dd"></em>
+                  <span>未接入{{vm.region_fou_no}}</span>
+               </div>
+            </div>
+            <div class="regionBox">
+               <regionpiecharts id="regionpiecharts5" data="vm.regionpiecharts5" legend="vm.region_fif_pro" class="consolr-region"></regionpiecharts>
+               <div class="regionpiechart">
+                  <em style="background:#29d0ca"></em>
+                  <span>已接入{{vm.region_fif}}</span>
+               </div>
+               <div class="regionpiechart">
+                  <em style="background:#bef1ef"></em>
+                  <span>未接入{{vm.region_fif_no}}</span>
+               </div>
+            </div>
+            <div class="regionBox">
+               <regionpiecharts id="regionpiecharts6" data="vm.regionpiecharts6" legend="vm.otherRegion_pro" class="consolr-region"></regionpiecharts>
+               <div class="regionpiechart">
+                  <em style="background:#0181c8"></em>
+                  <span>已接入{{vm.otherRegion}}</span>
+               </div>
+               <div class="regionpiechart">
+                  <em style="background:#b2d9ee"></em>
+                  <span>未接入{{vm.otherRegion_no}}</span>
+               </div>
+            </div>
+         </div>
+         <div style="width:31%;margin-left: 2.4%;margin-bottom: 15px;" class="console-con">
+            <div class="console-first">停车场区域消费图
+               <span style="float: right;margin-right:5px;">
+                  <select ng-init="vm.nowYear" ng-model="vm.nowYear" ng-change="vm.doday();" ng-options="item for item in vm.year"></select>
+                  <select ng-init="vm.nowMoth" ng-model="vm.nowMoth" ng-change="vm.doday();" ng-options="item for item in vm.moth"></select>
+                  <select ng-init="vm.nowDay" ng-model="vm.nowDay" ng-options="item for item in vm.day" ng-change="vm.queryRegionPay();"></select>
+               </span>
+            </div>
+            <radarcharts id="radarcharts" data="vm.regionPayValue" legend="vm.regionPayName" style="width: 100%" class="consolr-two"></radarcharts>
+            <div class="sex_con_title">
+               <table border="1" style="border: 1px solid #e1e1e1;">
+                  <thead>
+                     <tr>
+                        <th>区域</th>
+                        <th>消费次数</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr ng-repeat="x in vm.regionPay">
+                        <td>{{x.region_name}}</td>
+                        <td>{{x.pay_sum}}</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <div style="width:99%;margin:10px 0" class="console-con">
+            <div class="console-first">用户增长分布图
+               <span style="float: right;margin-right:5px;">
+                  <select ng-init="vm.userNowYear" ng-model="vm.userNowYear" ng-options="item for item in vm.userYear"></select>
+                  <select ng-init="vm.userNowMoth" ng-model="vm.userNowMoth" ng-change="vm.queryUserStatistics();" ng-options="item for item in vm.userMoth"></select>
+               </span>
+            </div>
+            <axischarts id="axischarts" data="vm.userStatistics" legend="radarName" style="width: 80%" class="consolr-two"></axischarts>
+            <div class="sex_con_title">
+               <table border="1" style="border: 1px solid #e1e1e1;">
+                  <thead>
+                     <tr>
+                        <th>日期</th>
+                        <th>新增用户</th>
+                        <th>活跃用户</th>
+                        <th>临时停车用户</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr ng-repeat="x in vm.userStatistics">
+                        <td>{{x.time}}</td>
+                        <td>{{x.add_user}}</td>
+                        <td>{{x.active_user}}</td>
+                        <td>{{x.temporary_user}}</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <div style="width:33%;float: left;margin: 10px 0;" class="console-con">
+            <div class="console-first">停车场所属类型分布图</div>
+            <twocatcharts id="twocatcharts" data="Linedata" legend="legend" style="width: 100%" class="consolr-two"></twocatcharts>
+         </div>
+         <div style="width:31%;float: left;margin: 10px 1%;" class="console-con">
+            <div class="console-first">停车场热点分布图</div>
+            <img ng-src="/park/app/img/parking_img.png" style="width:100%;" class="consolr-two" />
+         </div>
+         <div style="width:33%;float: left;margin: 10px 0;" class="console-con">
+            <div class="console-first">停车场用户增长图</div>
+            <twobarcharts id="twobarcharts" legend="legend" data="data" style="width: 100%;padding-left:15px;" class="consolr-two"></twobarcharts>
+         </div>
+         <div style="width:33%;float: left;margin: 10px 0;" class="console-con">
+            <div class="console-first">停车场业态类型分布图</div>
+            <piecharts id="piecharts" data="pieData" legend="radarName" style="width: 90%" class="consolr-two"></piecharts>
+            <div class="sex_con_title">
+               <table border="1" style="border: 1px solid #e1e1e1;">
+                  <thead>
+                     <tr>
+                        <th>停车场性质</th>
+                        <th>停车场个数</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr ng-repeat="x in pieData">
+                        <td>{{x.name}}</td>
+                        <td>{{x.value}}</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <div style="width:31%;float: left;margin: 10px 1%;" class="console-con">
+            <div class="console-first">停车场车位周转次数潮汐分布图</div>
+            <manylinecharts id="manylinecharts" legend="legend" data="data" style="width: 100%" class="consolr-two"></manylinecharts>
+         </div>
+         <div style="width:33%;float: left;margin: 10px 0;" class="console-con">
+            <div class="console-first">派出所区域分布图</div>
+            <sexbar id="sexBarcharts" legend="legend" data="data" style="width: 80%;" class="consolr-two"></sexbar>
+            <div class="sex_con_title">
+               <table border="1" style="border: 1px solid #e1e1e1;">
+                  <thead>
+                     <tr>
+                        <th>区域名称</th>
+                        <th>派出所数</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr ng-repeat="x in data">
+                        <td>{{x.name}}</td>
+                        <td>{{x.value}}</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <div style="width:99%;margin: 10px 0;" class="console-con">
+            <div class="console-first">停车场剩余车位潮汐分布图</div>
+            <linecharts id="linecharts" data="Linedata" legend="legend" style="width: 100%" class="consolr-two"></linecharts>
+         </div>
+      </div>
+   </div>
+</div>

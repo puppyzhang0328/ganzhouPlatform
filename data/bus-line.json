@@ -1,0 +1,43 @@
+{
+  "update_time": "2017-07-05T17:29:41.803015",
+  "kind": "parking_lots#nearby",
+  "maxid": 114,
+  "status": 0,
+  "busLine": [
+    {
+      "id": 1,
+      "name": "翠岗公园地下停车场",
+      "pay_number":"广东省深圳市宝安区怀德南路1321号",
+      "address": "广东省深圳市",
+      "pay_car": "7路"
+    },
+    {
+      "id": 2,
+      "name": "郑州公交",
+      "pay_number":"河南省郑州市中原区电厂路",
+      "address": "河南省郑州市",
+      "pay_car": "12路"
+    },
+    {
+      "id": 3,
+      "name": "襄阳无锡路",
+      "pay_number":"湖北省襄阳市襄州区无锡路",
+      "address": "湖北省襄阳市",
+      "pay_car": "232路"
+    },
+    {
+      "id": 4,
+      "name": "安徽中兴海蓝",
+      "pay_number":"安徽省六安市金寨县X055",
+      "address": "安徽省六安市",
+      "pay_car": "46路"
+    },
+    {
+      "id": 5,
+      "name": "中兴通讯员工宿舍(专用)",
+      "pay_number":"广东省深圳市南山区打石一路",
+      "address": "广东省深圳市",
+      "pay_car": "5路"
+    }
+  ]
+}

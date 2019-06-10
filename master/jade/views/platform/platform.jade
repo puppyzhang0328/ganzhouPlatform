@@ -1,0 +1,48 @@
+.panel(ng-controller='platfromController as vm')
+    .panel-heading.text-bold 平台信息管理
+    .panel-body.newPanel
+        table.row-bordered.hover.table-striped.table-responsive(datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs")
+            thead
+                tr
+                    th 序列号
+                    th 平台名字
+                    th 平台登录url
+                    th 平台用户名
+                    th 平台密码
+                    th 数据上传接口
+                    th 路径
+                    th 编辑
+            tbody
+                tr(ng-repeat="platfrom in vm.platfrom track by platfrom.id")
+                    td {{:: platfrom.id }}
+                    td {{:: platfrom.plateformname }}
+                    td {{:: platfrom.loginurl }}
+                    td {{:: platfrom.username }}
+                    td {{:: platfrom.password }}
+                    td {{:: platfrom.dataurl }}
+                    td {{:: platfrom.param1 }}
+                    td
+                        button.btn.btn-sm.btn-warning(type='button', ng-click='vm.modifyPlatform(platfrom)') 修改
+                            em.fa.fa-edit
+                        button.btn.btn-sm.btn-danger(type='button', ng-click='vm.deletePlatform(platfrom)') 删除
+                            em.fa.fa-trash-o
+        .ui-grid-next
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.readRecords(0)" id="firstPageBtn") 首页
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.readRecords(1)" id="previousPageBtn") 上一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.readRecords(2)" id="nextPageBtn") 下一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.readRecords(3)" id="lastPageBtn") 末页
+    .panel-footer
+        button.btn.btn-labeled.btn-primary(type='submit' ng-click="vm.addPlatform()")
+            span.btn-label
+                em.fa.fa-plus
+            | 平台信息录入
+    script(type="text/ng-template" id="deletePlatform.html")
+        .modal-header
+            button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+            h4.modal-title 删除?
+        .modal-body
+            p.text-bold 你确定要删除该平台吗？
+        .modal-footer
+            button.btn.btn-default(type="button",ng-click="vm.cancel()",data-dismiss="modal") 取消
+            button.btn.btn-danger(type="button",ng-click="vm.deletePlatform()",data-dismiss="modal") 确认
+

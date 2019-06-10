@@ -1,0 +1,64 @@
+.panel.panel-default.container-fluid
+    .panel-heading APP在线升级
+    .panel-body(style="overflow-y: auto;min-height: 600px;")
+        form.form-horizontal(name="uploadApkForm" ng-controller="AppUploadController")
+            fieldset
+                legend
+                div.form-group
+                    label.col-sm-2.control-label(for="version_code") 版本号：
+                    div.col-sm-6
+                        input.form-control(type="text" id="version_code" name="version_code" ng-model="apk.version_code"  aria-describedby="version_code_helpBlock" required)
+                        i(ng-show="uploadApkForm.version_code.$error.required" style="color:red;") * 必填
+                    span.help-block(id="version_code_helpBlock") version_code格式：时间+当日打包次数 如：20161001
+            fieldset
+                legend
+                div.form-group
+                    label.col-sm-2.control-label(for="version_name") 版本名称：
+                    div.col-sm-6
+                        input.form-control(type="text" id="version_name" ng-model="apk.version_name" required)
+                        i(ng-show="uploadApkForm.version_name.$error.required" style="color:red;") * 必填
+                    p.help-block(id="version_name_helpBlock") version_code格式：1.0 / 1.0.1
+            fieldset
+                legend
+                div.form-group
+                    label.col-sm-2.control-label(for="package_name") 包名：
+                    div.col-sm-6
+                        input.form-control(type="text" id="package_name" ng-model="apk.package_name" required)
+                        i(ng-show="uploadApkForm.package_name.$error.required" style="color:red;") * 必填
+                    p.help-block(id="package_name_helpBlock") 包名格式:xxxx.apk
+            fieldset
+                legend
+                div.form-group
+                    label.col-sm-2.control-label(for="release_date") 更新时间：
+                    div.col-sm-6
+                        input.form-control(type="text" id="release_date" ng-model="apk.release_date" disabled  required)
+                        i(ng-show="uploadApkForm.release_date.$error.required" style="color:red;") * 必填
+                    p.help-block(id="release_date_helpBlock") 更新时间不可设置，默认为系统时间
+            fieldset
+                legend
+                div.form-group
+                    label.col-sm-2.control-label(for="release_notes") 更新说明：
+                    div.col-sm-6
+                        textarea.form-control( id="release_notes" ng-model="apk.release_notes" rows="4"  required)
+                        i(ng-show="uploadApkForm.release_notes.$error.required" style="color:red;") * 必填
+                    p.help-block(id="release_notes_helpBlock") 描述更新情况。
+            fieldset
+                legend
+                div.form-group
+                    label.col-sm-2.control-label(for="app_package") 选择文件：
+                    div.col-sm-6
+                        input.filestyle.form-control(type="file"  id="app_package" ngf-select  name="file" ng-model="apk_package" ngf-accept="'*/*'"  data-buttonName="btn-primary" data-button-text="请选择要上传的APK文件" required)
+            fieldset
+                legend
+                div.form-group
+                    .col-sm-2
+                    div.col-sm-6
+                        button.btn.btn-primary.pull-right(ng-disabled="!uploadApkForm.$valid" ng-click="uploadAppPackage(apk_package)" ) 开始上传
+                        span.progress-update.pull-left(ng-show="apk_package.progress >= 0")
+                            div(style="width:{{apk_package.progress}}%" ng-bind="apk_package.progress + '%'")
+                        p.text-primary(ng-show="apk_package.result") 上传成功!!!
+                        p.err(ng-show="errorMsg") {{errorMsg}}
+    .panel-footer
+        p
+            small 如发现数据不合理之处，请联系
+                a(href="www.cszhjt.com") {{ app.name }}

@@ -1,0 +1,5 @@
+@charset "utf-8";
+.fl{float: left;}  .fr{float: right;}
+.bac{background-color: #1784d9;} .color_one{color: #1784d9;} .color_two{color: #008744;} .color_thr{color: #ffa700;} .color_for{color: #fc0803;}
+#header{color: #fff;background-color: #1784d9;}
+#header a,#header h1{color: #fff;}

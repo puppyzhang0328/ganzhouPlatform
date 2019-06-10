@@ -1,0 +1,183 @@
+[
+  {
+    "text": "Menu Heading",
+    "heading": "true",
+    "translate": "sidebar.heading.HEADER"
+  },
+  {
+    "text":"控制台",
+    "icon":"fa fa-desktop",
+    "sref":"app.console"
+  },
+  {
+    "text": "基础信息管理",
+    "sref": "#",
+    "icon": "fa fa-fax",
+    "alert": "7",
+    "label": "label label-info",
+    "submenu": [
+      {
+        "text": "组织信息",
+        "sref": "app.organ"
+      },
+      {
+        "text": "区域信息",
+        "sref": "app.region"
+      },
+      {
+        "text": "商圈信息",
+        "sref": "app.town"
+      },
+      {
+        "text": "市局信息",
+        "sref": "app.bureau"
+      },
+      {
+        "text": "派出所信息",
+        "sref": "app.police"
+      },
+      {
+        "text": "社区信息",
+        "sref": "app.community"
+      },
+      {
+        "text": "业态类型信息",
+        "sref": "app.bustype"
+      },
+
+    ]
+  },
+  {
+    "text": "停车信息管理",
+    "sref": "#",
+    "icon": "fa fa-car",
+    "alert": "6",
+    "label": "label label-info",
+    "submenu": [
+      {
+        "text": "设备管理",
+        "sref": "app.iotdevice"
+      },
+      {
+        "text": "停车场分布",
+        "sref": "app.parking-baidu-map"
+      },
+      {
+        "text": "停车场管理",
+        "sref": "app.parking"
+      },
+      {
+        "text":"进出场记录",
+        "sref" : "app.vehicle-in"
+      },
+      {
+        "text": "停车场功能",
+        "sref": "app.park-power"
+      },
+      {
+        "text": "基础数据导入",
+        "sref": "app.export"
+      },
+      {
+        "text": "停车场功能配置",
+        "sref": "app.park-action"
+      },
+      {
+        "text": "停车场图片管理",
+        "sref": "app.parking-pic"
+      }
+    ]
+  },
+  {
+    "text": "停车场状态监测",
+    "sref": "#",
+    "icon": "fa fa-ioxhost",
+    "alert": "2",
+    "label": "label label-info",
+    "submenu": [
+      {
+        "text": "网络状态监测",
+        "sref": "app.net-state"
+      },
+      {
+        "text": "上传工具状态监测",
+        "sref": "app.park-state"
+      }
+    ]
+  },
+  {
+    "text": "统计报表管理",
+    "sref": "#",
+    "icon": "fa fa-bar-chart-o",
+    "alert": "7",
+    "label": "label label-info",
+    "submenu": [
+      {
+        "text": "组织报表",
+        "sref": "app.analysis-organ"
+      },
+      {
+        "text": "区域报表",
+        "sref": "app.analysis-region"
+      },
+      {
+        "text": "商圈报表",
+        "sref": "app.analysis-town"
+      },
+      {
+        "text": "停车场报表",
+        "sref": "app.analysis-pay"
+      },
+      {
+        "text": "业态类型报表",
+        "sref": "app.analysis-bustype"
+      },
+      {
+        "text": "用户统计报表",
+        "sref": "app.analysis-user"
+      },
+      {
+        "text": "财务统计报表",
+        "sref": "app.analysis-account"
+      },
+      {
+        "text": "app用户推广统计",
+        "sref": "app.analysis-app-user"
+      }
+    ]
+  },
+  {
+    "text": "优惠活动管理",
+    "sref": "#",
+    "alert": "2",
+    "icon": "fa fa-ticket",
+    "label": "label label-info",
+    "submenu": [
+      {
+        "text": "优惠券活动",
+        "sref": "app.coupon"
+      },
+      {
+        "text": "用户优惠券",
+        "sref": "app.coupon-man"
+      }
+    ]
+  },
+  {
+    "text": "平台对接管理",
+    "sref": "#",
+    "icon": "fa fa-institution",
+    "alert": "2",
+    "label": "label label-info",
+    "submenu": [
+      {
+        "text": "平台信息管理",
+        "sref": "app.platform"
+      },
+      {
+        "text": "平台权限管理",
+        "sref": "app.platform-power"
+      }
+    ]
+  }
+]

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+	<meta content="email=no" name="format-detection">
+	<link rel="stylesheet" href="css/wepayui.min.css">
+	<link rel="stylesheet" href="css/index.css">
+	<script type="text/javascript" src="js/zepto.min.js"></script>
+	<title>缴费成功</title>
+	<style>
+		.weui-icon-success,.success .tips-info .green-font{color:  #2196f3;}
+		.tips-alt{text-align: center;margin-bottom: 10px;}
+		.tips-alt span{padding: 0 5px; color: red;}
+		body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div{margin:0;padding:0;border:0;}
+		.softkeyboard{ display:inline-block;}
+		input[type="button" i]{padding: 0 !important;}
+		.c_panel{ background-color:#333; text-align:center;padding:4px 0 2px;}
+		.i_button{ border:none; height:35px;width:9%; font-size:16px; font-family:"微软雅黑"; background-color:#666; color:#fff;}
+		.i_button:active{ background-color:#999;}
+		.wei-app-tui{width: 100%;border:1px solid #2196f3;margin-bottom: 1rem;}
+		.wei-app{width: 90%;margin: 0 auto}
+		.win-app-img{width: 40%;height: 100%;vertical-align: middle;}
+		.win-app-first{display: inline-block;vertical-align: middle;margin-left: 1rem;width: 50%;}
+		.win-app-ab{position: relative;height: 21px;line-height: 21px;text-align: center;margin-bottom: 30px;font-size: 22px;}.win-and{width: 100%;background-color: #2196f3;height: 3rem;text-align: center;font-size: 16px;}
+		.win-and{width: 100%;background-color: #2196f3;height: 3rem;text-align: center;font-size: 16px;}
+		.win-and-div{width: 40%;background-color: #fff;height: 2rem;line-height: 2rem;border-radius: 0.5rem;    margin-top: 0.5rem;display: inline-block;}
+		strong{color: #2196f3; font-size: 18px;}
+		.weui-label{width:4em !important;}
+		.sample{font-size: 12px;width: 90%;margin: 10px auto 0;color: #666;}
+		.wei-a-app{vertical-align: middle;font-size: 14px;color: #333;}
+		.wein-a-img{vertical-align: middle;}
+	</style>
+</head>
+<body>
+<section class="success-wrap">
+	<div class="success" style="height: 1000px;">
+		<div class="tips">
+			<!-- <span class="icon-area ok-icon"></span> -->
+			<i class="weui-icon-success weui-icon_msg icon-area"></i>
+			<div class="tips-title">请直接取车离场</div>
+			<div class="tips-alt">距离重新计费还剩：<span id="time"></span></div>
+			<div id="time-out" class="tips-info">限时<span class="green-font"></span>，超时将重新计费</div>
+		</div>
+		<!--<div class="add-area">-->
+		<!--<a href="map.html" class="map-link"><span class="map-icon-b">&lt;!&ndash; 图层 &ndash;&gt;</span></a>-->
+		<!---->
+		<!--<dl class="add-info">-->
+		<!--<dt class="info-title">停车位置</dt>-->
+		<!--<dd class="add-main">负二层 H-412</dd>-->
+		<!--</dl>-->
+		<!--</div>-->
+		<div style="position: fixed;bottom: 2rem;">
+			<!--<div class="wei-app-tui"></div>-->
+			<!--<div class="wei-app">-->
+			<!--<div style="margin-bottom: 0.5rem;">-->
+			<!--<img class="win-app-img" src="img/bac.jpg">-->
+			<!--<div class="win-app-first">-->
+			<!--<div class="win-app-ab">湘行天下</div>-->
+			<!--<div style="font-size: 14px;">打造<strong>-->
+			<!--最先进</strong>的停车平台，告别<strong>停车</strong>找<strong>位</strong>难时代</div>-->
+			<!--<div style="font-size: 13px;margin-top: 1rem;">开启扫码<em style="color: #2196f3;font-size: 22px;">移动</em>快捷支付</div>-->
+			<!--</div>-->
+			<!--</div>-->
+			<!--</div>-->
+			<!--<div class="win-and">-->
+			<!--<div class="win-and-div">-->
+			<!--<a href="https://itunes.apple.com/cn/app/%E6%B9%98%E8%A1%8C%E5%A4%A9%E4%B8%8Bapp/id1170355950?mt=8"><img class="wein-a-img" src="img/iphone.png"><span class="wei-a-app">iPhone版下载</span></a>-->
+			<!--</div>-->
+			<!--<div class="win-and-div" style="margin-left: 5%;">-->
+			<!--<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.xiangxing.parking"><img src="img/android.png" class="wein-a-img"><span class="wei-a-app">Android版下载</span></a>-->
+			<!--</div>-->
+			<!--</div>-->
+		</div>
+	</div>
+	<div class="weui-wepay-logos weui-wepay-logos_ft">
+		<img src="https://act.weixin.qq.com/static/cdn/img/wepayui/0.1.1/wepay_logo_default_gray.svg" alt="" height="16">
+	</div>
+</section>
+</body>
+<script>
+    (function(){
+        var lot_type = sessionStorage.getItem("lot_type");
+        var free_outtime = sessionStorage.getItem("free_outtime");
+        free_outtime=parseInt(free_outtime);
+        //直接进入页面，就显示0
+        if(free_outtime<=0){
+            $(".green-font").html('0分钟');
+            var time ="0分钟";
+            document.getElementById('time').innerHTML = time;
+            return false;
+		}
+        if(lot_type == "路边"){
+            var m=free_outtime;
+            $(".green-font").html(m+'分钟');
+        }else{
+            var m=free_outtime;
+            $(".green-font").html(m+'分钟');
+        }
+        var s = 59;
+        function showtime(){
+            var time = m-1+"分钟"+s+"秒";
+            document.getElementById('time').innerHTML = time;
+            s = s-1;
+            if(s<0){
+                m = m -1;
+                s = 59
+            }
+            if(m<0){
+                clearInterval(settime);
+                document.getElementById("time-out").innerHTML = "<strong style='color:red;'>超时15分钟了</strong>，请您在出入口进行人工缴费！";
+            }
+        }
+        var settime = setInterval(function(){
+            showtime();
+        },1000);
+    })();
+</script>
+</html>

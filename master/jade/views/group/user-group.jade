@@ -1,0 +1,38 @@
+.container-fluid
+    .panel(ng-controller="GroupManageController as vm")
+        .panel-heading 群组管理
+        .panel-body
+            table.row-bordered.hover.table-striped.table-responsive(datatable='ng',dt-options='vm.dtOptions',dt-column-defs='vm.dtColumnDefs',dt-instance="dtInstance")
+                thead
+                    tr
+                        th 序号
+                        th 组名
+                        th 编辑
+                tbody
+                    tr(ng-repeat='role in vm.roles track by role.groupId')
+                        td {{role.groupId}}
+                        td {{role.chineseName}}
+                        //- td {{role.groupname}}
+                        td
+                            button.btn.btn-sm.btn-warning(type='button', ng-click='vm.modifyRole(role)') 修改
+                                em.fa.fa-edit
+                            button.btn.btn-sm.btn-danger(type='button', ng-click='vm.deleteRole(role)') 删除
+                                em.fa.fa-trash-o
+        .panel-footer
+            button.btn.btn-labeled.btn-primary(type='submit' ng-click="vm.addNewRole()")
+                span.btn-label
+                    em.fa.fa-plus
+                | 新增群组
+    p
+        small 如发现数据不合理之处，请联系
+            a(href="www.cszhjt.com") {{ app.name }}
+    // modal
+    script(type="text/ng-template" id="delete_modal.html")
+        .modal-header
+            button(type="button",class="close",ng-click="cancel()",data-dismiss="modal",aria-hidden="true") &times;
+            h4.modal-title.text-warning.text-bold 删除
+        .modal-body
+            p.text-bold 你确定要删除该用户吗？
+        .modal-footer
+            button.btn.btn-default(type="button",ng-click="cancel()",data-dismiss="modal") 取消
+            button.btn.btn-danger(type="button",ng-click="deleteRoleConfirm()",data-dismiss="modal") 确认

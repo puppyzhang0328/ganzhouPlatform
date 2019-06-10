@@ -1,0 +1,53 @@
+{
+  "dashboard": {
+    "WELCOME": "Welcome to {{appName}}"
+  },
+  "topbar": {
+    "search": {
+      "PLACEHOLDER": "Type and hit enter.."
+    }
+  },
+  "offsidebar": {
+    "setting": {
+      "SETTINGS": "设置",
+      "THEMES": "主题设置",
+      "layout": {
+        "FIXED": "固定位置",
+        "BOXED": "盒状显示",
+        "RTL":"左右切换"
+      },
+      "ASIDE":"边角设置",
+      "VIEW_ANIMATION":"页面切换动画",
+      "LAYOUT": "位置设置",
+      "aside":{
+        "COLLAPSED":"收缩",
+        "FLOAT":"浮动",
+        "HOVER":"漂浮"
+      }
+    }
+  },
+  "sidebar": {
+    "WELCOME": "欢迎！",
+    "heading": {
+      "HEADER": "湘行天下云停车Web管理系统"
+    },
+    "nav": {
+      "PROFILE": "个人中心",
+      "HOMEPAGE": "首页",
+      "SINGLEVIEW": "停车场分布",
+      "PARKING_INFO":"停车场基本信息查询",
+      "operation":{
+        "PARKING_MANAGE":"停车记录管理",
+        "VEHICLE_IN":"停车入场记录查询",
+        "VEHICLE_OUT":"停车出场记录查询",
+        "VEHICLE_MONEY":"缴费记录查询"
+      },
+      "admin":{
+        "DISPLAY_NAME":"管理员设置",
+        "PARKING_MODIFY":"停车场信息管理",
+        "PARKING_UPDATE":"操作员管理",
+        "PARKING_MANAGEMENT":"停车场综合管理"
+      }
+    }
+  }
+}

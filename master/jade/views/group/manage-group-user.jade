@@ -1,0 +1,29 @@
+.panel.panel-dark(ng-controller='GroupUserManageController as vm')
+    .panel-heading 集团用户管理
+    .panel-body
+        table.row-bordered.hover.table-striped.table-responsive(datatable='ng',dt-options='vm.dtOptions',dt-column-defs='vm.dtColumnDefs')
+            thead
+                tr
+                    th 序号
+                    th 昵称
+                    th 真实姓名
+                    th 注册时间
+                    th 上一次登录时间
+                    th 邮箱
+                    th 操作
+            tbody
+                tr(ng-repeat='user in vm.users track by user.staffid')
+                    td
+                        button.btn.btn-link(type="button" ng-click="vm.queryGroupUserDetail(user)") {{user.staffid}}
+                    td {{:: user.username}}
+                    td {{:: user.realname}}
+                    td {{:: user.date_joined}}
+                    td {{:: user.last_login}}
+                    td {{:: user.email}}
+                    td
+                        button.btn.btn-sm.btn-warning(type='button' ng-click='vm.queryGroupUserDetail(user)')
+                            em.fa.fa-edit 修改
+
+p
+    small 如发现数据不合理之处，请联系
+        a(href="www.cszhjt.com") {{ :: app.name }}

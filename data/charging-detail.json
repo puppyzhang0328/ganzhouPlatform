@@ -1,0 +1,76 @@
+{
+    "update_time": "2017-07-05T17:29:41.803015",
+    "kind": "parking_lots#nearby",
+    "maxid": 114,
+    "status": 0,
+    "chargingDetail": [
+      {
+        "id": 114,
+        "name": "小余测试停车场",
+        "address": "天上人间",
+        "city_code": 158,
+        "type": "封闭",
+        "price": "1-12小时5元 12-24小时10元",
+        "image": "",
+        "parking_space_total": 100,
+        "parkgate": [],
+        "parking_space_available": 0
+      },
+      {
+        "id": 113,
+        "name": "岳麓山大酒店",
+        "address": "枫林一路19号",
+        "city_code": 158,
+        "type": "封闭",
+        "price": "免费时间30分钟，免费时间不计时，过夜费为0元，每日最大限额40元，1-2小时10元，3-8小时20元，9-14小时30元，15-24小时40元",
+        "image": "",
+        "parking_space_total": 300,
+        "parkgate": [],
+        "parking_space_available": 80
+      },
+      {
+        "id": 105,
+        "name": "好停车测试1",
+        "address": "湖南长沙",
+        "city_code": 158,
+        "type": "封闭",
+        "price": "每小时1元",
+        "image": "",
+        "parking_space_total": 500,
+        "parkgate": [],
+        "parking_space_available": 0
+      },
+      {
+        "id": 95,
+        "name": "测试停车场2",
+        "address": "深圳市南山区",
+        "city_code": 158,
+        "type": "封闭",
+        "price": "每小时30",
+        "image": "",
+        "parking_space_total": 302,
+        "parkgate": [],
+        "parking_space_available": 0
+      },
+      {
+        "id": 78,
+        "name": "高鑫麓城",
+        "address": "岳麓区桐梓坡路519号",
+        "city_code": 158,
+        "type": "封闭",
+        "price": "1-12小时5元,12-24小时10元",
+        "image": "",
+        "parking_space_total": 500,
+        "parkgate": [
+          {
+            "gateid": 155,
+            "longitude": 112.934327,
+            "latitude": 28.224054,
+            "gatename": "",
+            "isdefault": true
+          }
+        ],
+        "parking_space_available": 0
+      }
+    ]
+  }

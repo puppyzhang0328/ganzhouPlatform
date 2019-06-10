@@ -1,0 +1,16 @@
+.panel.container-fluid(ng-controller="AddParkPowerController as vm")
+    .panel-heading.text-bold 新增停停车场功能
+    .panel-body.row
+        form.form-horizontal(style="padding: 130px 130px 0 130px;")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="funcname") 功能名：
+                    span.must_install *
+                .col-md-8
+                    input.form-control(id="funcname" type="text" placeholder="请输入功能名" ng-model="vm.parkPower.funcname")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="introduce") 描述：
+                .col-md-8
+                    textarea.form-control(id="introduce" type="text" placeholder="请简要描述下该停车场功能" ng-model="vm.parkPower.introduce")
+    .panel-footer
+        button.btn.btn-primary.pull-right(type="button" ng-click= "vm.addParkPower()") 确认添加
+        button.btn.btn-danger(type="button" ng-click= "vm.backToPrevious()") 返回上一级菜单

@@ -1,0 +1,27 @@
+.panel.container-fluid(ng-controller="inforsetupamodifyController as vm")
+    .panel-heading.text-bold 修改资讯信息
+    .panel-body.row
+        form.form-horizontal(style="padding: 130px 130px 0 130px;")
+            .form-group
+                label.col-md-3.control-label.text-center(for="id") 序号：
+                    span.must_install *
+                .col-md-8
+                    input.form-control(id="id" type="text" placeholder="序号" ng-model="vm.platform.menu_id" disabled="disabled")
+            .form-group
+                label.col-md-3.control-label.text-center(for="plateformname") 菜单名称：
+                    span.must_install *
+                .col-md-8
+                    input.form-control(id="plateformname" type="text" placeholder="菜单名称" ng-model="vm.platform.menu_name" disabled="disabled")
+            .form-group
+                label.col-md-3.control-label.text-center(for="loginurl") 菜单项对应的url：
+                    span.must_install *
+                .col-md-8
+                    input.form-control(id="loginurl" type="text",placeholder="菜单项对应的url" ng-model="vm.platform.menu_url")
+
+            .form-group
+                label.col-md-3.control-label.text-center(for="titles") 标题：
+                .col-md-8
+                    input.form-control(id="titles" type="text",placeholder="标题" ng-model="vm.platform.title")
+    .panel-footer
+        button.btn.btn-primary.pull-right(type="button" ng-click= "vm.modifyPlatform()") 确认修改
+        button.btn.btn-danger(type="button" ng-click= "vm.backToPrevious()") 返回上一级菜单

@@ -1,0 +1,13 @@
+@charset "utf-8";
+*{margin: 0;padding: 0;outline:none;border:none;}
+html,body{width: 100%;overflow-x:hidden;font-family: '微软雅黑';height: 100%;background-color: #e1e1e1;}
+ul li{list-style: none;width: 100%;}a{color: #333;text-decoration: none;}
+.fl{float: left;} .fot{font-size: 12px;}
+.fr{float: right;}
+.container{width: 100%;padding: 20px;box-sizing: border-box;}
+.con_input{padding-left: 1em;margin-bottom: 20px;background: #fff;    height: 3rem;    line-height: 3rem;}
+.con_input input[type='text']{width: 100%;.box-sizing: border-box;}
+
+.con_input img{vertical-align: middle;}
+.con_input span{display: inline-block;box-sizing: border-box;width: 82%;}
+

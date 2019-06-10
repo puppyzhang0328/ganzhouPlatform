@@ -1,0 +1,26 @@
+{
+    "status": 0,
+    "records": [
+      {
+        "id":1,
+        "name": "第一停车场",
+        "frequency": "5",
+        "money": "1000",
+        "time": "2017-08"
+      },
+      {
+        "id":2,
+        "name": "第二停车场",
+        "frequency": "5",
+        "money": "1000",
+        "time": "2017-09"
+      },
+      {
+        "id":3,
+        "name": "第三停车场",
+        "frequency": "5",
+        "money": "1000",
+        "time": "2017-10"
+      }
+    ]
+  }

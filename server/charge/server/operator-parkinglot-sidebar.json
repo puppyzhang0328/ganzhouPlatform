@@ -1,0 +1,96 @@
+[
+  {
+    "text": "Menu Heading",
+    "heading": "true",
+    "translate": "sidebar.heading.HEADER"
+  },
+  {
+    "text":"首页",
+    "icon":"fa fa-car",
+    "sref":"app.first"
+  },
+
+  {
+    "text": "基本信息管理",
+    "sref": "#",
+    "icon": "fa fa-fax",
+    "alert": "6",
+    "label": "label label-info",
+    "submenu": [
+      {
+        "text": "充电站分布",
+        "sref": "app.charging-baidu"
+      },
+      {
+        "text": "充电站管理",
+        "sref": "app.charging"
+      },
+      {
+        "text": "充电桩管理",
+        "sref": "app.charge"
+      },
+      {
+        "text": "组织管理",
+        "sref": "app.bus-company"
+      },
+      {
+        "text": "线路管理",
+        "sref": "app.bus-line"
+      },
+      {
+        "text":"车辆管理",
+        "sref":"app.company-bus"
+      }
+    ]
+  },
+  {
+    "text": "运营中心",
+    "sref": "#",
+    "icon": "fa fa-fax",
+    "alert": "4",
+    "label": "label label-info",
+    "submenu": [
+      {
+        "text": "心跳信息",
+        "sref": "app.palpitation"
+      },
+      {
+        "text": "充电信息",
+        "sref": "app.charging-info"
+      },
+      {
+        "text": "IC卡交易信息",
+        "sref": "app.ic-message"
+      },
+      {
+        "text": "报警信息",
+        "sref": "app.warning-message"
+      }
+    ]
+  },
+  {
+    "text": "报表管理",
+    "sref": "#",
+    "icon": "fa fa-credit-card",
+    "alert": "5",
+    "label": "label label-info",
+    "submenu": [
+      {
+        "text": "时段报表",
+        "sref": "app.table-time"
+      },
+      {
+        "text": "日报表",
+        "sref": "app.table-day"
+      },
+      {
+        "text": "月报表",
+        "sref": "app.table-month"
+      },
+      {
+        "text":"线路报表",
+        "sref": "app.table-line"
+      }
+    ]
+  }
+]

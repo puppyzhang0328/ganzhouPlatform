@@ -1,0 +1,38 @@
+.panel.container-fluid(ng-controller="BMapController as vm")
+    .panel-heading.text-bold 停车场分布
+    .panel-body
+        .searchMarker
+            em.conmonBox.colorRed
+            span {{vm.redNumber}}
+            em.conmonBox.colorYellow
+            span {{vm.yellowNumber}}
+            em.conmonBox.colorGreen
+            span {{vm.greenNumber}}
+            //ui-select.searchDiv(ng-model="vm.regiongAsync.selected" theme="bootstrap" on-select="vm.onSelectCallback($item)"  style="min-width: 280px;" title="请选择区域")
+            //    ui-select-match(placeholder="请选择区域") {{$select.selected.name || $select.selected}}
+            //    ui-select-choices(repeat="region.name as region in vm.regiongAsync | propsFilter: {name: $select.search}")
+            //        div(ng-bind-html="region.name")
+            ui-select.searchDiv(ng-model="vm.parkAsync.selected" theme="bootstrap" ng-disable='vm.disable' on-select="vm.onSelectCallbackPark($item)"  style="width: 300px;" title="请选择停车场")
+                ui-select-match(placeholder="请选择要上传的停车场") {{$select.selected.name || $select.selected}}
+                ui-select-choices(repeat="ganpark.name as ganpark in vm.parkAsync | propsFilter: {name: $select.search, address: $select.search}")
+                    div(ng-bind-html="park.name | highlight: $select.search")
+                    small
+                        | 停车场地址：
+                        span(ng-bind-html="'' + park.address | highlight: vm.$select.search")
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.location()" ng-disabled="!vm.disable" style="margin-left: 20px;") 开始搜索
+        .prompt
+            .comPrompt 颜色示意
+            .comPrompt
+                em.conmonBox.colorRed
+                span 剩余车位数小于20
+            .comPrompt
+                em.conmonBox.colorYellow
+                span 剩余车位数小于50
+            .comPrompt
+                em.conmonBox.colorGreen
+                span 剩余车位数大于50
+        baidu-map(options="vm.mapOptions" ak="61XBb7uTsawT6CzfrUg6KZ8v9EKuEYaC" style="width: 100%;display: block;" id="allmap")
+    .panel-footer
+        p
+            small 如发现数据不合理之处，请联系
+                a(href="http://www.cszhjt.com") {{ app.name }}

@@ -1,0 +1,125 @@
+
+{
+    "update_time": "2017-07-05T17:29:41.803015",
+    "kind": "parking_lots#nearby",
+    "maxid": 114,
+    "status": 0,
+    "busCompany": [
+      {
+        "id": 1,
+        "name": "深圳市天下汽车租赁有限公司",
+        "company_number":"txzc",
+        "pay_type": "预付费",
+        "user_number": "170",
+        "bus_detail": "52",
+        "link_phone":"13510062771"
+      },
+      {
+        "id": 2,
+        "name": "深巴五分公司（南山车队）",
+        "company_number":"8880090010010050",
+        "pay_type": "后付费",
+        "user_number": "146",
+        "bus_detail": "45",
+        "link_phone":"075510000001"
+      },
+      {
+        "id": 3,
+        "name": "深巴五分公司（南山车队）",
+        "company_number":"szbus_qh",
+        "pay_type": "后付费",
+        "user_number": "112",
+        "bus_detail": "18",
+        "link_phone":"075510000003"
+      },
+      {
+        "id": 4,
+        "name": "深巴五分公司（西丽车队）",
+        "company_number":"szbus_xl",
+        "pay_type": "后付费",
+        "user_number": "108",
+        "bus_detail": "23",
+        "link_phone":"075510000004"
+      },
+      {
+        "id": 5,
+        "name": "河南天之合电子商务有限公司",
+        "company_number":"tzh_cp",
+        "pay_type": "预付费",
+        "user_number": "84",
+        "bus_detail": "5",
+        "link_phone":"18822885696"
+      },
+      {
+        "id": 6,
+        "name": "大理公交",
+        "company_number":"dl_bus",
+        "pay_type": "后付费",
+        "user_number": "80",
+        "bus_detail": "5",
+        "link_phone":"18822451256"
+      },
+      {
+        "id": 7,
+        "name": "深巴三分公司（深圳机场P3空港车队）",
+        "company_number":"szbus_airportp3",
+        "pay_type": "后付费",
+        "user_number": "68",
+        "bus_detail": "5",
+        "link_phone":"075510000002"
+      },
+      {
+        "id": 8,
+        "name": "新邦天蓝电站",
+        "company_number":"8880090010010050",
+        "pay_type": "封闭",
+        "user_number": "100",
+        "bus_detail": "5",
+        "link_phone":"18122223333"
+      },
+      {
+        "id": 9,
+        "name": "深巴三分公司（清湖车队）",
+        "company_number":"szbus_qhcd",
+        "pay_type": "后付费",
+        "user_number": "63",
+        "bus_detail": "5",
+        "link_phone":"075510000010"
+      },
+      {
+        "id": 10,
+        "name": "左权县恒益公交公司",
+        "company_number":"zq_bus",
+        "pay_type": "后付费",
+        "user_number": "55",
+        "bus_detail": "5",
+        "link_phone":"15110610555"
+      },
+      {
+        "id": 11,
+        "name": "深巴三分公司（东角头车队）",
+        "company_number":"szbus_djt",
+        "pay_type": "后付费",
+        "user_number": "35",
+        "bus_detail": "0",
+        "link_phone":"0755-01010101"
+      },
+      {
+        "id": 12,
+        "name": "深巴五分公司（南山车队）",
+        "company_number":"8880090010010050",
+        "pay_type": "后付费",
+        "user_number": "32",
+        "bus_detail": "74",
+        "link_phone":"075510000001"
+      },{
+        "id": 13,
+        "name": "深圳市明成达运输有限公司",
+        "company_number":"sz_mcd",
+        "pay_type": "后付费",
+        "user_number": "51",
+        "bus_detail": "25",
+        "link_phone":"18122223333"
+      }
+    ]
+  }

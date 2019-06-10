@@ -1,0 +1,12 @@
+[
+  {
+    "text": "Menu Heading",
+    "heading": "true",
+    "translate": "sidebar.heading.HEADER"
+  },
+  {
+    "text":"组织对账",
+    "icon":"icon-user",
+    "sref": "app.examine"
+  }
+]

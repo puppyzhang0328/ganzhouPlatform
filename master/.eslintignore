@@ -1,0 +1,12 @@
+logs/
+master/node_modules/
+node_modules/
+app/**
+server/
+vendor/
+.idea/
+less/
+sass/
+tests/
+.idea/*
+master/bower_components/

@@ -1,0 +1,27 @@
+.panel.panel-default.container-fluid(ng-controller="refundDetailController as vm")
+    .panel-heading.text-bold 线上退款详情
+    .panel-body
+            div 交易类型 {{recordsData.paidName }}
+            div 退款订单流水号 {{recordsData.out_trade_no}}
+            div 退款发起人 {{recordsData.initiator_user}}
+            div 退款审核者 {{recordsData.auditor_user}}
+            div 申请退款金额 {{recordsData.refund_amount}}
+            div 最终退款结算金额 {{recordsData.final_amount}}
+            div 申请创建时间 {{recordsData.created_time}}
+            div 申请处理时间 {{recordsData.handle_time}}
+            div 退款订单充值金额 {{recordsData.netreceipts}}
+            div 退款发起人手机号 {{recordsData.initiator_username}}
+            div 退款审核人账户名 {{recordsData.auditor_username}}
+            div 用户的当前账户金额 {{recordsData.account_balance}}
+            div 当前应退金额 {{recordsData.should_refund}}
+    .panel-footer
+        button.btn.btn-danger(type="button" ng-click= "vm.backToPrevious()") 返回上一级菜单
+    script(type="text/ng-template" id="deletePolice.html")
+        .modal-header
+            button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+            h4.modal-title 删除?
+        .modal-body
+            p.text-bold 你确定要删除该派出所吗？
+        .modal-footer
+            button.btn.btn-default(type="button",ng-click="vm.cancel()",data-dismiss="modal") 取消
+            button.btn.btn-danger(type="button",ng-click="vm.deletePolice()",data-dismiss="modal") 确认

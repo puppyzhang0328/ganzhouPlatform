@@ -1,0 +1,46 @@
+body{font-family: "Microsoft YaHei"}
+body{background-color: #333;}
+.navbar-inverse{border: none;background-color:#666;}
+.jumbotron{margin-top: 20px;min-height: 600px;}
+.container{width: 980px;margin: 0 auto;padding: 0;color: #999;}
+.contain{margin: 0 auto;width: 95%;}
+.contain-box{padding:20px 2% ;width: 100%;margin-top: 20px;font-size: 13px;border:1px solid #e1e1e1;background-color: #e1e1e1;}
+.contain-box-title{display: inline-block;width: 23.99%;padding: 20px 1%;color: #fff;border-radius: 10px;}
+.contain-box-title >div{height: 40px;line-height: 40px;}
+.contain-box-title div >span{font-size: 21px;margin-left: 5%;} 
+.contain-box .con-box-one{background-color:#7cb5ec;}
+.contain-box .con-box-two{background-color: rgb(35,183,229);margin:0 1%;}
+.contain-box .con-box-thr{background-color: rgb(230,205,63);margin:0 1% 0 0;}
+.contain-box .con-box-for{background-color: rgb(8,215,187);}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus{}
+.secNav{width: 100%;background-color: #080808;}
+.SecClass{color: #fff}
+.secContain{width: 95%;margin:20px auto 0;background-color: #666;}
+
+.secNav .navbar-nav > .active > a{color: rgb(244,155,37) !important;background-color:#080808 !important;}
+.secNav .nav > li > a:hover{background-color: #080808 !important;color: rgb(244,155,37) !important;}
+tr td{text-align: left;}
+
+.row_one{background-color: rgb(35,183,229);;}
+.row_two{background-color: rgb(230,205,63);}
+.row_thr{background-color: rgb(8,215,187);}
+.row_for{background-color:#7cb5ec;}
+.row_tit{padding: 0 10px;border-radius: 5px;font-size: 14px;color: #fff;height: 120px;margin: 20px 0;}
+.row_tit>div{line-height:40px;}
+
+/*百度地图*/
+
+#allmap
+{
+    margin-right: 0px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+#allmap img{ width: 30px;}
+.BMapLabel{  left:5px !important;
+    top:5px !important;
+    background-color:transparent !important;
+}

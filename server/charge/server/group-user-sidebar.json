@@ -1,0 +1,50 @@
+[
+  {
+    "text": "Menu Heading",
+    "heading": "true",
+    "translate": "sidebar.heading.HEADER"
+  },
+  {
+    "text":"停车出入场记录查询",
+    "sref" : "app.vehicle-in",
+    "icon":"fa fa-car"
+  },
+  {
+    "text": "缴费记录查询",
+    "sref": "#",
+    "icon": "fa fa-cc-visa",
+    "alert": "2",
+    "label": "label label-info",
+    "submenu": [
+      {
+        "text": "线上缴费记录查询",
+        "sref": "app.online-prepayment"
+      },
+      {
+        "text": "线下缴费记录查询",
+        "sref": "app.offline-prepayment"
+      }
+    ]
+  },
+  {
+    "text": "账单管理",
+    "sref": "#",
+    "icon": "fa fa-credit-card",
+    "alert": "3",
+    "label": "label label-info",
+    "submenu": [
+      {
+        "text": "线上缴费账单",
+        "sref": "app.online-bill"
+      },
+      {
+        "text": "线下缴费账单",
+        "sref": "app.offline-bill"
+      },
+      {
+        "text":"对账单查询",
+        "sref": "app.account-balance"
+      }
+    ]
+  }
+]

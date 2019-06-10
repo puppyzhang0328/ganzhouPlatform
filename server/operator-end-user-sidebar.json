@@ -1,0 +1,17 @@
+[
+  {
+    "text": "Menu Heading",
+    "heading": "true",
+    "translate": "sidebar.heading.HEADER"
+  },
+  {
+    "text":"APP用户管理",
+    "icon":"fa fa-android",
+    "sref": "app.mobile-user"
+  },
+  {
+    "text":"APP用户建议",
+    "icon":"fa fa-android",
+    "sref": "app.mobile-user-comment"
+  }
+]

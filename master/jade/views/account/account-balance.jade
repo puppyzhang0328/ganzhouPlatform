@@ -1,0 +1,103 @@
+//
+   Created by huang on 2017/3/20.
+.well
+    .h3.mv-sm
+        ul.breadcrumb.pull-right.bg-transparent
+            li
+                a(ui-sref='app.user-group') 账单管理
+            li(ng-repeat='state in $state.$current.path', ng-switch='$last', ng-if="!state.abstract", ng-class='{active: $last}')
+                a(ng-switch-when='false', href='#{{state.url.format($stateParams)}}') {{state.title}}
+                span(ng-switch-when='true') {{state.title}}
+        | 对账单查询
+.panel.panel-default(ng-controller='AccountBalanceController as vm')
+    .panel-body
+        div.record-search-form.record-search-max.limit-width(id="topSearchForm")
+            div.row
+                .col-md-3.col-xs-5
+                    .form-group.form-horizontal.form-inline
+                        div.container-fluid
+                            label.item-label.text-bold(style="font-size:13px;") 起止日期：
+                            div.item-content
+                                div.dropdown.form-group
+                                    a.dropdown-toggle(id="dropdownStart" role="button" data-toggle="dropdown" )
+                                        div.input-group.date
+                                            input.form-control(type="text" data-ng-model="vm.dateRangeStart" data-date-time-input="YYYY-MM-DD" disabled)
+                                            span.input-group-addon
+                                                i.fa.fa-calendar
+                                    ul.dropdown-menu(role="menu" aria-labelledby="dLabel")
+                                        datetimepicker(data-ng-model="vm.dateRangeStart" data-datetimepicker-config="{dropdownSelector: '#dropdownStart', renderOn: 'end-date-changed',minView:'day'}"
+                                        data-on-set-time="vm.startDateOnSetTime()" data-before-render="vm.startDateBeforeRender($dates)")
+                .col-md-4.col-xs-6
+                    .form-group.form-horizontal
+                        div.container-fluid
+                            label.item-label.text-bold 选择停车场：
+                            div.item-content
+                                ui-select(ng-model="vm.parkingAsync.selected" theme="bootstrap" ng-disable='vm.disable' on-select="vm.onSelectCallback($item)"  style="width: 300px;" title="请选择停车场")
+                                    ui-select-match(placeholder="请选择要上传的停车场") {{$select.selected.name || $select.selected}}
+                                    ui-select-choices(repeat="parking.name as parking in vm.parkingAsync | propsFilter: {name: $select.search, address: $select.search}")
+                                        div(ng-bind-html="parking.name | highlight: $select.search")
+                                        small
+                                            | 停车场地址：
+                                            span(ng-bind-html="'' + parking.address | highlight: vm.$select.search")
+                .col-md-2.col-xs-3
+                    .form-group.form-horizontal.row
+                        div.container-fluid
+                            label.item-label.text-bold 选择查询时间段:
+                            div.item-content
+                                select.form-control(ng-model="vm.selectTime" ng-options="opt.name for opt in vm.timeSlot")
+                .col-md-2.col-xs-3
+                    button.btn.btn-primary.btn-sm(ng-click="vm.queryAccountBalances()") 点击搜索
+        .panel.panel-success
+            .panel-heading-active 已对账记录
+            .panel-body
+                table.order-column.table-striped.table-bordered.table-responsive(datatable='ng',dt-options='vm.dtOptions',dt-column-defs='vm.dtColumnDefs' cellspacing="0" width="100%")
+                    thead
+                        tr
+                            th 入场编号
+                            th 用户ID
+                            th 车牌号码
+                            th 交易号
+                            th 流水创建时间
+                            th 应收金额
+                            th 是否支付
+                            th 用户余额
+                            th 支付通道
+                            th 流水更新时间
+                            th 是否对账
+                            th 用户ip
+                    tbody
+                        tr(ng-repeat='account in vm.journalaccount track by account.inid')
+                            td {{:: account.inid}}
+                            td {{:: account.user}}
+                            td {{:: account.plate_number}}
+                            td {{:: account.out_trade_no}}
+                            td {{:: account.created_time}}
+                            td {{:: account.amount /100}} 元
+                            td {{:: account.paid}}
+                            td {{:: account.balance/100}} 元
+                            td {{:: account.payment_channel}}
+                            td {{:: account.updated_time}}
+                            td {{:: account.ischeck}}
+                            td {{:: account.spbill_create_ip}}
+        .panel.panel-danger
+            .panel-heading-danger 未对账记录
+            .panel-body
+                    table.order-column.table-striped.table-bordered.table-responsive(datatable='ng',dt-options='vm.dtOptions',dt-column-defs='vm.dtColumnDefs2' cellspacing="0" width="100%")
+                        thead
+                            tr
+                                th 入场编号
+                                th 支付金额
+                                th 支付时间
+                                th 车牌号码
+                                th 错误原因
+                        tbody
+                            tr(ng-repeat='reconcile in vm.abreconcile track by reconcile.inid')
+                                td {{:: reconcile.inid}}
+                                td {{:: reconcile.paymoney/100}} 元
+                                td {{:: reconcile.paytime}}
+                                td {{:: reconcile.plate_number}}
+                                td {{:: reconcile.status}}
+
+p
+    small 如发现数据不合理之处，请联系
+        a(href="www.cszhjt.com") {{ :: app.name }}

@@ -1,0 +1,80 @@
+.panel.container-fluid(ng-controller="inducementController as vm")
+    .panel-heading.text-bold 诱导屏设置
+    .panel-body.row
+        form.form-horizontal(style="padding: 10px 130px 0 130px;")
+            div.content-main
+                form(enctype="multipart/form-data"  method="post" id="user_form"  novalidate)
+                    fieldset.module.aligned
+                        div.form-row.field-user_permissions
+                            label(for="id_user_parkings") 停车场选择:
+                            div.related-widget-wrapper(id="id_user_parkings")
+                                div.selector
+                                    div.selector-available
+                                        h2 可选停车场
+                                            span.help.help-tooltip.help-icon(title="这是可分配的停车场列表。你可以在选择框下面进行选择，然后点击两选框之间的“选择”箭头。")
+                                        p.selector-filter(id="id_user_parkings_filter")
+                                            label(for="id_user_parkings_input")
+                                                span.help-tooltip.search-label-icon(title="在此框中键入以过滤可用的停车场列表" )
+                                            input(type="text" placeholder="过滤" id="id_user_parkings_input" ng-model="vm.parkSearchText" )
+                                        select.filtered(multiple="multiple" id="id_user_parking_from"  name="parking_lots"  ng-model="vm.ParkSelectedAvailItems" ng-options="i as i.name for i in vm.ParkAvailableListItems | orderBy:'name' | filter: vm.parkSearchText")
+                                        a.selector-chooseall.active(title="点击选择全部组"  id="id_user_parkings_add_all_link" ng-click="vm.ParkBtnAllRight()") 全选
+                                    ul.selector-chooser
+                                        li
+                                            a.selector-add.active(title="选择" id="id_user_parkings_add_link" ng-click="vm.ParkBtnRight()")
+                                            a.selector-remove.active(title="删除" id="id_user_parkings_remove_link" ng-click="vm.ParkBtnLeft()")
+                                    div.selector-chosen
+                                        h2 已选停车场
+                                            span.help.help-icon.help-tooltip(title="这是选中组的列表。你可以在选择框下面进行选择，然后点击两选框之间的的删除箭头进行删除")
+                                        select.filtered(id="id_user_parkings_to" multiple="multiple" name="user_parking"  ng-model="vm.ParkSelectedSelectedListItems" ng-options="i as i.name for i  in vm.ParkSelectedListItems | orderBy:'name'")
+                                        a.selector-clearall.active(title="全部移除" ng-click="vm.ParkBtnAllLeft()") 全部移除
+            .form-group.col-md-6
+                label.col-md-4.control-label.text-center(for="card_number") 卡号：
+                    span.must_install *
+                .col-md-6
+                    input.form-control(id="card_number" type="text" placeholder="请输入卡号" ng-model="vm.card_number")
+            .form-group.col-md-6
+                label.col-md-4.control-label.text-center(for="handle_type") 功能：
+                    span.must_install *
+                .col-md-6
+                    select.form-control( id="handle_type" ng-model="vm.handle_type")
+                        option(value="") --请选择功能--
+                        option(value="open") 开屏
+                        option(value="close") 关屏
+                        option(value="nowaday_program") 即时节目
+                        option(value="save_program") 保存节目
+                        option(value="delete_program") 删除节目
+                        option(value="update_program") 清空节目
+                        option(value="nowaday_program_normal") 正常节目
+                        option(value="nowaday_program_space") 特殊节目
+            .form-group.col-md-6
+                label.col-md-4.control-label.text-center(for="handle_way") 发送方式：
+                    span.must_install *
+                .col-md-6
+                    select.form-control( id="handle_way" ng-model="vm.handle_way")
+                        option(value="") --请选择发送方式--
+                        option(value="one") 单卡发送
+                        option(value="all") 多卡发送
+            .form-group.col-md-6
+                label.col-md-4.control-label.text-center(for="font_color") 字体颜色：
+                    span.must_install *
+                .col-md-6
+                    select.form-control( id="font_color" ng-model="vm.font_color")
+                        option(value="") --请选择字体颜色--
+                        option(value="0") 红色
+                        option(value="1") 绿色
+                        option(value="2") 黄色
+            .form-group.col-md-6
+                label.col-md-4.control-label.text-center(for="in_type") 移动方式：
+                    span.must_install *
+                .col-md-6
+                    select.form-control( id="in_type" ng-model="vm.in_type")
+                        option(value="") --请选择移动方式--
+                        option(value="0") 随机
+                        option(value="1") 静止
+                        option(value="2") 连续左移
+            .form-group.col-md-6
+                label.col-md-4.control-label.text-center(for="msg_info") 内容：
+                .col-md-6
+                    input.form-control(id="msg_info" type="text" placeholder="请输入内容" ng-model="vm.msg_info")
+            .form-group.col-md-12(style="text-align: center;")
+                button.btn.btn-primary.pull-right(type="button" ng-click= "vm.addInducement()") 确认

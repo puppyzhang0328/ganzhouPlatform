@@ -1,0 +1,30 @@
+.panel.container-fluid(ng-controller="modifyPoliceController as vm")
+    .panel-heading.text-bold 修改派出所信息
+    .panel-body.row
+        form.form-horizontal(style="padding: 130px 130px 0 130px;")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="id") 派出所id：
+                .col-md-8
+                    input.form-control(id="id" type="text" placeholder="派出所id" ng-model="vm.police.id" disabled="disabled")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="stationCode") 派出所代码：
+                .col-md-8
+                    input.form-control(id="stationCode" type="text",placeholder="派出所代码" ng-model="vm.police.stationCode")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="stationName") 派出所名称：
+                .col-md-8
+                    input.form-control(id="stationName" type="text",placeholder="派出所名称" ng-model="vm.police.stationName")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="topSearchForm") 所属市局：
+                div.limit-width.col-md-8(id="topSearchForm")
+                    div.item-content
+                        ui-select(ng-model="vm.bureaugAsync.selected" theme="bootstrap" on-select="vm.onSelectCallback($item)"  style="min-width: 300px;" title="请选择停车场")
+                            ui-select-match(placeholder="请选择所属市局") {{$select.selected.name || $select.selected}}
+                            ui-select-choices(repeat="bureau.name as bureau in vm.bureaugAsync | propsFilter: {name: $select.search}")
+                                div(ng-bind-html="bureau.name")
+                                small
+                                    | 区域名称：
+                                    span(ng-bind-html="'' + bureau.name")
+    .panel-footer
+        button.btn.btn-primary.pull-right(type="button" ng-click= "vm.modifyPolice()") 确认修改
+        button.btn.btn-danger(type="button" ng-click= "vm.backToPrevious()") 返回上一级菜单

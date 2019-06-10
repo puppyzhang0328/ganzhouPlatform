@@ -1,0 +1,37 @@
+{
+	"total": 2,
+	"rows": [
+		{
+	        "car_height": 4.23,
+	        "car_length": 17.21,
+	        "car_no": "测试0001",
+	        "car_type": "小车",
+	        "car_weight": 18.33,
+	        "car_width": 3.12,
+	        "check_result": "正常",
+	        "check_time": "2018-08-26 11:11:11",
+	        "description": "",
+	        "explains": "后箱有汽油",
+	        "flow_number": "241645",
+	        "goods_type": "蔬菜",
+	        "id": 5,
+	        "is_danger": "是"
+	    },
+		 {
+		    "flow_number": "123456",
+		    "car_length": 17.21,
+		    "description": "",
+		    "car_type": "小车",
+		    "is_danger": "否",
+		    "car_height": 4.23,
+		    "car_width": 3.12,
+		    "check_result": "正常",
+		    "car_no": "粤A11111",
+		    "goods_type": "蔬菜",
+		    "id": -1,
+		    "explains": "后面有汽油罐",
+		    "car_weight": 18.33,
+		    "check_time": "2018-09-12 11:11:11"
+		  }
+	]
+}

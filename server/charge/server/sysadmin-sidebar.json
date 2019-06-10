@@ -1,0 +1,17 @@
+[
+  {
+    "text": "Menu Heading",
+    "heading": "true",
+    "translate": "sidebar.heading.HEADER"
+  },
+  {
+    "text": "用户管理",
+    "sref": "app.operator",
+    "icon": "icon-user"
+  },
+  {
+    "text": "群组管理",
+    "sref": "app.user-group",
+    "icon": "fa fa-group"
+  }
+]

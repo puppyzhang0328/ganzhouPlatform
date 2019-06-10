@@ -1,0 +1,138 @@
+{
+  "update_time": "2017-07-05T17:29:41.803015",
+  "kind": "parking_lots#nearby",
+  "maxid": 114,
+  "status": 0,
+  "charging": [
+    {
+      "id": 1,
+      "name": "翠岗公园地下充电站",
+      "gulp": "",
+      "address": "广东省深圳市宝安区怀德南路1321号",
+      "type": "非功率轮询站",
+      "work_pm":"",
+      "work_number":"10",
+      "work_bus_number":"20"
+    },
+    {
+      "id": 2,
+      "name": "郑州公交",
+      "gulp": "",
+      "address": "河南省郑州市中原区电厂路",
+      "type": "非功率轮询站",
+      "work_pm":"",
+      "work_number":"5",
+      "work_bus_number":"5"
+    },
+    {
+      "id": 3,
+      "name": "襄阳无锡路",
+      "gulp": "",
+      "address": "湖北省襄阳市襄州区无锡路",
+      "type": "非功率轮询站",
+      "work_pm":"",
+      "work_number":"2",
+      "work_bus_number":"2"
+    },
+    {
+      "id": 4,
+      "name": "安徽中兴海蓝",
+      "gulp": "",
+      "address": "安徽省六安市金寨县X055",
+      "type": "非功率轮询站",
+      "work_pm":"",
+      "work_number":"1",
+      "work_bus_number":"1"
+    },
+    {
+      "id": 5,
+      "name": "中兴通讯员工宿舍(专用)",
+      "gulp": "",
+      "address": "广东省深圳市南山区打石一路",
+      "type": "非功率轮询站",
+      "work_pm":"",
+      "work_number":"17",
+      "work_bus_number":"17"
+    },
+    {
+      "id": 6,
+      "name": "深圳宝安机场-无线充电",
+      "gulp": "深圳无线充电站组",
+      "address": "广东省深圳市宝安区空港八道",
+      "type": "非功率轮询站",
+      "work_pm":"",
+      "work_number":"3",
+      "work_bus_number":"3"
+    },
+    {
+      "id": 7,
+      "name": "非凡大麦场长葛站",
+      "gulp": "",
+      "address": "河南省许昌市长葛市仁和路",
+      "type": "非功率轮询站",
+      "work_pm":"",
+      "work_number":"12",
+      "work_bus_number":"20"
+    },
+    {
+      "id": 8,
+      "name": "深圳宝安机场快充P3停车场东C",
+      "gulp": "",
+      "address": "广东省深圳市宝安区空港八道",
+      "type": "非功率轮询站",
+      "work_pm":"",
+      "work_number":"19",
+      "work_bus_number":"38"
+    },
+    {
+      "id": 9,
+      "name": "上研所班车充电站",
+      "gulp": "",
+      "address": "上海市浦东新区碧波路889号",
+      "type": "非功率轮询站",
+      "work_pm":"",
+      "work_number":"1",
+      "work_bus_number":"2"
+    },
+    {
+      "id": 10,
+      "name": "保利文化新郑大麦场总仓店",
+      "gulp": "",
+      "address": "河南省郑州市新郑市S323(炎黄大道)",
+      "type": "非功率轮询站",
+      "work_pm":"",
+      "work_number":"12",
+      "work_bus_number":"14"
+    },
+    {
+      "id": 11,
+      "name": "深圳宝安机场-慢充-P2停车场I区",
+      "gulp": "",
+      "address": "广东省深圳市宝安区领航高架桥",
+      "type": "非功率轮询站",
+      "work_pm":"",
+      "work_number":"95",
+      "work_bus_number":"95"
+    },
+    {
+      "id": 12,
+      "name": "非凡大麦场新密站",
+      "gulp": "",
+      "address": "河南省郑州市新密市S316",
+      "type": "非功率轮询站",
+      "work_pm":"",
+      "work_number":"5",
+      "work_bus_number":"10"
+    },
+    {
+      "id": 13,
+      "name": "麒麟山庄疗养院",
+      "gulp": "",
+      "address": "广东省深圳市南山区沁园路5161号",
+      "type": "非功率轮询站",
+      "work_pm":"",
+      "work_number":"3",
+      "work_bus_number":"4"
+    }
+  ]
+}

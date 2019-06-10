@@ -1,0 +1,226 @@
+.panel.container-fluid(ng-controller="AddParkController as vm")
+    .panel-heading.text-bold 新增停车场
+    .panel-body
+        form.form-horizontal
+            .row
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="parkingName") 停车场名称
+                        span.must_install *
+                    .col-md-6
+                        input.form-control(id="parkingName" type="text" placeholder="请输入停车场名称" ng-model="vm.parking.name")
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="parkingAddress") 停车场地址
+                        span.must_install *
+                    .col-md-6
+                        input.form-control(id="parkingAddress" type="text",placeholder="请输入停车场地址" ng-model="vm.parking.address")
+            .row
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="parkingCityCode") 城市编码
+                        span.must_install *
+                    .col-md-6
+                        input.form-control(id="parkingCityCode" type="text" placeholder="请输入城市编号" ng-model="vm.parking.city_code" ng-blur="vm.number(vm.parking.city_code)")
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="parkingPrice") 停车费率
+                        span.must_install *
+                    .col-md-6
+                        input.form-control(id="parkingPrice" type="text" placeholder="请输入停车费率" ng-model="vm.parking.price")
+            .row
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="parkingSpaceTotal") 总车位数
+                        span.must_install *
+                    .col-md-6
+                        input.form-control(id="parkingSpaceTotal" type="text" placeholder="总车位数" ng-model="vm.parking.parking_space_total" ng-blur="vm.number(vm.parking.parking_space_total)")
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="type") 停车场类型
+                        span.must_install *
+                    .col-md-6
+                        select.form-control( id="type" ng-model="vm.parking.type")
+                            option(value="" selected) -----请选择停车场类型----
+                            option(value="CP") 封闭
+                            option(value="SP") 智能
+                            option(value="RP") 路边
+
+            .row
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="chargetype") 收费类型
+                        span.must_install *
+                    .col-md-6
+                        select.form-control( id="chargetype" ng-model="vm.parking.chargetype")
+                            option(value="" selected) ------请选择收费类型-------
+                            option(value="True") 收费
+                            option(value="False") 免费
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="has_internet") 网络状态
+                        span.must_install *
+                    .col-md-6
+                        select.form-control( id="has_internet" ng-model="vm.parking.has_internet")
+                            option(value="" selected) ------请选择网络状态------
+                            option(value="True") 有网络
+                            option(value="False") 无网络
+            .row
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="is_entrusted") 经营类型
+                        span.must_install *
+                    .col-md-6
+                        select.form-control( id="is_entrusted" ng-model="vm.parking.is_entrusted")
+                            option(value="" selected) ------请选择经营类型-------
+                            option(value="True") 委托经营
+                            option(value="False") 非委托经营
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="is_plate_rec") 车牌识别
+                        span.must_install *
+                    .col-md-6
+                        select.form-control( id="is_plate_rec" ng-model="vm.parking.is_plate_rec")
+                            option(value="" selected) -----请选择是否有车牌识别功能----
+                            option(value="True") 有
+                            option(value="False") 无
+            .row
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="is3rd") 第三方场所
+                        span.must_install *
+                    .col-md-6
+                        select.form-control( id="is3rd" ng-model="vm.parking.is3rd")
+                            option(value="" selected) -----请选择是否为第三方场所----
+                            option(value="True") 是
+                            option(value="False") 否
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="is_active") 激活状态
+                        span.must_install *
+                    .col-md-6
+                        select.form-control( id="is_active" ng-model="vm.parking.is_active")
+                            option(value="" selected) ----------请选择激活状态----------
+                            option(value="True") 已激活
+                            option(value="False") 未激活
+            .row
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="town") 所属商圈
+                    div.limit-width.col-md-6(id="town")
+                        div.item-content
+                            ui-select(ng-model="vm.TownAsync.selected" theme="bootstrap" on-select="vm.onSelectCallbackTown($item)"  title="请选择商圈")
+                                ui-select-match(placeholder="请选择商圈") {{$select.selected.name || $select.selected}}
+                                ui-select-choices(repeat="twon.name as twon in vm.TownAsync | propsFilter: {name: $select.search}")
+                                    div(ng-bind-html="twon.name")
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="Organman") 停车场所有人
+                    div.limit-width.col-md-6(id="Organman")
+                        div.item-content
+                            ui-select(ng-model="vm.OrganmanAsync.selected" theme="bootstrap" on-select="vm.onSelectCallbackOrganman($item)"  title="请选择停车场所有人")
+                                ui-select-match(placeholder="请选择停车场所有人") {{$select.selected.orgname || $select.selected}}
+                                ui-select-choices(repeat="Organman.orgname as Organman in vm.OrganmanAsync | propsFilter: {orgname: $select.search}")
+                                    div(ng-bind-html="Organman.orgname")
+            .row
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="region") 区域
+                        span.must_install *
+                    div.limit-width.col-md-6(id="region")
+                        div.item-content
+                            ui-select(ng-model="vm.regiongAsync.selected" theme="bootstrap" on-select="vm.onSelectCallback($item)"  title="请选择区域")
+                                ui-select-match(placeholder="请选择区域") {{$select.selected.name || $select.selected}}
+                                ui-select-choices(repeat="region.name as region in vm.regiongAsync | propsFilter: {name: $select.search}")
+                                    div(ng-bind-html="region.name")
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="organ") 运营单位
+                    div.limit-width.col-md-6(id="organ")
+                        div.item-content
+                            ui-select(ng-model="vm.OrganAsync.selected" theme="bootstrap" on-select="vm.onSelectCallbackOrgan($item)"  title="请选择经营单位")
+                                ui-select-match(placeholder="请选择运营单位") {{$select.selected.orgname || $select.selected}}
+                                ui-select-choices(repeat="organ.orgname as organ in vm.OrganAsync | propsFilter: {orgname: $select.search}")
+                                    div(ng-bind-html="organ.orgname")
+            .row
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="police") 派出所
+                    div.limit-width.col-md-6(id="police")
+                        div.item-content
+                            ui-select(ng-model="vm.policeAsync.selected" theme="bootstrap" on-select="vm.onSelectCallbackPolice($item)" title="请选择派出所")
+                                ui-select-match(placeholder="请选择派出所") {{$select.selected.name || $select.selected}}
+                                ui-select-choices(repeat="police.name as police in vm.policeAsync | propsFilter: {name: $select.search}")
+                                    div(ng-bind-html="police.name")
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="business") 业态类型
+                    div.limit-width.col-md-6(id="business")
+                        div.item-content
+                            ui-select(ng-model="vm.BusTypeAsync.selected" theme="bootstrap" on-select="vm.onSelectCallbackBusType($item)"  title="请选择业态类型")
+                                ui-select-match(placeholder="请选择业态类型") {{$select.selected.name || $select.selected}}
+                                ui-select-choices(repeat="business.name as business in vm.BusTypeAsync | propsFilter: {name: $select.search}")
+                                    div(ng-bind-html="business.name")
+            .row
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="community") 社区名
+                    div.limit-width.col-md-6(id="community")
+                        div.item-content
+                            ui-select(ng-model="vm.CommunityAsync.selected" theme="bootstrap" on-select="vm.onSelectCallbackCommunity($item)"  title="请选择社区")
+                                ui-select-match(placeholder="请选择社区") {{$select.selected.name || $select.selected}}
+                                ui-select-choices(repeat="community.name as community in vm.CommunityAsync | propsFilter: {name: $select.search}")
+                                    div(ng-bind-html="community.name")
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="hardware") 硬件厂商
+                    div.limit-width.col-md-6(id="hardware")
+                        div.item-content
+                            ui-select(ng-model="vm.HardwareyAsync.selected" theme="bootstrap" on-select="vm.onSelectCallbackHardware($item)"  title="请选择硬件厂商")
+                                ui-select-match(placeholder="请选择社区硬件厂商") {{$select.selected.orgname || $select.selected}}
+                                ui-select-choices(repeat="hardware.orgname as hardware in vm.HardwareyAsync | propsFilter: {orgname: $select.search}")
+                                    div(ng-bind-html="hardware.orgname")
+            .row
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="software") 软件厂商
+                    div.limit-width.col-md-6(id="software")
+                        div.item-content
+                            ui-select(ng-model="vm.SoftwareAsync.selected" theme="bootstrap" on-select="vm.onSelectCallbackSoftware($item)"  title="请选择软件厂商")
+                                ui-select-match(placeholder="请选择软件厂商") {{$select.selected.orgname || $select.selected}}
+                                ui-select-choices(repeat="software.orgname as software in vm.SoftwareAsync | propsFilter: {orgname: $select.search}")
+                                    div(ng-bind-html="software.orgname")
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="zonename") 街道名称
+                    .col-md-6
+                        input.form-control(id="zonename" type="text" placeholder="请输入街道名称" ng-model="vm.parking.zonename")
+            .row
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="databasever") 数据库版本信息
+                    .col-md-6
+                        input.form-control(id="databasever" type="text" placeholder="请输入数据库版本信息" ng-model="vm.parking.databasever")
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="osver") 操作系统版本号
+                    .col-md-6
+                        input.form-control(id="osver" type="text",placeholder="请输入操作系统版本号" ng-model="vm.parking.osver")
+            .row
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="hardwarever") 硬件系统版本
+                    .col-md-6
+                        input.form-control(id="hardwarever" type="text" placeholder="请输入硬件系统版本" ng-model="vm.parking.hardwarever")
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="softwarever") 收费软件版本
+                    .col-md-6
+                        input.form-control(id="softwarever" type="text" placeholder="请输入收费软件版本" ng-model="vm.parking.softwarever")
+            .row
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="acreage") 面积
+                    .col-md-6
+                        input.form-control(id="acreage" type="text" placeholder="请输入停车场面积" ng-model="vm.parking.acreage")
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="is_show") 图片显示与否
+                    .col-md-6
+                        select.form-control( id="is_show" ng-model="vm.parking.is_show")
+                            option(value="" selected) -----请选择图片显示与否----
+                            option(value="True") 是
+                            option(value="False") 否
+            .row
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="sign") 签约与否
+                    .col-md-6
+                        select.form-control( id="sign" ng-model="vm.parking.sign")
+                            option(value="" selected) -----请选择签约与否----
+                            option(value="true") 是
+                            option(value="False") 否
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="freeouttime") 免费离场时间
+                        span.must_install *
+                    .col-md-6
+                        input.form-control( id="freeouttime"   type="text" placeholder="请输入免费离场时间"   name="freeouttime" ng-model ="vm.freeouttime" ng-blur="vm.number(vm.freeouttime)")
+            .row
+                .form-group.col-md-6
+                    label.col-md-4.control-label.text-center(for="description") 描述
+                    .col-md-6
+                        textarea.form-control(id="description" type="text" placeholder="请简要描述下停车场的基本信息" ng-model="vm.parking.description")
+    .panel-footer
+        button.btn.btn-primary.pull-right(type="button" ng-click= "vm.addParking()") 确认添加
+        button.btn.btn-danger(type="button" ng-click= "vm.backToPrevious()") 返回上一级菜单

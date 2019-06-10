@@ -1,0 +1,164 @@
+.panel(ng-controller="newConsoleController as vm" )
+    .console-box
+        .row
+            .col-md-2
+                .row_one.row_tit
+                    .console-top-right
+                        .con-number {{vm.consoleCount.park_sum}}
+                        //.con-number 872
+                        .con-font 停车场总数
+            .col-md-2
+                .row_two.row_tit
+                    .console-top-right
+                        .con-number {{vm.consoleCount.park_berth_sum}}
+                        //.con-number 351045
+                        .con-font 停车位总数
+            .col-md-2
+                .row_thr.row_tit
+                    .console-top-right
+                        .con-number {{vm.consoleCount.vehic_sum}}
+                        .con-font 停车总次数
+            .col-md-2
+                .row_for.row_tit
+                    .console-top-right
+                        .con-number {{vm.should_sum}}
+                        .con-font 今日消费总金额
+            .col-md-2
+                .row_tit.row_fif
+                    .console-top-right
+                        .con-number {{vm.plsl_num}}
+                        .con-font 维护总次数
+            .col-md-2
+                .row_tit.row_six
+                    .console-top-right
+                        .con-number {{vm.consoleCount.user_num}}
+                        .con-font 用户总数
+        .con-two(style="")
+            .console-con(style="width:66%;float: left;")
+                .console-first 停车场区域分布图
+                .regionBox
+                    regionpiecharts.consolr-region(id="regionpiecharts1" data="vm.regionpiecharts1" legend="vm.region_one_pro")
+                    .regionpiechart
+                        em(style="background:#e54b4d")
+                        span 已接入{{vm.region_one}}
+                    .regionpiechart
+                        em(style="background:#f7c9c9")
+                        span 未接入{{vm.region_one_no}}
+                .regionBox
+                    regionpiecharts.consolr-region(id="regionpiecharts2" data="vm.regionpiecharts2" legend="vm.region_two_pro")
+                    .regionpiechart
+                        em(style="background:#cb5b41")
+                        span 已接入{{vm.region_two}}
+                    .regionpiechart
+                        em(style="background:#efcdc6")
+                        span 未接入{{vm.region_two_no}}
+                .regionBox
+                    regionpiecharts.consolr-region(id="regionpiecharts3" data="vm.regionpiecharts3" legend="vm.region_thr_pro")
+                    .regionpiechart
+                        em(style="background:#ae9946")
+                        span 已接入{{vm.region_thr}}
+                    .regionpiechart
+                        em(style="background:#e7e0c7")
+                        span 未接入{{vm.region_thr_no}}
+                .regionBox
+                    regionpiecharts.consolr-region(id="regionpiecharts4" data="vm.regionpiecharts4" legend="vm.region_fou_pro")
+                    .regionpiechart
+                        em(style="background:#53998e")
+                        span 已接入{{vm.region_fou}}
+                    .regionpiechart
+                        em(style="background:#cbe0dd")
+                        span 未接入{{vm.region_fou_no}}
+                .regionBox
+                    regionpiecharts.consolr-region(id="regionpiecharts5" data="vm.regionpiecharts5" legend="vm.region_fif_pro")
+                    .regionpiechart
+                        em(style="background:#29d0ca")
+                        span 已接入{{vm.region_fif}}
+                    .regionpiechart
+                        em(style="background:#bef1ef")
+                        span 未接入{{vm.region_fif_no}}
+                .regionBox
+                    regionpiecharts.consolr-region(id="regionpiecharts6" data="vm.regionpiecharts6" legend="vm.otherRegion_pro")
+                    .regionpiechart
+                        em(style="background:#0181c8")
+                        span 已接入{{vm.otherRegion}}
+                    .regionpiechart
+                        em(style="background:#b2d9ee")
+                        span 未接入{{vm.otherRegion_no}}
+            .console-con(style="width:31%;margin-left: 2.4%;margin-bottom: 15px;")
+                .console-first 停车场区域消费图
+                    span(style="float: right;margin-right:5px;")
+                        select(ng-init="vm.nowYear" ng-model="vm.nowYear" ng-change="vm.doday();" ng-options="item for item in vm.year")
+                        select(ng-init="vm.nowMoth" ng-model="vm.nowMoth" ng-change="vm.doday();" ng-options="item for item in vm.moth")
+                        select(ng-init="vm.nowDay" ng-model="vm.nowDay" ng-options="item for item in vm.day" ng-change="vm.queryRegionPay();")
+                radarcharts.consolr-two(id="radarcharts" data="vm.regionPayValue" legend="vm.regionPayName" style="width: 100%" )
+                .sex_con_title
+                    table(border="1" style="border: 1px solid #e1e1e1;")
+                        thead
+                            tr
+                                th 区域
+                                th 消费次数
+                        tbody
+                            tr(ng-repeat="x in vm.regionPay")
+                                td {{x.region_name}}
+                                td {{x.pay_sum}}
+            .console-con(style="width:99%;margin:10px 0")
+                .console-first 用户增长分布图
+                    span(style="float: right;margin-right:5px;")
+                        select(ng-init="vm.userNowYear" ng-model="vm.userNowYear" ng-options="item for item in vm.userYear")
+                        select(ng-init="vm.userNowMoth" ng-model="vm.userNowMoth" ng-change="vm.queryUserStatistics();" ng-options="item for item in vm.userMoth")
+                axischarts.consolr-two(id="axischarts" data="vm.userStatistics" legend="radarName" style="width: 80%")
+                .sex_con_title
+                    table(border="1" style="border: 1px solid #e1e1e1;")
+                        thead
+                            tr
+                                th 日期
+                                th 新增用户
+                                th 活跃用户
+                                th 临时停车用户
+                        tbody
+                            tr(ng-repeat="x in vm.userStatistics")
+                                td {{x.time}}
+                                td {{x.add_user}}
+                                td {{x.active_user}}
+                                td {{x.temporary_user}}
+            .console-con(style="width:33%;float: left;margin: 10px 0;")
+                .console-first 停车场所属类型分布图
+                twocatcharts.consolr-two(id="twocatcharts" data="Linedata" legend="legend" style="width: 100%")
+            .console-con(style="width:31%;float: left;margin: 10px 1%;")
+                .console-first 停车场热点分布图
+                img.consolr-two(ng-src="/park/app/img/parking_img.png")
+            .console-con(style="width:33%;float: left;margin: 10px 0;")
+                .console-first 派出所区域分布图
+                sexbar.consolr-two(id="sexBarcharts" legend="legend"  data="data" style="width: 80%;")
+                .sex_con_title
+                    table(border="1" style="border: 1px solid #e1e1e1;")
+                        thead
+                            tr
+                                th 区域名称
+                                th 派出所数
+                        tbody
+                            tr(ng-repeat="x in data")
+                                td {{x.name}}
+                                td {{x.value}}
+            .console-con(style="width:33%;float: left;margin: 10px 0;")
+                .console-first 停车场业态类型分布图
+                piecharts.consolr-two(id="piecharts" data="pieData" legend="radarName" style="width: 60%")
+                .sex_con_title
+                    table(border="1" style="border: 1px solid #e1e1e1;")
+                        thead
+                            tr
+                                th 停车场性质
+                                th 停车场个数
+                        tbody
+                            tr(ng-repeat="x in pieData")
+                                td {{x.name}}
+                                td {{x.value}}
+            .console-con(style="width:64%;float: left;margin: 10px 1%;")
+                .console-first 停车场车位周转次数潮汐分布图
+                manylinecharts.consolr-two(id="manylinecharts" legend="legend"  data="data" style="width: 100%")
+            .console-con(style="width:99%;margin: 10px 0;")
+                .console-first 停车场剩余车位潮汐分布图
+                linecharts.consolr-two(id="linecharts" data="Linedata" legend="legend" style="width: 100%")
+
+
+

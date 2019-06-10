@@ -1,0 +1,48 @@
+.panel.panel-default.container-fluid(ng-controller="billOnlineDetailController as vm")
+    .panel-heading.text-bold 线上账单管理
+    .panel-body
+        div(ng-show="vm.wechatpay")
+            div 交易类型 {{vm.billDetail.trade_type}}
+            div 结算号 {{vm.billDetail.open_id}}
+            div 预支付流水号 {{vm.billDetail.open_id}}
+            div 用户微信openid {{vm.billDetail.open_id}}
+            div 微信交易号 {{vm.billDetail.prepay_id}}
+            div 币种 {{vm.billDetail.open_id}}
+            div 银行简称 {{vm.billDetail.open_id}}
+            div 总金额 {{vm.billDetail.open_id}}
+            div 实际金额 {{vm.billDetail.open_id}}
+            div 交易截止时间 {{vm.billDetail.open_id}}
+            div 退款号 {{vm.billDetail.open_id}}
+            div 优惠券数 {{vm.billDetail.coupon_count}}
+            div 优惠总额 {{vm.billDetail.coupon_fee}}
+            div 创建时间 {{vm.billDetail.open_id}}
+            div 结算总费用 {{vm.billDetail.open_id}}
+        div(ng-show="vm.alipay")
+            div 更新时间 {{vm.billDetail.open_id}}
+            div 支付时间 {{vm.billDetail.open_id}}
+            div 交易类型 {{vm.billDetail.open_id}}
+            div 结算号 {{vm.billDetail.open_id}}
+            div 交易描述 {{vm.billDetail.open_id}}
+            div 支付类型 {{vm.billDetail.open_id}}
+            div 超时时间 {{vm.billDetail.open_id}}
+            div 支付宝交易号 {{vm.billDetail.open_id}}
+            div 买家账号 {{vm.billDetail.open_id}}
+            div 商品数量 {{vm.billDetail.open_id}}
+            div 价格 {{vm.billDetail.open_id}}
+            div 订单总额 {{vm.billDetail.open_id}}
+            div 折扣 {{vm.billDetail.open_id}}
+            div 是否进行订单总额调整 {{vm.billDetail.open_id}}
+            div 是否使用优惠券 {{vm.billDetail.open_id}}
+            div 创建时间 {{vm.billDetail.open_id}}
+            div 支付时间 {{vm.billDetail.open_id}}
+            div 通知时间 {{vm.billDetail.open_id}}
+            div 通知标识号 {{vm.billDetail.open_id}}
+        div(ng-show="vm.dadapay")
+            div 停车场名称： {{vm.billDetail.parking_lot}}
+            div 停车时长： {{vm.billDetail.charged_duration}} 分钟
+            div 停车场类型： {{vm.billDetail.lot_type}}
+            div 进场时间： {{vm.billDetail.intime}}
+            div 出场时间： {{vm.billDetail.outime}}
+            div 交易时间： {{vm.billDetail.paytime}}
+    .panel-footer
+        button.btn.btn-danger(type="button" ng-click= "vm.backToPrevious()") 返回上一级菜单

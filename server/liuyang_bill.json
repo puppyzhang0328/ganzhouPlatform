@@ -1,0 +1,12 @@
+[
+  {
+    "text": "Menu Heading",
+    "heading": "true",
+    "translate": "sidebar.heading.HEADER"
+  },
+  {
+    "text":"账单查询",
+    "icon":"fa fa-bar-chart-o",
+    "sref": "app.groupBill"
+  }
+]

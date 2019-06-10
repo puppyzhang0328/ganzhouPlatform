@@ -1,0 +1,42 @@
+.panel.container-fluid(ng-controller="modifyPlatformController as vm")
+    .panel-heading.text-bold 修改平台信息
+    .panel-body.row
+        form.form-horizontal(style="padding: 130px 130px 0 130px;")
+            .form-group
+                label.col-md-3.control-label.text-center(for="id") 序号：
+                    span.must_install *
+                .col-md-8
+                    input.form-control(id="id" type="text" placeholder="序号" ng-model="vm.platform.id" disabled="disabled")
+            .form-group
+                label.col-md-3.control-label.text-center(for="plateformname") 平台名字：
+                    span.must_install *
+                .col-md-8
+                    input.form-control(id="plateformname" type="text" placeholder="平台名字" ng-model="vm.platform.plateformname")
+            .form-group
+                label.col-md-3.control-label.text-center(for="loginurl") 平台登录url：
+                    span.must_install *
+                .col-md-8
+                    input.form-control(id="loginurl" type="text",placeholder="平台登录url" ng-model="vm.platform.loginurl")
+            .form-group
+                label.col-md-3.control-label.text-center(for="username") 平台用户名：
+                    span.must_install *
+                .col-md-8
+                    input.form-control(id="username" type="text",placeholder="平台用户名" ng-model="vm.platform.username")
+            .form-group
+                label.col-md-3.control-label.text-center(for="password") 平台密码：
+                    span.must_install *
+                .col-md-8
+                    input.form-control(id="password" type="text",placeholder="平台密码" ng-model="vm.platform.password")
+            .form-group
+                label.col-md-3.control-label.text-center(for="dataurl") 数据上传接口：
+                    span.must_install *
+                .col-md-8
+                    input.form-control(id="dataurl" type="text",placeholder="数据上传接口" ng-model="vm.platform.dataurl")
+            .form-group
+                label.col-md-3.control-label.text-center(for="param1") 路径：
+                    span.must_install *
+                .col-md-8
+                    input.form-control(id="param1" type="text",placeholder="用来保存密钥文件的路径" ng-model="vm.platform.param1")
+    .panel-footer
+        button.btn.btn-primary.pull-right(type="button" ng-click= "vm.modifyPlatform()") 确认修改
+        button.btn.btn-danger(type="button" ng-click= "vm.backToPrevious()") 返回上一级菜单

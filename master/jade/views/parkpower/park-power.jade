@@ -1,0 +1,40 @@
+.panel(ng-controller='ParkPowerController as vm')
+    .panel-heading.text-bold 停车场功能配置
+    .panel-body.newPanel
+        table.row-bordered.hover.table-striped.table-responsive(datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs")
+            thead
+                tr
+                    th 序列号
+                    th 功能名
+                    th 配置名
+                    th 编辑
+            tbody
+                tr(ng-repeat="parkPower in vm.parkPower track by parkPower.number")
+                    td {{:: parkPower.number }}
+                    td {{:: parkPower.introduce }}
+                    td {{:: parkPower.funcname }}
+                    td
+                        button.btn.btn-sm.btn-warning(type='button', ng-click='vm.modifyParkPower(parkPower)') 修改
+                            em.fa.fa-edit
+                        button.btn.btn-sm.btn-danger(type='button', ng-click='vm.deleteParkPower(parkPower)') 删除
+                            em.fa.fa-trash-o
+        div.ui-grid-next
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.queryParkPower(0)" id="firstPageBtn") 首页
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.queryParkPower(1)" id="previousPageBtn") 上一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.queryParkPower(2)" id="nextPageBtn") 下一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.queryParkPower(3)" id="lastPageBtn") 末页
+    .panel-footer
+        button.btn.btn-labeled.btn-primary(type='submit' ng-click="vm.addParkPower()")
+            span.btn-label
+                em.fa.fa-plus
+            | 停车场功能配置
+    script(type="text/ng-template" id="deleteParkPower.html")
+        .modal-header
+            button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+            h4.modal-title 删除?
+        .modal-body
+            p.text-bold 你确定要删除该平台吗？
+        .modal-footer
+            button.btn.btn-default(type="button",ng-click="vm.cancel()",data-dismiss="modal") 取消
+            button.btn.btn-danger(type="button",ng-click="vm.deleteParkPower()",data-dismiss="modal") 确认
+

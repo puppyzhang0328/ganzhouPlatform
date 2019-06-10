@@ -1,0 +1,8 @@
+.panel.container-fluid(ng-controller="settlementDetailController as vm")
+    .panel-heading.text-bold 停车场报表
+    .panel-body
+        div.grid.table-responsive.ui-grid-class(ui-grid="vm.gridOptions" ui-grid-selection ui-grid-pagination ui-grid-pinning  ui-grid-resize-columns ui-grid-exporter  ui-grid-auto-resize ng-show="!vm.vehicleIn")
+    .panel-footer
+        p
+            small 如发现数据不合理之处，请联系
+                a(href="www.cszhjt.com") {{ app.name }}

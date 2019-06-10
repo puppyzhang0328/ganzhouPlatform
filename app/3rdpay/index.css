@@ -1,0 +1,175 @@
+body{font-family: "Microsoft YaHei"}
+body{background-color: #333;}
+.con-left{float: left;}
+.con-right{float: right;}
+.navbar-inverse{border: none;background-color:#666;}
+.jumbotron{margin-top: 20px;min-height: 600px;}
+.container{width: 980px;margin: 0 auto;padding: 0;color: #999;}
+.contain{margin: 0 auto;width: 95%;}
+.contain-box{padding:20px 2% ;width: 100%;margin-top: 20px;font-size: 13px;border:1px solid #e1e1e1;background-color: #e1e1e1;}
+.contain-box-title{display: inline-block;width: 23.99%;padding: 20px 1%;color: #fff;border-radius: 10px;}
+.contain-box-title >div{height: 40px;line-height: 40px;}
+.contain-box-title div >span{font-size: 21px;margin-left: 5%;} 
+.contain-box .con-box-one{background-color:#7cb5ec;}
+.contain-box .con-box-two{background-color: rgb(35,183,229);margin:0 1%;}
+.contain-box .con-box-thr{background-color: rgb(230,205,63);margin:0 1% 0 0;}
+.contain-box .con-box-for{background-color: rgb(8,215,187);}
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus{}
+.secNav{width: 100%;background-color: #080808;}
+.SecClass{color: #fff}
+.secContain{width: 95%;margin:20px auto 0;background-color: #666;}
+.secNav .navbar-nav > .active > a{color: rgb(244,155,37) !important;background-color:#080808 !important;}
+.secNav .nav > li > a:hover{background-color: #080808 !important;color: rgb(244,155,37) !important;}
+tr td{text-align: left;}
+
+.row_tit{padding: 20px;border-radius: 5px;font-size: 14px;color: #fff;height: 120px;margin: 20px 0;box-sizing: border-box;text-align: center;}
+/*百度地图*/
+#allmap {margin-right: 0px;  height: 100%;  width: 100%;overflow: hidden;}
+#allmap img{width: 30px;}
+.BMapLabel{left:5px !important;  top:5px !important;background-color:transparent !important;}
+th,td{white-space:nowrap;}
+.panel .panel-body .relpay-user{min-height:50px;padding:10px;border:1px solid #ccc;}
+.panel .panel-body .replay-return{overflow:auto;margin-top:20px;border:1px solid #ccc;height:200px;overflow-x:hidden;padding: 10px;width: 100%;}
+.replay-right{text-align: right;}
+.replay-left{text-align: left;}
+/*2017.12.25样式修改*/
+#act-login-center{height: 100%;padding:0px;margin:0px;width: 100%;background-image: url(../img/login_bac.png);top: 0px;color: #fff;}
+.login-bottom{position: fixed;bottom: 20px;width: 100%;color: #fff;}
+.login-center{position: relative;top:15%;width: 65%;}
+.login-top{margin-bottom: 35px;}
+.login-top-img{vertical-align: middle;display: inline-block;width: 50px;}
+.top-div{display: inline-block;vertical-align: middle;color: #ebf1f6;}
+.act-box-shadow{padding:0;border-radius: 9px !important;}
+.login-center-right{width:36%;display: inline-block;vertical-align: middle;height: 300px;box-sizing: border-box;background-color: #fff;border-radius: 9px;}
+.login-center-left{width: 64%;vertical-align: middle;height: 300px;float: left;}
+.login-right-first {height: 50px;line-height: 50px;box-sizing: border-box;width: 100%;background-color: #5e8feb;color: #fff;text-indent: 20px;text-align: left;font-size: 16px;border-top-right-radius: 7px;}
+.login-btn{margin-top: 20px;margin-bottom: 0px;}
+.login-icon{padding-left: 35px !important;}
+.login-bac-clolr{background-color: #5e8feb;}
+.login-bac-clolr:hover{color: #fff;}
+.content-section{
+    height: 100% !important;
+    background-color: transparent !important;
+    background-repeat: repeat-x !important;
+    margin-top: 0 !important;
+    padding-top: 65px !important;
+    box-sizing: border-box !important;}
+.aside-foot{position: absolute;bottom: 50px;text-align: center;width: 100%;color:#fff;}
+.icon-lock{color:#fff !important;}
+
+/*控制台相关样式*/
+.console{font-size:14px;padding-bottom: 20px;}
+.console-box{padding:0px 20px 0;margin: 0 20px;box-sizing: border-box;background: #fff;min-height:650px;}
+.console-parking{border-bottom:1px solid #ccc;line-height:45px;}
+.console-con{position: relative;border-radius: 10px;box-shadow: darkgrey 0px 0px 0px 1px;min-height:250px;display: inline-block;width: 47%;border: 1px solid #e1e1e1;box-sizing: border-box;}
+.console-con .console-first{padding-left: 1em;border-radius: 10px 10px 0 0;border-bottom:1px solid #ccc;line-height:45px;background: #f4f7fa;}
+.console-con .consolr-two{width:100%;height:250px;margin-bottom: 20px;}
+.row_one{
+    background-image: -webkit-linear-gradient(bottom, #00f2c4, #05d2eb,#00f2c4);
+    background-image: -o-linear-gradient(bottom, #00f2c4, #05d2eb,#00f2c4);
+    background-image: linear-gradient(to bottom, #00f2c4, #05d2eb,#00f2c4);
+    background-repeat: repeat-x;
+    background-image: linear-gradient(to bottom, #00f2c4,#05d2eb, #00f2c4);
+    background: #088796;
+}
+.row_two{
+    background-image: -webkit-linear-gradient(bottom, #ffc09d, #f394cc,#ffc09d);
+    background-image: -o-linear-gradient(bottom, #ffc09d, #f394cc,#ffc09d);
+    background-image: linear-gradient(to bottom, #ffc09d, #f394cc,#ffc09d);
+    background-repeat: repeat-x;
+    background-image: linear-gradient(to bottom, #ffc09d,#f394cc, #ffc09d);
+    background: #8b0956;
+}
+.row_thr{
+    background-image: -webkit-linear-gradient(bottom, #35c8fc, #5183ff,#35c8fc);
+    background-image: -o-linear-gradient(bottom, #35c8fc, #5183ff,#35c8fc);
+    background-image: linear-gradient(to bottom, #35c8fc, #5183ff,#35c8fc);
+    background-repeat: repeat-x;
+    background-image: linear-gradient(to bottom, #35c8fc,#5183ff, #35c8fc);
+    background: #443f3f;
+}
+.row_for{
+    background-image: -webkit-linear-gradient(bottom, #c8b4ff, #9871ff,#c8b4ff);
+    background-image: -o-linear-gradient(bottom, #c8b4ff, #9871ff,#c8b4ff);
+    background-image: linear-gradient(to bottom, #c8b4ff, #9871ff,#c8b4ff);
+    background-repeat: repeat-x;
+    background-image: linear-gradient(to bottom, #c8b4ff,#9871ff, #c8b4ff);
+    background: #3305aa;
+}
+.console-box .con-img{vertical-align: middle;width: 25%;}
+.console-box .console-top-right{vertical-align: middle;display: inline-block;text-align: center;margin-top: 10px;}
+.console-box .con-number{font-size: 36px;line-height: 34px;font-family: fantasy;}
+.console-box .con-font{font-size: 23px;font-family: cursive;font-weight: 600;line-height: 48px;}
+.console-box .con-two{font-size:14px;box-sizing: border-box;background: #fff;margin: 0;}
+
+.analysis-right{text-align: right;vertical-align: middle;line-height: 38px;}
+.analysis-padding{padding:0px;}
+.record-search-max{padding:5px !important;background-color: #fff;}
+.must_install{color:red;vertical-align: middle;}
+.table-responsive{overflow-x: visible !important;}
+.ui-grid{height: 420px !important;}
+.dataTables_scrollBody{overflow-x: visible !important;overflow-y: scroll !important;  max-height: 400px !important;padding-bottom: 40px !important;}
+.form-group{margin-bottom: 3px !important;}
+.panel-body{padding: 10px 15px;}
+.topnavbar{background: url("../img/top.png");background-size: 100%;}
+.navbar-nav > li > a{line-height: 40px;}
+#allmap{min-height: 750px !important;max-height: 650px;}
+.ui-grid-class{width:100%;height:650px;}
+.ui-grid-next{padding:10px 0;position: absolute;right: 45px;bottom: 0px;}
+.sex_con_title{position: absolute;right: 5px;top: 50px;height: 250px;overflow: auto;}
+.sex_con_title table td{font-size: 9px;padding: 5px 15px;line-height: 14px;text-align:center;}
+.sex_con_title table th{font-size: 9px;padding: 5px 0;line-height: 14px;text-align:center;}
+/*
+      width可以改变右边滚动条的宽度
+      height可以改变下边滚动条的高度
+      */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    box-sizing: border-box;
+}
+/*
+corner角落的意思，可以改变Y滚动条与X滚动条交叉的右下角的样式
+*/
+::-webkit-scrollbar-corner {
+    background-color: #f1f1f1;
+    -webkit-border-radius: 1px;
+}
+/*
+这就是滚动条的样式了
+*/
+::-webkit-scrollbar-thumb {
+    background-color: #E7E7E7;
+    border: 1px solid rgba(0,0,0,0.21);
+    -webkit-border-radius: 5px;
+}
+/*
+悬浮时
+*/
+::-webkit-scrollbar-thumb:hover {
+    background-color: #F6F6F6;
+    border: 1px solid rgba(0,0,0,0.21);
+}
+/*
+滚动条空白处的样式
+*/
+::-webkit-scrollbar-track-piece {
+    background-color: rgba(0,0,0,0.15);
+    -webkit-border-radius: 5px;
+}
+.layout-fixed .wrapper1{
+    background-image: url(../img/icons/background_img.png) !important;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.header-new{
+    height: 100%;
+    padding-left: 240px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+div.dt-buttons {
+    margin-top: 10px;
+}
+

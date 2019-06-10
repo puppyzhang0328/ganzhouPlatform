@@ -1,0 +1,23 @@
+[
+  {
+    "text": "Menu Heading",
+    "heading": "true",
+    "translate": "sidebar.heading.HEADER"
+  },
+  {
+    "text":"APP在线升级",
+    "icon":"fa fa-android",
+    "sref": "app.apk-update"
+  },
+  {
+    "text":"APP广告设置",
+    "icon":"fa fa-android",
+    "sref": "app.app-pic-upload"
+  },
+  {
+    "text":"APP广告设置测试",
+    "icon":"fa fa-android",
+    "sref": "app.picTest-pic"
+  }
+
+]

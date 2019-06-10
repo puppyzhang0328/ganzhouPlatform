@@ -1,0 +1,1564 @@
+
+  {
+  "update_time": "2017-07-05T17:29:41.803015",
+  "kind": "parking_lots#nearby",
+  "maxid": 114,
+  "status": 0,
+  "charging": [
+    {
+      "id": 114,
+      "name": "小余测试停车场",
+      "address": "天上人间",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 100,
+      "parkgate": [],
+      "parking_space_available": 0
+    },
+    {
+      "id": 113,
+      "name": "岳麓山大酒店",
+      "address": "枫林一路19号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "免费时间30分钟，免费时间不计时，过夜费为0元，每日最大限额40元，1-2小时10元，3-8小时20元，9-14小时30元，15-24小时40元",
+      "image": "",
+      "parking_space_total": 300,
+      "parkgate": [],
+      "parking_space_available": 80
+    },
+    {
+      "id": 105,
+      "name": "好停车测试1",
+      "address": "湖南长沙",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "每小时1元",
+      "image": "",
+      "parking_space_total": 500,
+      "parkgate": [],
+      "parking_space_available": 0
+    },
+    {
+      "id": 95,
+      "name": "测试停车场2",
+      "address": "深圳市南山区",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "每小时30",
+      "image": "",
+      "parking_space_total": 302,
+      "parkgate": [],
+      "parking_space_available": 0
+    },
+    {
+      "id": 78,
+      "name": "高鑫麓城",
+      "address": "岳麓区桐梓坡路519号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元,12-24小时10元",
+      "image": "",
+      "parking_space_total": 500,
+      "parkgate": [
+        {
+          "gateid": 155,
+          "longitude": 112.934327,
+          "latitude": 28.224054,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 77,
+      "name": "新富城大厦",
+      "address": "芙蓉区韭菜园路",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元,12-24小时10元",
+      "image": "1608060013_161014154615.jpg",
+      "parking_space_total": 420,
+      "parkgate": [
+        {
+          "gateid": 153,
+          "longitude": 112.995399,
+          "latitude": 28.199475,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 76,
+      "name": "麓谷沐春园",
+      "address": "岳麓区麓景路36号 ",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元,12-24小时10元",
+      "image": "",
+      "parking_space_total": 500,
+      "parkgate": [
+        {
+          "gateid": 151,
+          "longitude": 112.910816,
+          "latitude": 28.222956,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 75,
+      "name": "银港水晶城",
+      "address": "芙蓉区万家丽路569号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元,12-24小时10元",
+      "image": "",
+      "parking_space_total": 1500,
+      "parkgate": [
+        {
+          "gateid": 149,
+          "longitude": 113.037677,
+          "latitude": 28.209325,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 74,
+      "name": "鼎丰前城",
+      "address": "雨花区中意一路267号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元,12-24小时10元",
+      "image": "1608060010_161012162307.jpg",
+      "parking_space_total": 300,
+      "parkgate": [
+        {
+          "gateid": 147,
+          "longitude": 113.018467,
+          "latitude": 28.121915,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 73,
+      "name": "湘城大酒店",
+      "address": "雨花区韶山南路133号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元,12-24小时10元",
+      "image": "1608060009_161012151650.jpg",
+      "parking_space_total": 300,
+      "parkgate": [
+        {
+          "gateid": 145,
+          "longitude": 113.002756,
+          "latitude": 28.147748,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 72,
+      "name": "悦购商业广场",
+      "address": "岳麓区麓山南路",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元,12-24小时10元",
+      "image": "1608060008_161014154653.jpg",
+      "parking_space_total": 500,
+      "parkgate": [
+        {
+          "gateid": 143,
+          "longitude": 112.941392,
+          "latitude": 28.170584,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 71,
+      "name": "金帆大厦",
+      "address": "开福区芙蓉中路一段522",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元,12-24小时10元",
+      "image": "",
+      "parking_space_total": 400,
+      "parkgate": [
+        {
+          "gateid": 141,
+          "longitude": 112.991891,
+          "latitude": 28.204654,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 70,
+      "name": "锦泰家园",
+      "address": "东二环一段1193号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元,12-24小时10元",
+      "image": "1608060006_161014154344.jpg",
+      "parking_space_total": 380,
+      "parkgate": [
+        {
+          "gateid": 139,
+          "longitude": 113.02334,
+          "latitude": 28.197328,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 69,
+      "name": "金峰小区",
+      "address": "岳麓区望岳路236号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元,12-24小时10元",
+      "image": "",
+      "parking_space_total": 400,
+      "parkgate": [
+        {
+          "gateid": 137,
+          "longitude": 112.929109,
+          "latitude": 28.234329,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 68,
+      "name": "美林银谷",
+      "address": "岳麓区金星中路528号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元,12-24小时10元",
+      "image": "",
+      "parking_space_total": 450,
+      "parkgate": [
+        {
+          "gateid": 135,
+          "longitude": 112.943123,
+          "latitude": 28.228561,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 67,
+      "name": "潇影大厦",
+      "address": "雨花区劳动路与韶山路交汇处",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元,12-24小时10元",
+      "image": "",
+      "parking_space_total": 360,
+      "parkgate": [
+        {
+          "gateid": 133,
+          "longitude": 113.001504,
+          "latitude": 28.173477,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 66,
+      "name": "复地崑玉国际",
+      "address": "开福区湘江中路160号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元,12-24小时10元",
+      "image": "1608060002_161014155329.jpg",
+      "parking_space_total": 150,
+      "parkgate": [
+        {
+          "gateid": 131,
+          "longitude": 112.98001,
+          "latitude": 28.215597,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 65,
+      "name": "﻿科佳美食广场",
+      "address": "芙蓉区五一路2号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元,12-24小时10元",
+      "image": "1608060001_161214144631.jpg",
+      "parking_space_total": 150,
+      "parkgate": [
+        {
+          "gateid": 129,
+          "longitude": 113.016932,
+          "latitude": 28.200456,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 64,
+      "name": "梅溪紫郡",
+      "address": "岳麓区平川路271号（枫林路与平川路交汇处）",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 300,
+      "parkgate": [
+        {
+          "gateid": 127,
+          "longitude": 112.896161,
+          "latitude": 28.210015,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 63,
+      "name": "尚东紫郡",
+      "address": "长沙市雨花区人民东路五一小区南省邮政、海关东（高桥）",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1605110005_161014154943.jpg",
+      "parking_space_total": 300,
+      "parkgate": [
+        {
+          "gateid": 125,
+          "longitude": 113.028679,
+          "latitude": 28.185788,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 62,
+      "name": "北湾景园",
+      "address": "开福区兴隆路12号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1605110004_161214160455.jpg",
+      "parking_space_total": 200,
+      "parkgate": [
+        {
+          "gateid": 123,
+          "longitude": 112.982369,
+          "latitude": 28.283669,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 61,
+      "name": "橄榄君庭",
+      "address": "雨花区万家丽中路一段289号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1605110003_161014154851.jpg",
+      "parking_space_total": 300,
+      "parkgate": [
+        {
+          "gateid": 121,
+          "longitude": 113.040249,
+          "latitude": 28.185372,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 60,
+      "name": "定王大厦",
+      "address": "芙蓉区芙蓉中路二段86（芙蓉区政府）",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1605110002_161014155317.jpg",
+      "parking_space_total": 200,
+      "parkgate": [
+        {
+          "gateid": 119,
+          "longitude": 112.993178,
+          "latitude": 28.194697,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 59,
+      "name": "﻿银港水晶城",
+      "address": "芙蓉区万家丽路569号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 1000,
+      "parkgate": [
+        {
+          "gateid": 117,
+          "longitude": 113.039477,
+          "latitude": 28.209441,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 58,
+      "name": "蓝色地标",
+      "address": "解放西路136号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1603310007_161014155426.jpg",
+      "parking_space_total": 200,
+      "parkgate": [
+        {
+          "gateid": 115,
+          "longitude": 112.98961,
+          "latitude": 28.196889,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 57,
+      "name": "武警总队宿舍",
+      "address": "雨花区城南东路120号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 180,
+      "parkgate": [
+        {
+          "gateid": 113,
+          "longitude": 113.011125,
+          "latitude": 28.182486,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 56,
+      "name": "欧园",
+      "address": "南湖路53号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1603310005_161014155500.jpg",
+      "parking_space_total": 160,
+      "parkgate": [
+        {
+          "gateid": 111,
+          "longitude": 112.991165,
+          "latitude": 28.170733,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 55,
+      "name": "阳光壹佰",
+      "address": "岳麓区南二环一段518号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1603310004_161014155527.jpg",
+      "parking_space_total": 80,
+      "parkgate": [
+        {
+          "gateid": 109,
+          "longitude": 112.945178,
+          "latitude": 28.146777,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 54,
+      "name": "至雅大厦",
+      "address": "长沙大道566号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1603310003_161014154954.jpg",
+      "parking_space_total": 280,
+      "parkgate": [
+        {
+          "gateid": 107,
+          "longitude": 113.04843,
+          "latitude": 28.175009,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 53,
+      "name": "科佳商业广场",
+      "address": "芙蓉区朝阳路78号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 100,
+      "parkgate": [
+        {
+          "gateid": 105,
+          "longitude": 113.013692,
+          "latitude": 28.194849,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 52,
+      "name": "﻿天洋大酒店",
+      "address": "雨花区劳动中路98号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 150,
+      "parkgate": [
+        {
+          "gateid": 103,
+          "longitude": 113.005112,
+          "latitude": 28.173166,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 48,
+      "name": "融城花园酒店",
+      "address": "湘府中路与韶山路交汇处",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1601210048_161014155059.jpg",
+      "parking_space_total": 1100,
+      "parkgate": [
+        {
+          "gateid": 95,
+          "longitude": 112.997065,
+          "latitude": 28.115492,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 47,
+      "name": "水韵山城",
+      "address": "雨花区桃花塅路58号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 1134,
+      "parkgate": [
+        {
+          "gateid": 93,
+          "longitude": 113.025187,
+          "latitude": 28.101568,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 46,
+      "name": "巢之恋",
+      "address": "天心区木莲路169号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1601210046_161012162242.jpg",
+      "parking_space_total": 500,
+      "parkgate": [
+        {
+          "gateid": 91,
+          "longitude": 113.00766,
+          "latitude": 28.133228,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 45,
+      "name": "西湖丽景",
+      "address": "岳麓区咸嘉湖西路428号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 380,
+      "parkgate": [
+        {
+          "gateid": 89,
+          "longitude": 112.949912,
+          "latitude": 28.218796,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 44,
+      "name": "长房西郡",
+      "address": "岳麓区杜鹃路1089号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 640,
+      "parkgate": [
+        {
+          "gateid": 87,
+          "longitude": 112.910522,
+          "latitude": 28.233906,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 43,
+      "name": "城开大厦",
+      "address": "雨花区桔园小区二片桔香苑",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1601210043_161014154759.jpg",
+      "parking_space_total": 200,
+      "parkgate": [
+        {
+          "gateid": 85,
+          "longitude": 112.99563,
+          "latitude": 28.147712,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 42,
+      "name": "岳麓现代城",
+      "address": "岳麓区银盆南路229号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 690,
+      "parkgate": [
+        {
+          "gateid": 83,
+          "longitude": 112.955562,
+          "latitude": 28.201571,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 41,
+      "name": "星都荟",
+      "address": "洞井路与木莲冲路交汇处",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 500,
+      "parkgate": [
+        {
+          "gateid": 81,
+          "longitude": 113.019807,
+          "latitude": 28.129673,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 40,
+      "name": "卧龙湾",
+      "address": "岳麓区金星路与银星路交汇",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 200,
+      "parkgate": [
+        {
+          "gateid": 79,
+          "longitude": 112.927218,
+          "latitude": 28.287477,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 39,
+      "name": "泰禹家园三期",
+      "address": "雨花区长塘路",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "12小时内5元，24小时内10元",
+      "image": "1601210039_161014155156.jpg",
+      "parking_space_total": 300,
+      "parkgate": [
+        {
+          "gateid": 77,
+          "longitude": 113.04829,
+          "latitude": 28.131357,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 38,
+      "name": "泰禹家园二期",
+      "address": "雨花区长塘路",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1601210038_161014155139.jpg",
+      "parking_space_total": 888,
+      "parkgate": [
+        {
+          "gateid": 75,
+          "longitude": 113.046129,
+          "latitude": 28.131381,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 37,
+      "name": "水岸天际",
+      "address": "雨花区湘府路",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1601210037_161014155112.jpg",
+      "parking_space_total": 888,
+      "parkgate": [
+        {
+          "gateid": 73,
+          "longitude": 113.039531,
+          "latitude": 28.119864,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 36,
+      "name": "润芳园",
+      "address": "岳麓区枫林三路1015号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1601210036_161014154928.jpg",
+      "parking_space_total": 300,
+      "parkgate": [
+        {
+          "gateid": 71,
+          "longitude": 112.87776,
+          "latitude": 28.197309,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 35,
+      "name": "南庭城果",
+      "address": "雨花区圭白路",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 500,
+      "parkgate": [
+        {
+          "gateid": 69,
+          "longitude": 113.052956,
+          "latitude": 28.078559,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 34,
+      "name": "明媚星城",
+      "address": "天心区仰天湖新村",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 180,
+      "parkgate": [
+        {
+          "gateid": 67,
+          "longitude": 112.985925,
+          "latitude": 28.177784,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 33,
+      "name": "金三华邸",
+      "address": "星沙时中南路91号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1601210033_161014154322.jpg",
+      "parking_space_total": 500,
+      "parkgate": [
+        {
+          "gateid": 65,
+          "longitude": 113.069306,
+          "latitude": 28.23206,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 32,
+      "name": "活力康城",
+      "address": "雨花区长塘里98号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 400,
+      "parkgate": [
+        {
+          "gateid": 63,
+          "longitude": 112.997065,
+          "latitude": 28.18412,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 31,
+      "name": "电位器厂",
+      "address": "天心区韶山南路",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1601210031_161014154836.jpg",
+      "parking_space_total": 200,
+      "parkgate": [
+        {
+          "gateid": 61,
+          "longitude": 113.00507,
+          "latitude": 28.12583,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 30,
+      "name": "福邸雅苑",
+      "address": "天心区青园路",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "4小时内5元，12小时内10元，24小时内20元",
+      "image": "1601210030_161012162327.jpg",
+      "parking_space_total": 230,
+      "parkgate": [
+        {
+          "gateid": 59,
+          "longitude": 112.999383,
+          "latitude": 28.137967,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 29,
+      "name": "海食上",
+      "address": "天心区贺龙体育馆北海食上",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1601210029_161012162345.jpg",
+      "parking_space_total": 90,
+      "parkgate": [
+        {
+          "gateid": 57,
+          "longitude": 112.987856,
+          "latitude": 28.207241,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 28,
+      "name": "贺龙体育馆",
+      "address": "天心区贺龙体育馆北侧",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "大车是正常收费的 3-4倍",
+      "image": "1601210028_161012162400.jpg",
+      "parking_space_total": 400,
+      "parkgate": [
+        {
+          "gateid": 55,
+          "longitude": 112.98783,
+          "latitude": 28.183743,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 27,
+      "name": "瑞都豪庭",
+      "address": "开福区陡岭路180号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 400,
+      "parkgate": [
+        {
+          "gateid": 53,
+          "longitude": 113.002406,
+          "latitude": 28.239602,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 26,
+      "name": "九龙领仕汇",
+      "address": "含浦镇学士街道香格里大道",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1601210026_161014155413.jpg",
+      "parking_space_total": 310,
+      "parkgate": [
+        {
+          "gateid": 51,
+          "longitude": 112.888354,
+          "latitude": 28.147252,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 25,
+      "name": "兴威新嘉园",
+      "address": "雨花区劳动路102号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 357,
+      "parkgate": [
+        {
+          "gateid": 49,
+          "longitude": 112.995337,
+          "latitude": 28.17655,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 24,
+      "name": "湘府曲园",
+      "address": "雨花区湘府中路129号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1601210024_161014155226.jpg",
+      "parking_space_total": 600,
+      "parkgate": [
+        {
+          "gateid": 47,
+          "longitude": 113.008753,
+          "latitude": 28.117563,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 125
+    },
+    {
+      "id": 23,
+      "name": "潇湘国际",
+      "address": "长岛路与五一路交汇处",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "30min-4H内 ￥10 ；4H-12H 内￥20；24H ￥30",
+      "image": "",
+      "parking_space_total": 280,
+      "parkgate": [
+        {
+          "gateid": 45,
+          "longitude": 113.010748,
+          "latitude": 28.200946,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 22,
+      "name": "自由.com",
+      "address": "城南东路342号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 60,
+      "parkgate": [
+        {
+          "gateid": 43,
+          "longitude": 113.006824,
+          "latitude": 28.184741,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 21,
+      "name": "银太家园",
+      "address": "岳麓区望岳路",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1小时内免费，地面和车库收费标准不一样",
+      "image": "",
+      "parking_space_total": 217,
+      "parkgate": [
+        {
+          "gateid": 41,
+          "longitude": 112.927494,
+          "latitude": 28.234956,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 20,
+      "name": "德馨园",
+      "address": "雨花区香樟路",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1601210020_161014154823.jpg",
+      "parking_space_total": 400,
+      "parkgate": [
+        {
+          "gateid": 39,
+          "longitude": 113.021943,
+          "latitude": 28.142418,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 19,
+      "name": "觅你酒店",
+      "address": "东二环与火炬路",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 888,
+      "parkgate": [
+        {
+          "gateid": 37,
+          "longitude": 113.025478,
+          "latitude": 28.220164,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 18,
+      "name": "毛家饭店开福店停车场",
+      "address": "营盘路与湘江大道交汇处",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 120,
+      "parkgate": [
+        {
+          "gateid": 35,
+          "longitude": 112.97204,
+          "latitude": 28.205686,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 17,
+      "name": "华悦城",
+      "address": "湘府路韶山路交汇处",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 400,
+      "parkgate": [
+        {
+          "gateid": 33,
+          "longitude": 113.02311,
+          "latitude": 28.110538,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 16,
+      "name": "车站路步步高",
+      "address": "车站北路与火炬路交汇处",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "步步高超市购物满69元免费停一个小时",
+      "image": "",
+      "parking_space_total": 160,
+      "parkgate": [
+        {
+          "gateid": 31,
+          "longitude": 113.008517,
+          "latitude": 28.211999,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 15,
+      "name": "体育馆（南）路停车场",
+      "address": "开福区体育馆路与芙蓉路交汇",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 300,
+      "parkgate": [
+        {
+          "gateid": 29,
+          "longitude": 112.987386,
+          "latitude": 28.210764,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 14,
+      "name": "银力家园",
+      "address": "万家丽中路",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 270,
+      "parkgate": [
+        {
+          "gateid": 27,
+          "longitude": 113.038158,
+          "latitude": 28.201081,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 13,
+      "name": "天心丽城",
+      "address": "芙蓉区杨家山二段902号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 100,
+      "parkgate": [
+        {
+          "gateid": 25,
+          "longitude": 113.018653,
+          "latitude": 28.1865,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 12,
+      "name": "红星步步高",
+      "address": "韶山路红星步步高前坪",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "步步高超市购物满69元免费停一个小时",
+      "image": "1601210012_161014155019.jpg",
+      "parking_space_total": 70,
+      "parkgate": [
+        {
+          "gateid": 23,
+          "longitude": 113.001345,
+          "latitude": 28.134197,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 11,
+      "name": "梦和商业广场",
+      "address": "湘府路与洞井路交汇处",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 500,
+      "parkgate": [
+        {
+          "gateid": 21,
+          "longitude": 113.018351,
+          "latitude": 28.109845,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 10,
+      "name": "泰禹家园一期",
+      "address": "雨花区长塘路",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1601210010_161014155210.jpg",
+      "parking_space_total": 888,
+      "parkgate": [
+        {
+          "gateid": 19,
+          "longitude": 113.045076,
+          "latitude": 28.133077,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 9,
+      "name": "汽车南站",
+      "address": "雨花区中意一路",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1601210009_161014155040.jpg",
+      "parking_space_total": 150,
+      "parkgate": [
+        {
+          "gateid": 17,
+          "longitude": 113.01253,
+          "latitude": 28.097104,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 8,
+      "name": "逸林园",
+      "address": "东二环三段499号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1601210008_161014155246.jpg",
+      "parking_space_total": 170,
+      "parkgate": [
+        {
+          "gateid": 15,
+          "longitude": 113.032014,
+          "latitude": 28.205543,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 7,
+      "name": "嘉盛和园",
+      "address": "张公岭半边山巷",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1601210007_161014155343.jpg",
+      "parking_space_total": 383,
+      "parkgate": [
+        {
+          "gateid": 13,
+          "longitude": 113.073732,
+          "latitude": 28.203413,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 6,
+      "name": "天心阁停车场",
+      "address": "天心区蔡锷路x5酒吧旁",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1601210006_161014155514.jpg",
+      "parking_space_total": 90,
+      "parkgate": [
+        {
+          "gateid": 11,
+          "longitude": 112.986507,
+          "latitude": 28.19017,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 5,
+      "name": "民政厅东风路停车场",
+      "address": "开福区东风路222号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1601210005_161014155444.jpg",
+      "parking_space_total": 400,
+      "parkgate": [
+        {
+          "gateid": 9,
+          "longitude": 112.999213,
+          "latitude": 28.224644,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 4,
+      "name": "白沙晶城",
+      "address": "天心区劳动西路",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "每10小时5元",
+      "image": "1601210004_161014155306.jpg",
+      "parking_space_total": 200,
+      "parkgate": [
+        {
+          "gateid": 7,
+          "longitude": 112.983413,
+          "latitude": 28.182178,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 3,
+      "name": "加州阳光西组团",
+      "address": "岳麓区谷园路38号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "",
+      "parking_space_total": 340,
+      "parkgate": [
+        {
+          "gateid": 5,
+          "longitude": 112.898682,
+          "latitude": 28.218215,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 2,
+      "name": "四季花城（公园九号）",
+      "address": "德雅西路公园九号",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "07：00-22:00 每次10元  22:00-07:00每次5元",
+      "image": "",
+      "parking_space_total": 150,
+      "parkgate": [
+        {
+          "gateid": 3,
+          "longitude": 112.996791,
+          "latitude": 28.217356,
+          "gatename": "",
+          "isdefault": true
+        }
+      ],
+      "parking_space_available": 0
+    },
+    {
+      "id": 1,
+      "name": "﻿锦湘国际星城",
+      "address": "雨花区朝晖路锦湘国际星城",
+      "city_code": 158,
+      "type": "封闭",
+      "price": "1-12小时5元 12-24小时10元",
+      "image": "1601210001_161214144335.png",
+      "parking_space_total": 300,
+      "parkgate": [
+        {
+          "gateid": 181,
+          "longitude": 115.2226,
+          "latitude": 22.3652,
+          "gatename": "新增添加入口测试",
+          "isdefault": false
+        },
+        {
+          "gateid": 187,
+          "longitude": 114.2356,
+          "latitude": 25.3669,
+          "gatename": "新增测试停车场9",
+          "isdefault": false
+        }
+      ],
+      "parking_space_available": 0
+    }
+  ]
+}

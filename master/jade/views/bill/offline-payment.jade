@@ -1,0 +1,69 @@
+.panel.container-fluid(ng-controller="OfflinePaymentController as vm")
+    .panel-heading.text-bold 线下缴费记录
+    .panel-body
+        .selectedBox.row(id="topSearchForm")
+            .form-horizontal.col-md-2
+                .container-fluid
+                    .item-content.analysis-padding
+                        ui-select(ng-model="vm.parkingAsync.selected" theme="bootstrap" ng-disable='vm.disable' on-select="vm.onSelectCallback($item)"  title="请选择停车场")
+                            ui-select-match(placeholder="请选择要查找的停车场") {{$select.selected.name || $select.selected}}
+                            ui-select-choices(repeat="parking.name as parking in vm.parkingAsync | propsFilter: {name: $select.search, address: $select.search}")
+                                div(ng-bind-html="parking.name | highlight: $select.search")
+                                small
+                                    | 停车场地址：
+                                    span(ng-bind-html="'' + parking.address | highlight: $select.search")
+            .form-group.form-horizontal.col-md-2
+                input.form-control(type="text" id="plate_number" ng-model="search_plate_number"  placeholder="请输入要查找的车牌号")
+            .form-horizontal.col-md-2
+                .container-fluid
+                    div.item-content.analysis-padding
+                        div.dropdown
+                            a.dropdown-toggle(id="valid_begintime" role="button" data-toggle="dropdown" )
+                                div.input-group.date
+                                    input.form-control(type="text" data-ng-model="vm.coupon.valid_begintime" data-date-time-input="YYYY-MM-DD" disabled style="background:#fff;" placeholder="请选择起始时间")
+                                    span.input-group-addon(style="background:#fff;")
+                                        i.fa.fa-calendar
+                            ul.dropdown-menu(role="menu" aria-labelledby="dLabel")
+                                datetimepicker(data-ng-model="vm.coupon.valid_begintime" data-datetimepicker-config="{dropdownSelector: '#valid_begintime', renderOn: 'end-date-changed',minView:'day'}"
+                                data-on-set-time="vm.startDateOnSetTime()" data-before-render="vm.startDateBeforeRender($dates)")
+            .form-horizontal.col-md-2
+                .container-fluid
+                    div.dropdown.analysis-padding
+                        a.dropdown-toggle(id="valid_endtime" role="button" data-toggle="dropdown" )
+                            div.input-group.date
+                                input.form-control(type="text" data-ng-model="vm.coupon.valid_endtime" data-date-time-input="YYYY-MM-DD" disabled style="background:#fff;" placeholder="请选择结束时间")
+                                span.input-group-addon(style="background:#fff;")
+                                    i.fa.fa-calendar
+                        ul.dropdown-menu(role="menu" aria-labelledby="dLabel")
+                            datetimepicker(data-ng-model="vm.coupon.valid_endtime" data-datetimepicker-config="{dropdownSelector: '#valid_endtime', renderOn: 'end-date-changed',minView:'day'}"
+                            data-on-set-time="vm.endDateOnSetTime()" data-before-render="vm.startDateBeforeRender($dates)")
+            .form-group.form-horizontal.col-md-2
+                button.btn.btn-primary.btn-sm(ng-click="searchRecords()") 搜索
+                button.btn.btn-sm.btn-danger(type="button" ng-click="clearAndRefresh()" ng-disabled="vm.parkingAsync.selected == ''") 重置
+        div(style="height: 100%;")
+            table.row-bordered.hover.table-striped.table-responsive(datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs")
+                thead
+                    tr
+                        th 序列
+                        th 停车场名称
+                        th 缴费时间
+                        th 停车场名称
+                        th 消费金额(元)
+                        th 停车场类型
+                tbody
+                    tr(ng-repeat="park_data in park_data track by park_data.id")
+                        td {{:: park_data.id }}
+                        td {{:: park_data.parklot }}
+                        td {{:: park_data.payment_time }}
+                        td {{:: park_data.plate_number }}
+                        td {{:: park_data.amount/100 }}
+                        td {{:: park_data.lot_type }}
+        .ui-grid-next
+            button.btn.btn-primary.btn-sm(type="button" ng-click="loadFistPage()" id="firstPageBtn") 首页
+            button.btn.btn-primary.btn-sm(type="button" ng-click="pagination.previousPage()" id="previousPageBtn") 上一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="pagination.nextPage()" id="nextPageBtn") 下一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="loadLastPage()" id="lastPageBtn") 末页
+    .panel-footer
+        p
+            small 如发现数据不合理之处，请联系
+                a(href="www.cszhjt.com") {{ app.name }}

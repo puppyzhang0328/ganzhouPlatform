@@ -1,0 +1,122 @@
+div.searchbar {position: relative;border:1px solid #ededed;margin:10px 20px;line-height:42px;background-color: #fafafa;border-radius:5px;padding-left:20px;font-size:15px;}
+div.searchbar .cp_btn {position: absolute;right:-8px;top:-3px;width: 60px;text-align: center;height:44px;line-height: 44px;}
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div{margin:0;padding:0;border:0;}
+.softkeyboard{ display:inline-block;}
+.weui-icon-download, .weui-icon-info-circle{color: #2196f3;}
+.weui-btn_primary {background-color: #2196f3;}
+input[type="button"] i{padding: 0 !important;-webkit-appearance: none;}
+.c_panel{ background-color:#e9e7e7; text-align:center;padding:10px 0 2px;}
+.i_button{ border: none;height: 35px;width: 9%;font-size: 16px;font-family: "微软雅黑";background-color: #fff;color: #333;border-radius: 0px;font-weight: 600;box-shadow: 1px 1px #c1c1c1;border-radius: 6px;}
+.i_button:active,.i_button2:active{ background-color:#999;}
+.wei-app-tui{width: 100%;border:1px solid #2196f3 ;}
+.wei-app{width: 90%;margin: 0 auto}
+.win-app-img{width: 40%;height:150px;vertical-align: middle;}
+.win-app-first{display: inline-block;vertical-align: middle;margin-left: 1rem;width: 50%;}
+.win-app-ab{position: relative;text-align: center;margin-bottom: 18px;font-size: 18px;}
+.win-and{width: 100%;background-color: #2196f3;height: 4.5rem;text-align: center;font-size: 16px;}
+.win-and-div{width: 40%;background-color: #fff;height: 3.5rem;line-height: 3.5rem;border-radius: 0.5rem;    margin-top: 0.5rem;display: inline-block;}
+strong{color: #2196f3; font-size: 18px;}
+.weui-label{width:4em !important;}
+.sample{font-size: 12px;width: 85%;margin: 10px auto 0;color: #666;}
+.weui-input{width: 110% !important;}
+.wein-a-img{vertical-align: middle;    width: 2rem;}
+.wei-a-app{vertical-align: middle;font-size: 14px;color: #333;}
+.weui-icon-search{ border-radius: 5px 5px;color: #fff;font-size: 18px;border: 1px solid #ccc;background: #2196f3 ;  vertical-align: middle;  line-height: 44px;  width: 44px;  text-align: center;}
+.weui-cell{text-align: center;line-height: 50px;padding:0 0 0 15px;}
+.historyRem{text-align: center;width: 89%;margin:0 auto;margin-top: 20px;line-height: 40px;border: 1px solid #ededed;color: #2196f3;border-radius: 5px 5px 0 0;background-color: #fafafa}
+.i_button2{ border: none;height: 35px;width: 30%;font-size: 16px;font-family: "微软雅黑";background-color: #fff;color: #333;border-radius: 0px;font-weight: 600;box-shadow: 1px 1px #c1c1c1;border-radius: 6px;}
+/*弹出键盘的CSS*/
+.keyboard{position:fixed;bottom:0px;z-index:100;width:100%;}
+.iphone-keyboard {border-top:1px solid #cdd0d5;overflow:hidden;background-color:#eaf1f9;background-image:-moz-linear-gradient(#9098A3, #454f5d);-moz-box-shadow:0 1px 0 rgba(255,255,255,.3) inset;}
+.iphone-keyboard li {text-align:center;margin: 10px 2px 15px;list-style:none;}
+
+.iphone-keyboard div {display:inline-block;font-size: 1.4rem;line-height: 45px;background:#fff;border:1px solid #cdd0d5;height:45px;color:#1e1e1e;border-radius:5px 5px 5px 5px;margin-bottom: 10px;}
+.iphone-keyboard div.cur{background-color: #047acd;color: #fff;border-color: #047acd;}
+.iphone-keyboard div:active{background: #3897fe;color: #fff;}
+.iphone-keyboard #backspace span {width:2.6rem;background-size:20px 20px;display:block;}
+.iphone-keyboard #search{width:4rem;}
+#iphone-keyboard #spec{width:4rem;}
+#carplatnum{color:#2c4358;letter-spacing:1px;}
+.cursor:after{content:"";width:2px;height:15px;background-size:2px 14px;padding-left: 15px;}
+
+/*遮罩和港澳学键盘*/
+.blank_zhezhao{height: 100%;width: 100%;position: absolute;top:0px;left: 0px;z-index: 150;}
+.float_kb{width: 17rem;height:50px;display: -webkit-box;border-radius: 7px;background-color: #fff;border:1px solid #d1d1d5;font-size: 1.6rem;position: absolute;z-index: 200;bottom: 50px;right:3px;}
+.float_bk_shadow{ -webkit-box-shadow:0 0 15px rgba(157, 178, 194, .5); box-shadow:0 0 10px rgba(157, 178, 194, .5);}
+.float_kb div{-webkit-box-flex:1;border-right:1px solid #d1d1d5;display: -webkit-box;-webkit-box-pack:center;-webkit-box-align:center;}
+.float_kb div:active{background-color:#3797fe;color:#fff;}
+/* 键盘宽度 */
+#dqxz .iphone-keyboard .k {width:11%;}
+#ywsz .iphone-keyboard .k {width:8.5%;}
+
+.historyCar{width: 89.5%;text-align: center;margin: 0 auto;line-height: 40px;background-color: #fafafa}
+.historyCar div{border: 1px solid #ededed;border-top: none;color: #ccc;border-radius:0 0 5px 5px;}
+.sa_foot{position: fixed;bottom: 2rem;width: 100%;}
+#carplatnum{-webkit-user-select:auto;display: inline-block;}
+
+/*输入框样式*/
+.box{width: 92%;margin: 30px auto 10px;height: 3rem;line-height: 3rem;padding-left: 0.8rem;}
+.box .input{color:#333;text-align:center;display: inline-block;border: 0.5px solid #ededed;width:13.5%;font-size: 20px;height: 4rem;line-height:4rem;margin: 0 1px 0 0;padding: 0;float: left;box-sizing: border-box;border-radius: 5px;}
+.box .new_input{width: 11.5%;}
+.borderinput{border-right:0 !important;}
+#newEnergy {  float: right;margin-right: 1rem;  color: #222222;line-height: 0.55rem;  font-size: 0.26rem;  }
+#checkEnergy {  float: left;  width: 1.2rem;  margin: 0.05rem 0.25rem 0 0.05rem;  padding: 0;  height: 1.2rem;  border: 1px solid #d9d9d9; margin-top: -0.4rem;  }
+.checked {  background-image: url(img/checked.png);  background-repeat: no-repeat;  background-size: cover;  }
+.shareBox{width: 92%;margin: 30px auto;height: 3rem;line-height: 3rem;background:#047acd;border-radius: 5px;text-align: center;color: #fff;}
+.input_on{border: 2px solid #047acd !important;}
+
+.share-btton{width: 89%;margin: 10px auto;text-align: center;height: 3rem;line-height: 3rem;background-color: #047acd;
+    color:#fff;border-radius: 5px;font-size: 18px;    clear: both;}
+
+#checkbox{vertical-align: middle;background-color: #43C529;}
+.checkedBox{text-align: right;margin-right: 2.5rem;color: #43C529;    line-height: 3.5rem;font-size: 16px;}
+.input_change{width: 11.5% !important;}
+
+/*复选框*/
+.mycheck {
+    width: 1rem;
+    position: relative;
+    float: right;
+    top: 1.2rem;
+    right: 0.5rem;
+}
+.mycheck input[type=checkbox] {
+    visibility: hidden;
+}
+.mycheck label {
+    cursor: pointer;
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    top: 0;
+    left: 0;
+    background: #fff;
+    border:1px solid #43C529;
+    -moz-border-radius: 3px;      /* Gecko browsers */
+    -webkit-border-radius: 3px;   /* Webkit browsers */
+    border-radius:3px;            /* W3C syntax */
+}
+.mycheck label:after {
+    opacity: 0;
+    content: '';
+    position: absolute;
+    width: 9px;
+    height: 5px;
+    background: transparent;
+    top: 0;
+    left: 0;
+    border: 1px solid #43C529;
+    border-top: none;
+    border-right: none;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+.mycheck label:hover::after {
+    opacity: 0;
+}
+.mycheck input[type=checkbox]:checked + label:after {
+    opacity: 1;
+}

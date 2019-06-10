@@ -1,0 +1,29 @@
+{
+    "status": 0,
+    "records": [
+      {
+        "parkingId":1,
+        "times": "2017-08",
+        "plsl": "5",
+        "trade":"20",
+        "money": "1000",
+        "parkingName": "市第二医院"
+      },
+      {
+        "parkingId":2,
+        "times": "2017-09",
+        "plsl": "5",
+        "trade":"20",
+        "money": "1000",
+        "parkingName": "市第二医院"
+      },
+      {
+        "parkingId":3,
+        "times": "2017-10",
+        "plsl": "5",
+        "trade":"20",
+        "money": "1000",
+        "parkingName": "市第二医院"
+      }
+    ]
+  }

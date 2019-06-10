@@ -1,0 +1,146 @@
+h3.text-center.text-thin(translate="offsidebar.setting.SETTINGS") Settings
+
+.p
+    h4.text-muted.text-thin(translate="offsidebar.setting.THEMES") Themes
+
+    .table-grid.mb
+        .col.mb
+            .setting-color
+                label
+                    input(type="radio", name="setting-theme", ng-model="app.layout.theme", value='app/css/theme-a.css')
+                    span.icon-check
+                    span.split
+                        span.color.bg-info
+                        span.color.bg-info
+                    span.color.bg-white
+        .col.mb
+            .setting-color
+                label
+                    input(type="radio", name="setting-theme", ng-model="app.layout.theme", value='app/css/theme-b.css')
+                    span.icon-check
+                    span.split
+                        span.color.bg-primary
+                        span.color.bg-primary
+                    span.color.bg-white
+        .col.mb
+            .setting-color
+                label
+                    input(type="radio", name="setting-theme", ng-model="app.layout.theme", value='app/css/theme-c.css')
+                    span.icon-check
+                    span.split
+                        span.color.bg-purple
+                        span.color.bg-purple
+                    span.color.bg-white
+        .col.mb
+            .setting-color
+                label
+                    input(type="radio", name="setting-theme", ng-model="app.layout.theme", value='app/css/theme-d.css')
+                    span.icon-check
+                    span.split
+                        span.color.bg-success
+                        span.color.bg-success
+                    span.color.bg-white
+    .table-grid.mb
+        .col.mb
+            .setting-color
+                label
+                    input(type="radio", name="setting-theme", ng-model="app.layout.theme", value='app/css/theme-e.css')
+                    span.icon-check
+                    span.split
+                        span.color.bg-cyan-500
+                        span.color.bg-cyan-500
+                    span.color.bg-white
+        .col.mb
+            .setting-color
+                label
+                    input(type="radio", name="setting-theme", ng-model="app.layout.theme", value='app/css/theme-f.css')
+                    span.icon-check
+                    span.split
+                        span.color.bg-pink-500
+                        span.color.bg-pink-500
+                    span.color.bg-white
+        .col.mb
+            .setting-color
+                label
+                    input(type="radio", name="setting-theme", ng-model="app.layout.theme", value='app/css/theme-g.css')
+                    span.icon-check
+                    span.split
+                        span.color.bg-blue-grey-500
+                        span.color.bg-blue-grey-500
+                    span.color.bg-white
+        .col.mb
+            .setting-color
+                label
+                    input(type="radio", name="setting-theme", ng-model="app.layout.theme", value='app/css/theme-h.css')
+                    span.icon-check
+                    span.split
+                        span.color.bg-blue-grey-900
+                        span.color.bg-blue-grey-900
+                    span.color.bg-white
+
+.p
+    h4.text-muted.text-thin 位置设置
+
+    .clearfix
+        p.pull-left 固定位置
+        .pull-right
+            label.switch
+                input(type='checkbox', ng-model="app.layout.isFixed")
+                span
+    .clearfix
+        p.pull-left 盒状显示
+        .pull-right
+            label.switch
+                input(type='checkbox', ng-model="app.layout.isBoxed")
+                span
+    //.clearfix
+    //    p.pull-left RTL
+    //    .pull-right
+    //        label.switch
+    //            input(type='checkbox', ng-model="app.layout.isRTL")
+    //            span
+.p(ng-if="!app.layout.horizontal")
+    h4.text-muted.text-thin 边角设置
+    .clearfix
+        p.pull-left 收缩
+        .pull-right
+            label.switch
+                input(type='checkbox', ng-model="app.layout.isCollapsed", ng-disabled="app.layout.isCollapsedText")
+                span
+    .clearfix
+        p.pull-left 收缩侧边菜单
+        .pull-right
+            label.switch
+                input(type='checkbox', ng-model="app.layout.isCollapsedText", ng-disabled="app.layout.isCollapsed")
+                span
+    .clearfix
+        p.pull-left 浮动
+        .pull-right
+            label.switch
+                input(type='checkbox', ng-model="app.layout.isFloat")
+                span
+    .clearfix
+        p.pull-left 漂浮
+        .pull-right
+            label.switch
+                input(type='checkbox', ng-model="app.layout.asideHover")
+                span
+    .clearfix
+        p.pull-left 显示侧滑栏
+        .pull-right
+            label.switch
+                input(type='checkbox', ng-model="app.layout.asideScrollbar")
+                span
+
+.p
+    h4.text-muted.text-thin 页面切换动画
+    select.form-control(ng-model="app.viewAnimation")
+        option(value="ng-fadeInUp", selected="selected") 淡入向上
+        option(value="ng-fadeInDown") 淡入向下
+        option(value="ng-fadeInRight") 淡入向右
+        option(value="ng-fadeInLeft") 淡入向左
+        option(value="ng-fadeInUpBig") 大幅度淡入向上
+        option(value="ng-fadeInDownBig") 大幅度淡入向下
+        option(value="ng-fadeInRightBig") 大幅度淡入向右
+        option(value="ng-fadeInLeftBig") 大幅度淡入向左
+        option(value="ng-fadeIn") 淡入

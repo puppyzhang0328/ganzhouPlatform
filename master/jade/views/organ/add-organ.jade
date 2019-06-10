@@ -1,0 +1,100 @@
+.panel.container-fluid(ng-controller="AddOrganCtr as vm")
+    .panel-heading.text-bold 新增组织
+    .panel-body.row
+        form.form-horizontal(style="padding: 130px 130px 0 130px;")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="orgname") 组织名称：
+                    span.must_install *
+                .col-md-8
+                    input.form-control(id="orgname" type="text" placeholder="组织名称" ng-model="vm.organ.orgname")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="orgphone") 组织电话：
+                    span.must_install *
+                .col-md-8
+                    input.form-control(id="orgphone" type="text",placeholder="组织电话" ng-model="vm.organ.orgphone")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="address") 组织地址：
+                    span.must_install *
+                .col-md-8
+                    input.form-control(id="address" type="text" placeholder="组织地址" ng-model="vm.organ.address")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="orgleader") 组织领导者：
+                    span.must_install *
+                .col-md-8
+                    input.form-control(id="orgleader" type="text",placeholder="组织领导者" ng-model="vm.organ.orgleader")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="leaderphone") 领导电话：
+                .col-md-8
+                    input.form-control(id="leaderphone" type="text" placeholder="领导电话" ng-model="vm.organ.leaderphone")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="contactname") 联系人姓名：
+                    span.must_install *
+                .col-md-8
+                    input.form-control(id="contactname" type="text" placeholder="联系人姓名" ng-model="vm.organ.contactname")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="contactphone") 联系人电话：
+                .col-md-8
+                    input.form-control(id="contactphone" type="text" placeholder="联系人电话" ng-model="vm.organ.contactphone")
+            //.form-group.col-md-6
+            //    label.col-md-3.control-label.text-center(for="orgemail") 联系人邮箱：
+            //    .col-md-8
+            //        input.form-control(id="orgemail" type="text" placeholder="联系人邮箱" ng-model="vm.organ.orgemail")
+            //.form-group.col-md-6
+            //    label.col-md-3.control-label.text-center(for="orggrade") 组织等级：
+            //    .col-md-8
+            //        input.form-control(id="orggrade" type="text" placeholder="组织等级" ng-model="vm.organ.orggrade")
+            //.form-group.col-md-6
+            //    label.col-md-3.control-label.text-center(for="registernum") 组织注册码：
+            //    .col-md-8
+            //        input.form-control(id="registernum" type="text",placeholder="组织注册码" ng-model="vm.organ.registernum")
+            //.form-group.col-md-6
+            //    label.col-md-3.control-label.text-center(for="orgtype") 组织类型：
+            //    .col-md-8
+            //        input.form-control(id="orgtype" type="text" placeholder="组织类型" ng-model="vm.organ.orgtype")
+            //.form-group.col-md-6
+            //    label.col-md-3.control-label.text-center(for="paytype") 组织支付类型：
+            //    .col-md-8
+            //        input.form-control(id="paytype" type="text" placeholder="组织支付类型" ng-model="vm.organ.paytype")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="isactive") 是否激活：
+                    span.must_install *
+                .col-md-8
+                    select.form-control( id="isactive" ng-model="vm.organ.isactive")
+                        option(value="" selected) ----------请选择激活状态----------
+                        option(value="True") 已激活
+                        option(value="False") 未激活
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="is_settlement") 是否开通自动对账：
+                .col-md-8
+                    select.form-control( id="is_settlement" ng-model="vm.organ.is_settlement")
+                        option(value="" selected) ----------请选择是否开通自动对账----------
+                        option(value="True") 是
+                        option(value="False") 否
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="memo") 备注：
+                .col-md-8
+                    input.form-control(id="memo" type="text" placeholder="备注" ng-model="vm.organ.memo")
+            //.form-group.col-md-6
+            //    label.col-md-3.control-label.text-center(for="generation_time") 账单自动生成日期(每月)：
+            //    .col-md-8
+            //        select.form-control( id="generation_time" ng-model="vm.organ.generation_time")
+            //            option(value="" selected) ----------请选择自动生成日期----------
+            //            option(value="{{generation}}"  ng-repeat=" generation in vm.generationTime" ) {{generation}}
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="settlement_time") 账单日(每月)：
+                .col-md-8
+                    input.form-control(id="settlement_time" type="text" ng-model="vm.organ.settlement_time" ng-blur="vm.number(vm.organ.settlement_time)")
+                    //select.form-control( id="settlement_time" ng-model="vm.organ.settlement_time")
+                    //    option(value="" selected) ----------账单日----------
+                    //    option(value="{{generation}}"  ng-repeat=" generation in vm.generationTime" ) {{generation}}
+                    span  账单需要T+2日后完成
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="max_settlement") 最大审核日期：
+                .col-md-8
+                    input.form-control(id="max_settlement" type="text" ng-model="vm.organ.max_settlement" ng-blur="vm.number(vm.organ.max_settlement)")
+                    //select.form-control( id="max_settlement" ng-model="vm.organ.max_settlement")
+                    //    option(value="" selected) ----------请选择最大审核日期----------
+                    //    option(value="{{generation}}"  ng-repeat=" generation in vm.generationTime" ) {{generation}}
+    .panel-footer
+        button.btn.btn-primary.pull-right(type="button" ng-click= "vm.addOrgan()") 确认添加
+        button.btn.btn-danger(type="button" ng-click= "vm.backToPrevious()") 返回上一级菜单

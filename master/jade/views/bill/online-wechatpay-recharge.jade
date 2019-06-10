@@ -1,0 +1,81 @@
+.panel.container-fluid(ng-controller="OnlineRechargeWeChatPayController as vm")
+    .panel-heading.text-bold 微信充值流水查询
+    .panel-body
+        .selectedBox.row(id="topSearchForm")
+            .form-group.form-horizontal.col-md-2
+                .container-fluid
+                    .item-content.divBox
+                        select( id="paid" ng-model="paid" style="width:100%;")
+                            option(value="") 请选择支付状态
+                            option(value="True") 已支付
+                            option(value="False") 未支付
+            .form-group.form-horizontal.col-md-2
+                .container-fluid
+                    .item-content
+                        input.form-control(type="text" id="username" ng-model="username"  placeholder="请输入要查找的用户名")
+            .form-group.form-horizontal.col-md-2
+                .container-fluid
+                    .item-content.analysis-padding
+                        .dropdown
+                            a.dropdown-toggle(id="valid_begintime" role="button" data-toggle="dropdown" )
+                                .input-group.date
+                                    input.form-control(type="text" data-ng-model="coupon.valid_begintime" data-date-time-input="YYYY-MM-DD" disabled style="background:#fff;" placeholder="请选择起始时间")
+                                    span.input-group-addon(style="background:#fff;")
+                                        i.fa.fa-calendar
+                            ul.dropdown-menu(role="menu" aria-labelledby="dLabel")
+                                datetimepicker(data-ng-model="coupon.valid_begintime" data-datetimepicker-config="{dropdownSelector: '#valid_begintime', renderOn: 'end-date-changed',minView:'day'}"
+                                data-on-set-time="vm.startDateOnSetTime()" data-before-render="vm.startDateBeforeRender($dates)")
+            .form-group.form-horizontal.col-md-2
+                .container-fluid
+                    .dropdown.analysis-padding
+                        a.dropdown-toggle(id="valid_endtime" role="button" data-toggle="dropdown" )
+                            .input-group.date
+                                input.form-control(type="text" data-ng-model="coupon.valid_endtime" data-date-time-input="YYYY-MM-DD" disabled style="background:#fff;" placeholder="请选择结束时间")
+                                span.input-group-addon(style="background:#fff;")
+                                    i.fa.fa-calendar
+                        ul.dropdown-menu(role="menu" aria-labelledby="dLabel")
+                            datetimepicker(data-ng-model="coupon.valid_endtime" data-datetimepicker-config="{dropdownSelector: '#valid_endtime', renderOn: 'end-date-changed',minView:'day'}"
+                            data-on-set-time="vm.endDateOnSetTime()" data-before-render="vm.startDateBeforeRender($dates)")
+            .form-horizontal.col-md-2
+                input.form-control(id="plate_number" type="text" placeholder="请输入车牌号" ng-model="vm.plate_number")
+            .form-group.form-horizontal.col-md-2
+                button.btn.btn-primary.btn-sm(ng-click="searchRecords()") 点击搜索
+                button.btn.btn-sm.btn-danger(type="button" ng-click="clearAndRefresh()") 重置
+        div(ng-show="!vm.vehicleIn" style="height: 100%;")
+            table.row-bordered.hover.table-striped.table-responsive(datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs")
+                thead
+                    tr
+                        th 序列
+                        th 用户编号
+                        th 订单号
+                        th 流水号
+                        th 创建时间
+                        th 支付状态
+                        th 支付方式
+                        th 缴费金额
+                        th 账户余额
+                        th 备注
+                        th 操作
+                tbody
+                    tr(ng-repeat="recordsData in recordsData track by recordsData.id")
+                        td {{:: recordsData.id }}
+                        td {{:: recordsData.username }}
+                        td {{:: recordsData.thirdpay_trade_no }}
+                        td {{:: recordsData.out_trade_no }}
+                        td {{:: recordsData.created_time }}
+                        td {{:: recordsData.paidName }}
+                        td {{:: recordsData.payment_channelName }}
+                        td {{:: recordsData.amount/100 }}
+                        td {{:: recordsData.balance/100 }}
+                        td {{:: recordsData.order_desc}}
+                        td
+                            button.btn.btn-sm.btn-warning(type='button', ng-click='jumputDetail(recordsData)') 详情
+        .ui-grid-next
+            button.btn.btn-primary.btn-sm(type="button" ng-click="loadFistPage()" id="firstPageBtn") 首页
+            button.btn.btn-primary.btn-sm(type="button" ng-click="pagination.previousPage()" id="previousPageBtn") 上一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="pagination.nextPage()" id="nextPageBtn") 下一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="loadLastPage()" id="lastPageBtn") 末页
+    .panel-footer
+        p
+            small 如发现数据不合理之处，请联系
+                a(href="www.cszhjt.com") {{ app.name }}

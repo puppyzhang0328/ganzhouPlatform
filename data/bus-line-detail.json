@@ -1,0 +1,43 @@
+{
+  "update_time": "2017-07-05T17:29:41.803015",
+  "kind": "parking_lots#nearby",
+  "maxid": 114,
+  "status": 0,
+  "busLineDetail": [
+    {
+      "id": 1,
+      "name": "7路",
+      "pay_car": "粤122345",
+      "pay_number":"粤122345",
+      "address": "张三"
+    },
+    {
+      "id": 2,
+      "name": "7路",
+      "pay_number":"粤122355",
+      "address": "粤122355",
+      "pay_car": "12路"
+    },
+    {
+      "id": 3,
+      "name": "7路",
+      "pay_number":"粤552345",
+      "address": "湖北省襄阳市",
+      "pay_car": "232路"
+    },
+    {
+      "id": 4,
+      "name": "7路",
+      "pay_number":"粤236345",
+      "address": "安徽省六安市",
+      "pay_car": "46路"
+    },
+    {
+      "id": 5,
+      "name": "7路",
+      "pay_number":"粤688345",
+      "address": "广东省深圳市",
+      "pay_car": "5路"
+    }
+  ]
+}

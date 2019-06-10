@@ -1,0 +1,21 @@
+{
+  "rows": [ {
+    "flow_number": "123456",
+    "car_length": 17.21,
+    "description": "",
+    "car_type": "小车",
+    "is_danger": 0,
+    "car_height": 4.23,
+    "car_width": 3.12,
+    "check_result": 2,
+    "car_no": "粤A11111",
+    "goods_type": "蔬菜",
+    "id": -1,
+    "explains": "后面有汽油罐",
+    "car_weight": 18.33,
+    "check_time": "2018-09-12 11:11:11"
+  } ],
+  "detail": "操作成功",
+  "total": 2,
+  "status": 0
+}

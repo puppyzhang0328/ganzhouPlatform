@@ -1,0 +1,40 @@
+.panel(ng-controller="AddCollectorController as vm")
+    .panel-heading.text-bold 添加用户
+    .panel-body
+        form(enctype="multipart/data" method="post" id="user_form" name="registerForm" novalidate)
+            p.text-info 提示： 先输入用户账号密码进行注册，然后，才能编辑用户进行更多操作.
+                fieldset.module.aligned(style="padding:20px 100px")
+                    .row.field-username.form-group
+                            label.required.col-md-3(for="id_username") 用户名
+                            input.vTextField(id="id_username" autofocus ng-maxlength="150" name="username" type="text" ng-model="vm.collector.name" placeholder="请输入用户名……"  required)
+                            span(style="color:red" ng-show="registerForm.username.$invalid")
+                                span(ng-show="registerForm.username == null") * 用户名不能为空
+                                span(ng-show="registerForm.username.maxlength") * 用户名长度超出限制
+                    //.row.field-username.form-group
+                        label.required.col-md-3(for="nick_name") 中文名
+                        input.vTextField(id="nick_name" autofocus ng-maxlength="150" name="nick_name" type="text" ng-model="vm.collector.nick_name" placeholder="请输入中文名……"  required)
+                        span(style="color:red" ng-show="registerForm.username.$invalid")
+                            span(ng-show="registerForm.username == null") * 中文名不能为空
+                            span(ng-show="registerForm.username.maxlength") * 中文名长度超出限制
+                    //.row.field-username.form-group
+                        label.required.col-md-3(for="organ") 所属组织
+                        .limit-width.col-md-4(id="organ" style="padding:0;")
+                            ui-select(ng-model="vm.OrganAsync.selected" theme="bootstrap" on-select="vm.onSelectCallbackOrgan($item)" style="width: 22em;" title="请选择所属组织")
+                                ui-select-match(placeholder="请选择所属组织") {{$select.selected.orgname || $select.selected}}
+                                ui-select-choices(repeat="organ.orgname as organ in vm.OrganAsync | propsFilter: {orgname: $select.search}")
+                                    div(ng-bind-html="organ.orgname")
+                    .row.field-password.form-group
+                            label.required.col-md-3(for="id_password") 密码
+                            input.vTextField(id="id_password" autofocus ng-minlength="6" ng-maxlength="20"  name="password" type="password" ng-model="vm.collector.password" placeholder="请输入密码……"  required)
+                            span(style="color:red" ng-show="registerForm.password.$invalid")
+                                span(ng-show="registerForm.password.$error.minlength") * 密码长度小于6
+                                span(ng-show="registerForm.password.$error.maxlength") * 密码长度大于20
+                    .row.field-password-confirm.form-group
+                            label.required.col-md-3(for="id_password_confirm") 确认密码
+                            input.vTextField(id="id_password_confirm"  name="password_confirm" type="password" ng-model="vm.collector.password_confirm"  placeholder="请再次输入密码……" required)
+                            span(style="color:red" ng-show="registerForm.password.$valid")
+                                span(ng-show="collector.password != collector.password_confirm") * 两次密码输入不一致
+    .panel-footer
+        input.btn.btn-primary.pull-right(type="submit" value="保存"  name="_save" ng-disabled="registerForm.username.$invalid || registerForm.password.$invalid || vm.collector.password != vm.collector.password_confirm" ng-click="vm.addCollector()")
+        button.btn.btn-danger(type="button" ng-click= "vm.backToPrevious()") 返回上一级
+       

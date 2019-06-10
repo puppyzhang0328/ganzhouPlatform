@@ -1,0 +1,56 @@
+.panel.container-fluid(ng-controller="addIotdeviceController as vm")
+    .panel-heading.text-bold 新增设备
+    .panel-body.row
+        form.form-horizontal(style="padding: 130px 130px 0 130px;")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="devtype") 设备类型
+                    span.must_install 
+                .col-md-8
+                    select.form-control( id="devtype" ng-model="vm.iotdevice.devtype")
+                        option(value="" selected) ------请选择收费类型-------
+                        option(value="1") 数据网关
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="ipaddr") 设备网络ip
+                    span.must_install 
+                .col-md-8
+                    input.form-control(id="ipaddr" type="text" placeholder="请输入设备网络ip" ng-model="vm.iotdevice.ipaddr")
+
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center 所属停车场
+                .col-md-8
+                        ui-select(ng-model="vm.parkingAsync.selected" theme="bootstrap" ng-disable='vm.disable' on-select="vm.onSelectCallback($item)"  title="请选择停车场")
+                            ui-select-match(placeholder="请选择要查找的停车场") {{$select.selected.name || $select.selected}}
+                            ui-select-choices(repeat="parking.name as parking in vm.parkingAsync | propsFilter: {name: $select.search, address: $select.search}")
+                                div(ng-bind-html="parking.name | highlight: $select.search")
+                                small
+                                    | 停车场地址：
+                                    span(ng-bind-html="'' + parking.address | highlight: $select.search")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="devname") 设备名
+                    span.must_install 
+                .col-md-8
+                    input.form-control(id="devname" type="text" placeholder="请输入设备名" ng-model="vm.iotdevice.devname")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="memo") 备忘录
+                    span.must_install 
+                .col-md-8
+                    input.form-control(id="memo" type="text" placeholder="请输入备忘录" ng-model="vm.iotdevice.memo")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="brand") 设备品牌
+                .col-md-8
+                    input.form-control(id="brand" type="text" placeholder="请输入设备品牌" ng-model="vm.iotdevice.brand")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="devfirm") 设备厂商
+                .col-md-8
+                    input.form-control(id="devfirm" type="text" placeholder="请输入设备厂商 " ng-model="vm.iotdevice.devfirm")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="firmcontact") 设备厂商联系人
+                .col-md-8
+                    input.form-control(id="firmcontact" type="text" placeholder="请输入设备厂商联系人" ng-model="vm.iotdevice.firmcontact")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="firmphone ") 设备厂商电话
+                .col-md-8
+                    input.form-control(id="firmphone " type="text",placeholder="请输入设备厂商电话" ng-model="vm.iotdevice.firmphone ")
+    .panel-footer
+        button.btn.btn-primary.pull-right(type="button" ng-click= "vm.addIotdevice()") 确认添加
+        button.btn.btn-danger(type="button" ng-click= "vm.backToPrevious()") 返回上一级菜单

@@ -1,0 +1,59 @@
+.panel.container-fluid(ng-controller="ModifyCouponCtr as vm")
+    .panel-heading.text-bold 修改优惠券
+    .panel-body.row
+        form.form-horizontal(style="padding: 130px 130px 0 130px;")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="id") 序号：
+                .col-md-8
+                    input.form-control(id="id" type="text" placeholder="请输入促销活动名称" ng-model="vm.coupon.id" disabled="disabled")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="campaign") 促销活动名称：
+                .col-md-8
+                    input.form-control(id="campaign" type="text" placeholder="请输入促销活动名称" ng-model="vm.coupon.campaign" disabled="disabled")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="campaign_displayname") 促销活动显示名称：
+                .col-md-8
+                    input.form-control(id="campaign_displayname" type="text" placeholder="请输入促销活动显示名称" ng-model="vm.coupon.campaign_displayname" disabled="disabled")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="denomination") 面额（元）：
+                .col-md-8
+                    input.form-control(id="denomination" type="text" placeholder="请输入面额" ng-model="vm.coupon.denomination" disabled="disabled")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="num_per_user") 每用户该券的数额：
+                .col-md-8
+                    input.form-control(id="num_per_user" type="text" placeholder="请输入每用户该券的数额" ng-model="vm.coupon.num_per_user" disabled="disabled")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="total") 优惠券总数：
+                .col-md-8
+                    input.form-control(id="total" type="text" placeholder="请输入优惠券总数" ng-model="vm.coupon.total" disabled="disabled")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center 使用方式：
+                .col-md-8
+                    .form-control(ng-if="vm.coupon.usemode == 0") 可混合使用
+                    .form-control(ng-if="vm.coupon.usemode !== 0") 不可混合使用
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="valid_begintime") 活动开始时间：
+                .col-md-8
+                    input.form-control(id="valid_begintime" type="text" placeholder="请输入使用方式" ng-model="vm.coupon.valid_begintime" disabled="disabled")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="valid_endtime") 活动结束时间：
+                .col-md-8
+                    input.form-control(id="valid_endtime" type="text" placeholder="请输入使用方式" ng-model="vm.coupon.valid_endtime" disabled="disabled")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="coupon_valid_begintime") 券有效开始时间：
+                .col-md-8
+                    input.form-control(id="coupon_valid_begintime" type="text" placeholder="请输入使用方式" ng-model="vm.coupon.coupon_valid_begintime" disabled="disabled")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="coupon_valid_endtime") 券有效结束时间：
+                .col-md-8
+                    input.form-control(id="coupon_valid_endtime" type="text" placeholder="请输入使用方式" ng-model="vm.coupon.coupon_valid_endtime" disabled="disabled")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="isvalid") 活动是否有效：
+                .col-md-8
+                    select.form-control( id="isvalid" ng-model="vm.coupon.isvalid")
+                        option(value="" selected) ----------选择活动是否有效----------
+                        option(value="True") 激活
+                        option(value="False") 无效
+    .panel-footer
+        button.btn.btn-primary.pull-right(type="button" ng-click= "vm.modifyRegion()") 确认修改
+        button.btn.btn-danger(type="button" ng-click= "vm.backToPrevious()") 返回上一级菜单

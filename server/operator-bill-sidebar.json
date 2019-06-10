@@ -1,0 +1,124 @@
+[
+  {
+    "text": "Menu Heading",
+    "heading": "true",
+    "translate": "sidebar.heading.HEADER"
+  },
+  {
+    "text":"对账结算",
+    "icon":"icon-user",
+    "sref": "app.examine"
+  },
+  {
+    "text": "统计报表管理",
+    "sref": "#",
+    "icon": "fa fa-bar-chart-o",
+    "alert": "7",
+    "label": "label label-info",
+    "submenu": [
+      {
+        "text": "组织报表",
+        "sref": "app.analysis-organ"
+      },
+      {
+        "text": "区域报表",
+        "sref": "app.analysis-region"
+      },
+      {
+        "text": "商圈报表",
+        "sref": "app.analysis-town"
+      },
+      {
+        "text": "停车场报表",
+        "sref": "app.analysis-pay"
+      },
+      {
+        "text": "业态类型报表",
+        "sref": "app.analysis-bustype"
+      },
+      {
+        "text": "用户统计报表",
+        "sref": "app.analysis-user"
+      },
+      {
+        "text": "财务统计报表",
+        "sref": "app.analysis-account"
+      },
+      {
+        "text": "app用户推广统计",
+        "sref": "app.analysis-app-user"
+      }
+    ]
+  },
+  {
+    "text": "账单流水管理",
+    "sref": "#",
+    "icon": "fa fa-cc-visa",
+    "alert": "2",
+    "label": "label label-info",
+    "submenu": [
+      {
+        "text":"APP账单查询",
+        "sref": "app.mobile-user"
+      },
+      {
+        "text": "APP消费查询",
+        "sref": "app.online-dadapay"
+      },
+      {
+        "text": "微信充值流水查询",
+        "sref": "app.online-wechatpay-recharge"
+      },
+      {
+        "text": "微信消费流水查询",
+        "sref": "app.online-wechatpay"
+      },
+      {
+        "text": "支付宝充值流水查询",
+        "sref": "app.online-alipay-recharge"
+      },
+      {
+        "text": "支付宝消费查询",
+        "sref": "app.online-alipay"
+      },
+      {
+        "text": "婚庆园消费查询",
+        "sref": "app.online-hqypay-pay"
+      },
+      {
+        "text": "长沙银行消费查询",
+        "sref": "app.online-bcspay-pay"
+      },
+      {
+        "text": "线下缴费记录查询",
+        "sref": "app.offline-prepayment"
+      }
+    ]
+  },{
+  "text": "账单管理",
+  "sref": "#",
+  "icon": "fa fa-cc-visa",
+  "alert": "2",
+  "label": "label label-info",
+  "submenu": [
+    {
+      "text": "组织对账查询",
+      "sref": "app.organReconcile"
+    },
+    {
+      "text": "停车场对账查询",
+      "sref": "app.reconcile"
+    },
+    {
+      "text": "停车场结算功能",
+      "sref": "app.settlement"
+    }
+  ]
+},
+  {
+    "text":"退款查询",
+    "icon":"fa fa-bar-chart-o",
+    "sref": "app.refund"
+  }
+
+]

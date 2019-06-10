@@ -1,0 +1,60 @@
+  [
+  {
+    "text": "Menu Heading",
+    "heading": "true",
+    "translate": "sidebar.heading.HEADER"
+  },
+    {
+      "text":"账单核算",
+      "icon":"icon-user",
+      "sref": "app.examineGroup"
+    },
+    {
+      "text":"账单查询",
+      "icon":"fa fa-bar-chart-o",
+      "sref": "app.groupBill"
+    },
+    {
+      "text":"账单流水管理测试",
+      "sref": "#",
+      "icon":"fa fa-bar-chart-o",
+      "alert": "2",
+      "label": "label label-info",
+      "submenu":[
+        {
+          "text": "APPTEST账单查询",
+          "sref": "app.mobileTest-user"
+        }
+      ]
+
+    },
+    {
+      "text":"退款查询",
+      "icon":"fa fa-bar-chart-o",
+      "sref": "app.refund"
+    },
+    {
+      "text":"对账异常查询",
+      "sref": "#",
+      "icon":"fa fa-bar-chart-o",
+      "alert": "3",
+      "label": "label label-info",
+      "submenu":[
+        {
+          "text": "平台异常账单",
+          "sref": "app.unnormal-bill"
+        },
+        {
+          "text": "第三方异常账单",
+          "sref": "app.third-bill"
+        },
+        {
+          "text": "App异常账单",
+          "sref": "app.appunnormal-bill"
+        }
+      ]
+
+    }
+
+
+]

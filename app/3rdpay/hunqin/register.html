@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>湘行APP</title>
+    <link rel="stylesheet" href="css/mui.min.css" />
+	<link rel="stylesheet" href="css/register.css" />
+	<link rel="stylesheet" type="text/css" href="css/mui.picker.min.css" />
+    <script type="text/javascript">
+   		document.addEventListener('plusready', function(){
+   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+   		});
+    </script>
+</head>
+<body>
+<header id="header" class="mui-bar mui-bar-nav">
+	<h1 class="mui-title register">注册</h1>
+</header>
+<div class="content">
+	<div class="mui_input">
+		<div class="mui_img">
+			<input id="phoneNumber" type="text" placeholder="请输入手机号码">
+		</div>
+		<div class="mui_img">
+			<input id="yzm" class="yzm" type="text" placeholder="请输入验证码">
+			<input type="button" value="获取验证码" id="verify"/>
+		</div>
+		<div class="mui-input-row mui-radio" style="width: 50%;display: inline-block;float: left; border-bottom: 1px solid #ccc;">
+			<label>男</label>
+			<input name="radio" type="radio" checked value="0">
+		</div>
+		<div class="mui-input-row mui-radio" style="width: 50%;display: inline-block;border-bottom: 1px solid #ccc;">
+			<label>女</label>
+			<input name="radio" type="radio" value="1">
+		</div>
+		<div class="mui_img">
+			<input id="birthday" type="text" placeholder="请选择生日" id='result' data-options='{"type":"date","beginYear":1900,"endYear":2018}' class="btn">
+		</div>
+		<div class="mui_img">
+			<input id="real_name" type="text" placeholder="请输入真实姓名">
+		</div>
+		<div class="mui_img">
+			<input id="password" type="password" placeholder="请输入登录密码">
+		</div>
+		<div class="mui_img">
+			<input type="password" placeholder="请输入登录密码">
+		</div>
+		<div class="mui_prompt">登录密码由6_16位字符，字母加数字或符号的组合</div>
+		<div class="mui_btn">
+			<button id="register" type="button">注册</button>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="lib/jquery-1.12.2.min.js"></script>
+<script type="text/javascript" src="js/mui.min.js"></script>
+<script src="lib/mui.picker.min.js"></script>
+<script type="text/javascript" src="lib/CryptoJS.js"></script>
+<script type="text/javascript" src="lib/Base64.js"></script>
+<script type="text/javascript" src="lib/md5.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/register.js"></script>
+</html>

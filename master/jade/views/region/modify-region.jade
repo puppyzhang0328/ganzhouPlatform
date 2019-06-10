@@ -1,0 +1,50 @@
+.panel.container-fluid(ng-controller="ModifyRegionCtr as vm")
+    .panel-heading.text-bold 修改区域信息
+    .panel-body.row
+        form.form-horizontal(style="padding: 130px 130px 0 130px;")
+            .form-group.col-md-6
+                label.col-md-4.control-label.text-center(for="id") 序号：
+                .col-md-8
+                    input.form-control(id="id" type="text" placeholder="请输入区域序号" ng-model="vm.region.id" disabled="disabled")
+            .form-group.col-md-6
+                label.col-md-4.control-label.text-center(for="code") 区域代码：
+                .col-md-8
+                    input.form-control(id="code" type="text" placeholder="请输入区域代码" ng-model="vm.region.code")
+            .form-group.col-md-6
+                label.col-md-4.control-label.text-center(for="level") 父区域的：
+                .limit-width.col-md-8(id="topSearchForm")
+                    .item-content
+                        ui-select(ng-init="vm.regiongAsync.selected" ng-model="vm.regiongAsync.selected" theme="bootstrap" on-select="vm.onSelectCallback($item)"  title="请选择区域")
+                            ui-select-match(placeholder="请选择区域") {{$select.selected.name || $select.selected}}
+                            ui-select-choices(repeat="region.name as region in vm.regiongAsync | propsFilter: {name: $select.search}")
+                                div(ng-bind-html="region.name")
+                                small
+                                    | 区域名称：
+                                    span(ng-bind-html="'' + region.name")
+            .form-group.col-md-6
+                label.col-md-4.control-label.text-center(for="name") 区域名字：
+                .col-md-8
+                    input.form-control(id="name" type="text" placeholder="请输入区域名字" ng-model="vm.region.name")
+            .form-group.col-md-6
+                label.col-md-4.control-label.text-center(for="suffix") 行政单位：
+                .col-md-8
+                    input.form-control(id="suffix" type="text" placeholder="请输入行政单位" ng-model="vm.region.suffix")
+            .form-group.col-md-6
+                label.col-md-4.control-label.text-center(for="fullname") 行政全名：
+                .col-md-8
+                    input.form-control(id="fullname" type="text" placeholder="请输入行政全名" ng-model="vm.region.fullname")
+            .form-group.col-md-6
+                label.col-md-4.control-label.text-center(for="pinyin") 区域名字拼音全称：
+                .col-md-8
+                    input.form-control(id="pinyin" type="text" placeholder="请输入区域名字拼音全称" ng-model="vm.region.pinyin")
+            .form-group.col-md-6
+                label.col-md-4.control-label.text-center(for="py") 区域名字拼音简称：
+                .col-md-8
+                    input.form-control(id="py" type="text" placeholder="请输入区域名字拼音简称" ng-model="vm.region.py")
+            .form-group.col-md-6
+                label.col-md-4.control-label.text-center(for="level") 区域级别：
+                .col-md-8
+                    input.form-control(id="level" type="text" placeholder="请输入区域级别" ng-model="vm.region.level")
+    .panel-footer
+        button.btn.btn-primary.pull-right(type="button" ng-click= "vm.modifyRegion()") 确认修改
+        button.btn.btn-danger(type="button" ng-click= "vm.backToPrevious()") 返回上一级菜单

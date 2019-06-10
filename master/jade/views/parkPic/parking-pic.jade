@@ -1,0 +1,51 @@
+.panel.panel-default.container-fluid(ng-controller="parkPicController as vm")
+    .panel-heading.text-bold 停车场图片管理
+    .panel-body
+        .selectedBox.row
+            .item-content.divBox.col-md-2
+                ui-select(ng-model="vm.parkingAsync.selected" theme="bootstrap" ng-disable='vm.disable' on-select="vm.onSelectCallback($item)" title="请选择停车场")
+                    ui-select-match(placeholder="请选择要查找的停车场") {{$select.selected.name || $select.selected}}
+                    ui-select-choices(repeat="parking.name as parking in vm.parkingAsync | propsFilter: {name: $select.search, address: $select.search}")
+                        div(ng-bind-html="parking.name | highlight: $select.search")
+                        small
+                            | 停车场地址：
+                            span(ng-bind-html="'' + parking.address | highlight: $select.search")
+            .item-content.divBox.col-md-2
+                select( id="picture_no" ng-model="vm.picture_no" style="width:100%;")
+                    option(value="") 请选择有无图片
+                    option(value="True") 有图
+                    option(value="False") 无图
+            .item-content.divBox.col-md-2
+                button.btn.btn-primary.btn-sm(type="button" ng-click="vm.queryParkings(0)") 搜索
+                button.btn.btn-sm.btn-danger(type="button" ng-click="vm.clearAndRefresh()" ng-disabled="vm.parkingAsync.selected == null && vm.picture_no == null") 重置
+        .row(style="background-color:#fff;overflow:scroll;overflow-x:hidden;padding:0 10px 20px;width:100%;box-sizing: border-box;margin: 0 auto;height: 90%;position: relative;")
+            .col-md-2(style="box-sizing: border-box;text-align: left;margin-top:20px;" ng-repeat="parking_lots in vm.parking_lots track by parking_lots.id" )
+                div(style="border:1px solid #ccc;border-radius: 10px;padding: 10px 0 0 0;" )
+                    img(ng-src="{{:: parking_lots.src}}" style="width: 100%;height: 169px;min-height:169px" alt="没有进出图片" )
+                    div.opc.opcs(style="background-color:rgba(0,0,0,0.7);height:169px;display:flex; align-items: center;justify-content:space-around;margin-top:-171px; position: relative; z-index:1000" ng-click="vm.UpdateParkingLot($event,parking_lots)" )
+                        button.btn.btn-danger(type="button",ng-click="vm.picupdate()",data-dismiss="modal") 修改
+                        button.btn.btn-default(type="button",ng-click="vm.cancel()",data-dismiss="modal") 取消
+                    div(style="text-align:center;height: 30px;border-radius: 0 0 10px 10px;font-size: 14px;line-height: 30px;color: #fff;background: #0181c8;") {{:: parking_lots.name}}
+        .ui-grid-next
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.queryParkings(0)" id="firstPageBtn") 首页
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.queryParkings(1)" id="previousPageBtn") 上一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.queryParkings(2)" id="nextPageBtn") 下一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.queryParkings(3)" id="lastPageBtn") 末页
+    .panel-footer
+        button.btn.btn-labeled.btn-primary(type='submit' ng-click="vm.addParkingLot()")
+            span.btn-label
+                em.fa.fa-plus
+            | 停车场图片上传
+    script(type="text/ng-template" id="deleteParking.html")
+        .modal-header
+            button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+            h4.modal-title 删除?
+        .modal-body
+            p.text-bold 你确定要删除该停车场吗？
+        .modal-footer
+            button.btn.btn-default(type="button",ng-click="vm.cancel()",data-dismiss="modal") 取消
+            button.btn.btn-danger(type="button",ng-click="vm.deletePark()",data-dismiss="modal") 确认
+    .panel-footer
+        p
+            small 如发现数据不合理之处，请联系
+                a(href="www.cszhjt.com") {{ app.name }}

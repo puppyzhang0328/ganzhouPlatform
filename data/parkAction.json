@@ -1,0 +1,23 @@
+{
+    "status": 0,
+    "records": [
+      {
+        "id":1,
+        "parkName": "测试停车场1",
+        "parkActionId": ["1", "2", "3"],
+        "parkActionName":["in","out","pay"]
+      },
+      {
+        "id":2,
+        "parkName": "测试停车场2",
+        "parkActionId":["4","6","3"],
+        "parkActionName":["test","test2","pay"]
+      },
+      {
+        "id":3,
+        "parkName": "测试停车场3",
+        "parkActionId":["3","4","5"],
+        "parkActionName":["pay","test","test1"]
+      }
+    ]
+  }

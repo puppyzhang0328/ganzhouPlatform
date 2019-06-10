@@ -1,0 +1,63 @@
+.panel.container-fluid(ng-controller="addInfoController as vm")
+    .panel-heading.text-bold 新增资讯信息
+    div(style="padding: 20px;border: none;") 请选择需要发布的模块：
+        select(ng-model="mySelectVal")
+            option(value="app_start_page" selected="selected") APP轮播图
+            option(value="app_news_page") 新闻
+            option(value="app_info_page") 天气
+            option(value="app_reset_page") 启动页
+    .panel-body(ng-switch="mySelectVal")
+        form.form-horizontal(style="padding: 130px 130px 0 130px;" ng-switch-when="app_news_page")
+            .form-group
+                label.col-md-3.control-label.text-center(for="plateformname") 菜单项名称：
+                    span.must_install *
+                .col-md-8
+                    input.form-control(id="plateformname" type="text" placeholder="菜单项名称" ng-model="vm.platform.plateformname"  value="新闻" disabled)
+            .form-group
+                label.col-md-3.control-label.text-center(for="loginurl") App资讯url：
+                    span.must_install *
+                .col-md-8
+                    input.form-control(id="loginurl" type="text",placeholder="App资讯url" ng-model="vm.platform.loginurl")
+        form.form-horizontal(style="padding: 130px 130px 0 130px;" ng-switch-when="app_info_page" ng-controller="addInfoController")
+            .form-group
+                label.col-md-3.control-label.text-center(for="infoformname") 菜单项名称：
+                    span.must_install *
+                .col-md-8
+                    input.form-control(id="infoformname" type="text" placeholder="菜单项名称" ng-model="vm.platform.plateformname" value="资讯" disabled)
+            .form-group
+                label.col-md-3.control-label.text-center(for="infourl") App资讯url：
+                    span.must_install *
+                .col-md-8
+                    input.form-control(id="infourl" type="text",placeholder="App资讯url" ng-model="vm.platform.loginurl")
+        form.form-horizontal(style="padding: 130px 130px 0 130px;" ng-switch-when="app_reset_page" ng-controller="addInfoController")
+            .form-group
+                label.col-md-3.control-label.text-center(for="resetname") 菜单项名称：
+                    span.must_install *
+                .col-md-8
+                    input.form-control(id="resetname" type="text" placeholder="菜单项名称" ng-model="vm.platform.plateformname" value="启动页"  disabled)
+            .form-group
+                label.col-md-3.control-label.text-center(for="reseturl") App资讯url：
+                    span.must_install *
+                .col-md-8
+                    input.form-control(id="reseturl" type="text",placeholder="App资讯url" ng-model="vm.platform.loginurl")
+        div(ng-switch-when="app_start_page" )
+            div(style="height:305px")
+                carousel(interval="mgInterval" no-wrap="noWrapSlides")
+                      slide(ng-repeat="(index,item) in vm.appimg" active="item.active")
+                           img(ng-src="{{item}}" style="margin:auto")
+                           div.carousel-caption
+                               p{{index}}
+            form.form-horizontal(style="padding: 130px 130px 0 130px;")
+                .form-group
+                    label.col-md-3.control-label.text-center(for="plateformnames") 菜单项名称：
+                        span.must_install *
+                    .col-md-8
+                        input.form-control(id="plateformnames" type="text" placeholder="菜单项名称" ng-model="vm.platform.plateformname" disabled)
+                .form-group
+                    label.col-md-3.control-label.text-center(for="loginurls") App资讯url：
+                        span.must_install *
+                    .col-md-8
+                        input.form-control(id="loginurls" type="text",placeholder="App资讯url" ng-model="vm.platform.loginurl")
+    .panel-footer
+        button.btn.btn-primary.pull-right(type="button" ng-click= "vm.addPlatform()") 确认添加
+        button.btn.btn-danger(type="button" ng-click= "vm.backToPrevious()") 返回上一级菜单

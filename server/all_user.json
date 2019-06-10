@@ -1,0 +1,147 @@
+[
+{
+  "text": "Menu Heading",
+  "heading": "true",
+  "translate": "sidebar.heading.HEADER"
+},
+{
+  "text":"首页",
+  "icon":"fa fa-car",
+  "sref":"app.console"
+},
+{
+  "text": "管理员设置",
+  "sref": "#",
+  "icon": "icon-user",
+  "alert": "3",
+  "label": "label label-info",
+  "submenu": [
+    {
+      "text":"用户管理",
+      "sref":"app.operator"
+    },
+    {
+      "text":"集团用户管理",
+      "sref":"app.manage-group-user"
+    },
+    {
+      "text":"群组管理",
+      "sref":"app.user-group"
+    }
+  ]
+},
+{
+"text":"停车场管理设置",
+"sref":"#",
+"icon": "fa fa-car",
+"alert": "5",
+"label": "label label-info",
+"submenu": [
+  {
+    "text": "停车场分布",
+    "sref": "app.parking-baidu-map",
+    "translate": "sidebar.nav.SINGLEVIEW"
+  },
+  {
+    "text":"停车场管理",
+    "sref":"app.parking"
+  },
+  {
+    "text":"停车场图片上传",
+    "sref":"app.parking-pic-upload"
+  },
+  {
+    "text":"停车出入场记录查询",
+    "sref":"app.vehicle-in"
+  },
+  {
+    "text":"停车场状态监测",
+    "sref":"app.parking-state"
+  }
+]
+},
+{
+  "text":"app管理",
+  "sref":"#",
+  "icon": "fa fa-android",
+  "alert": "4",
+  "label": "label label-info",
+  "submenu": [
+    {
+      "text": "APP用户管理",
+      "sref": "app.mobile-user"
+    },
+    {
+      "text":"APP用户建议",
+      "sref":"app.mobile-user-comment"
+    },
+    {
+      "text":"APP在线升级",
+      "sref":"app.apk-update"
+    },
+    {
+      "text":"APP广告设置",
+      "sref":"app.app-pic-upload"
+    }
+  ]
+},
+{
+  "text": "缴费记录查询",
+  "sref": "#",
+  "icon": "fa fa-cc-visa",
+  "alert": "2",
+  "label": "label label-info",
+  "submenu": [
+    {
+      "text": "线上缴费记录查询",
+      "sref": "app.online-prepayment"
+    },
+    {
+      "text": "线下缴费记录查询",
+      "sref": "app.offline-prepayment"
+    }
+  ]
+},
+{
+  "text": "基础信息",
+  "sref": "#",
+  "icon": "fa fa-fax",
+  "alert": "4",
+  "label": "label label-info",
+  "submenu": [
+    {
+      "text": "组织管理",
+      "sref": "app.bus-company"
+    },
+    {
+      "text": "区域信息",
+      "sref": "app.region"
+    },
+    {
+      "text": "商圈信息",
+      "sref": "app.town"
+    },
+    {
+      "text": "停车场性质信息",
+      "sref": "app.bustype"
+    }
+  ]
+},
+  {
+    "text": "活动管理",
+    "sref": "#",
+    "icon": "fa fa-fax",
+    "alert": "2",
+    "label": "label label-info",
+    "submenu": [
+      {
+        "text": "优惠券活动",
+        "sref": "app.coupon"
+      },
+      {
+        "text": "用户优惠券",
+        "sref": "app.coupon-man"
+      }
+    ]
+  }
+]

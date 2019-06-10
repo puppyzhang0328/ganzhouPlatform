@@ -1,0 +1,44 @@
+.panel.panel-default.container-fluid(ng-controller="ParkingStateController as vm")
+    .panel-heading.text-bold 停车场状态监测
+    .panel-body
+        div.container-fluid.ui-container(id="container")
+            div.container-fluid.ui-content.fn-clear
+                div.ui-grid-25
+                    div.ui-title.fn-clear
+                        button.btn.btn-sm.btn-primary(type="button" ng-click="vm.toggleMenu()")
+                            em.fa.fa-search    高级搜索
+                        button.btn.btn-sm.btn-danger(type="button" ng-click="vm.clearAndRefresh()" ng-disabled="vm.parkingAsync.selected == null")
+                            em.fa.fa-refresh   重置
+                    div.record-search-form.record-search-max.limit-width(id="topSearchForm" ng-show="vm.menuState.show")
+                        .form-group.form-horizontal
+                            div.container-fluid
+                                label.item-label.text-bold 选择停车场：
+                                div.item-content
+                                    ui-select(ng-model="vm.parkingAsync.selected" theme="bootstrap" ng-disable='vm.disable' on-select="vm.onSelectCallback($item)"  style="width: 300px;" title="请选择停车场")
+                                        ui-select-match(placeholder="请选择要查找的停车场") {{$select.selected.name || $select.selected}}
+                                        ui-select-choices(repeat="parking.name as parking in vm.parkingAsync | propsFilter: {name: $select.search, address: $select.search}")
+                                            div(ng-bind-html="parking.name | highlight: $select.search")
+                                            small
+                                                | 停车场地址：
+                                                span(ng-bind-html="'' + parking.address | highlight: $select.search")
+                        .form-group.form-horizontal.row
+                            div.container-fluid
+                                div.col-xs-6
+                                    label.item-label.text-bold(for="plate_number") 车牌号:
+                                    div.item-content
+                                        input.form-control(type="text" id="plate_number" ng-model="vm.search_plate_number"  placeholder="请输入要查找的车牌号")
+                        .form-group.form-horizontal.row
+                            div.col-xs-3
+                                button.btn.btn-primary.btn-sm(ng-click="vm.searchRecords()") 点击搜索
+                                p 当前查找的是：
+                                    code {{ vm.parkingAsync.selected }} {{ search_plate_number }}
+        div.grid.table-responsive(ui-grid="vm.gridOptions" style="width:100%;height:650px;" ui-grid-selection ui-grid-pagination ui-grid-pinning  ui-grid-resize-columns ui-grid-exporter  ui-grid-auto-resize )
+        br
+        button.btn.btn-primary.btn-sm(type="button" ng-click="vm.loadFistPage()" id="firstPageBtn") 首页
+        button.btn.btn-primary.btn-sm(type="button" ng-click="vm.loadPreviousPage()" id="previousPageBtn") 上一页
+        button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.loadNextPage()" id="nextPageBtn") 下一页
+        button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.loadLastPage()" id="lastPageBtn") 末页
+    .panel-footer
+        p
+            small 如发现数据不合理之处，请联系
+                a(href="www.cszhjt.com") {{ app.name }}

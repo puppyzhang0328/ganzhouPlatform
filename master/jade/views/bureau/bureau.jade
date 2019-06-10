@@ -1,0 +1,64 @@
+.panel(ng-controller='bureauController as vm')
+    .panel-heading.text-bold 市局信息
+    .panel-body.newPanel
+        .selectedBox.row
+            .item-content.divBox.col-md-2(id="region")
+                ui-select(ng-model="vm.regiongAsync.selected" theme="bootstrap" on-select="vm.onSelectCallback($item)"  title="请选择区域")
+                    ui-select-match(placeholder="请选择区域") {{$select.selected.name || $select.selected}}
+                    ui-select-choices(repeat="region.name as region in vm.regiongAsync | propsFilter: {name: $select.search,pinyin: $select.search}")
+                        div(ng-bind-html="region.name")
+                        small
+                            | 区域代码：
+                            span(ng-bind-html="'' + region.code | highlight: $select.search")
+            .item-content.divBox.col-md-2(id="bureau")
+                ui-select(ng-model="vm.bureaugAsync.selected" theme="bootstrap" on-select="vm.onSelectCallbackBureau($item)"  title="请选择市局")
+                    ui-select-match(placeholder="请选择市局") {{$select.selected.name || $select.selected}}
+                    ui-select-choices(repeat="bureau.name as bureau in vm.bureaugAsync | propsFilter: {name: $select.search,pinyin: $select.search}")
+                        div(ng-bind-html="bureau.name")
+                        small
+                            | 市局代码：
+                            span(ng-bind-html="'' + bureau.cityproperCode | highlight: $select.search")
+            .item-content.divBox.col-md-2
+                button.btn.btn-primary.btn-sm(type="button" ng-click="vm.readRecords(0)") 搜索
+                button.btn.btn-sm.btn-danger(type="button" ng-click="vm.clearAndRefresh()" ng-disabled="vm.regiongAsync.selected == null  && vm.bureaugAsync.selected == null") 重置
+        table.row-bordered.hover.table-striped.table-responsive(datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs")
+            thead
+                tr
+                    th 序列号
+                    th 所属区域代码
+                    th 所属区域名称
+                    th 市局代码
+                    th 市局名称
+                    th 编辑
+            tbody
+                tr(ng-repeat="bureau in vm.bureau track by bureau.id")
+                    td {{:: bureau.number }}
+                    td {{:: bureau.regionCode }}
+                    td {{:: bureau.regionName }}
+                    td {{:: bureau.cityproperCode }}
+                    td {{:: bureau.cityproperName }}
+                    td
+                        button.btn.btn-sm.btn-warning(type='button', ng-click='vm.modifyBureau(bureau)') 修改
+                            em.fa.fa-edit
+                        button.btn.btn-sm.btn-danger(type='button', ng-click='vm.deleteBureau(bureau)') 删除
+                            em.fa.fa-trash-o
+        .ui-grid-next
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.readRecords(0)" id="firstPageBtn") 首页
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.readRecords(1)" id="previousPageBtn") 上一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.readRecords(2)" id="nextPageBtn") 下一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.readRecords(3)" id="lastPageBtn") 末页
+    .panel-footer
+        button.btn.btn-labeled.btn-primary(type='submit' ng-click="vm.addBureau()")
+            span.btn-label
+                em.fa.fa-plus
+            | 市局信息录入
+    script(type="text/ng-template" id="deleteBureau.html")
+        .modal-header
+            button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+            h4.modal-title 删除?
+        .modal-body
+            p.text-bold 你确定要删除该市局吗？
+        .modal-footer
+            button.btn.btn-default(type="button",ng-click="vm.cancel()",data-dismiss="modal") 取消
+            button.btn.btn-danger(type="button",ng-click="vm.deleteBureau()",data-dismiss="modal") 确认
+

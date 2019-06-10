@@ -1,0 +1,21 @@
+//
+   Created by huangxiang on 2016/11/24 0024.
+.well
+    .h3.mv-sm
+        ul.breadcrumb.pull-right.bg-transparent
+            li
+                a(ui-sref='app.parking') 停车场管理
+            li(ng-repeat='state in $state.$current.path', ng-switch='$last', ng-if="!state.abstract", ng-class='{active: $last}')
+                a(ng-switch-when='false', href='#{{state.url.format($stateParams)}}') {{state.title}}
+                span(ng-switch-when='true') {{state.title}}
+        | 停车场地图位置标注
+.panel.panel-dark.container-fluid(ng-controller="BMapController as vm")
+    .panel-heading.text-bold 停车场分布
+    .panel-body
+        div(class="row")
+            div(class="col-xs-12")
+                baidu-map(options="vm.mapOptions" ak="61XBb7uTsawT6CzfrUg6KZ8v9EKuEYaC" style="width: 100%;height: 670px;display: block;" id="allmap")
+    .panel-footer
+        p
+            small 如发现数据不合理之处，请联系
+                a(href="http://www.cszhjt.com") {{ app.name }}

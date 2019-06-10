@@ -1,0 +1,10 @@
+//
+   Created by huang on 2017/1/5.
+.modal-header
+    button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+    h4.modal-title 删除 {{:: selectOperator.operator_name }}
+.modal-body
+    p.text-bold 你确定要删除该用户吗？
+.modal-footer
+    button.btn.btn-default(type="button",ng-click="vm.cancel()",data-dismiss="modal") 取消
+    button.btn.btn-danger(type="button",ng-click="vm.deleteOperatorConfirm()",data-dismiss="modal") 确认

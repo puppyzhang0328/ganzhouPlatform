@@ -1,0 +1,51 @@
+.panel(ng-controller='BusTypeCtr as vm')
+    .panel-heading.text-bold 停车场性质信息表
+    .panel-body.newPanel
+        .selectedBox.row
+            .item-content.divBox.col-md-2(id="region")
+                ui-select(ng-model="vm.BusTypeAsync.selected" theme="bootstrap" on-select="vm.onSelectCallbackBusType($item)"  title="请选择停车场性质")
+                    ui-select-match(placeholder="请选择停车场性质") {{$select.selected.name || $select.selected}}
+                    ui-select-choices(repeat="business.genrename as business in vm.BusTypeAsync | propsFilter: {genrename: $select.search,genrecode:$select.search}")
+                        div(ng-bind-html="business.name")
+                        small
+                            | 类型代码：
+                            span(ng-bind-html="'' + business.genrecode | highlight: $select.search")
+            .item-content.divBox.col-md-2
+                button.btn.btn-primary.btn-sm(type="button" ng-click="vm.readRecords(0)") 搜索
+                button.btn.btn-sm.btn-danger(type="button" ng-click="vm.clearAndRefresh()" ng-disabled="vm.BusTypeAsync.selected == null") 重置
+        table.row-bordered.hover.table-striped.table-responsive(datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs")
+            thead
+                tr
+                    th 序列号
+                    th 类型代码
+                    th 类型名称
+                    th 编辑
+            tbody
+                tr(ng-repeat="bustype in vm.bustype track by bustype.id")
+                    td {{:: bustype.number }}
+                    td {{:: bustype.genrecode }}
+                    td {{:: bustype.genrename }}
+                    td
+                        button.btn.btn-sm.btn-warning(type='button', ng-click='vm.modifyBusType(bustype)') 修改
+                            em.fa.fa-edit
+                        button.btn.btn-sm.btn-danger(type='button', ng-click='vm.deleteBusType(bustype)') 删除
+                            em.fa.fa-trash-o
+        .ui-grid-next
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.readRecords(0)" id="firstPageBtn") 首页
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.readRecords(1)" id="previousPageBtn") 上一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.readRecords(2)" id="nextPageBtn") 下一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.readRecords(3)" id="lastPageBtn") 末页
+    .panel-footer
+        button.btn.btn-labeled.btn-primary(type='submit' ng-click="vm.addBusType()")
+            span.btn-label
+                em.fa.fa-plus
+            | 停车场性质信息录入
+    script(type="text/ng-template" id="deleteBusType.html")
+        .modal-header
+            button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+            h4.modal-title 删除?
+        .modal-body
+            p.text-bold 你确定要删除该停车场性质信息吗？
+        .modal-footer
+            button.btn.btn-default(type="button",ng-click="vm.cancel()",data-dismiss="modal") 取消
+            button.btn.btn-danger(type="button",ng-click="vm.deleteBusType()",data-dismiss="modal") 确认

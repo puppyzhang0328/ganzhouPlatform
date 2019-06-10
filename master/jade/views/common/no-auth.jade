@@ -1,0 +1,9 @@
+.modal-header
+    button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+    h4.modal-title
+        i.icon.icon-lock 权限不足
+.modal-body
+    h3 当前登录用户没有操作该模块的权限！
+.modal-footer
+    button.btn.btn-danger(type="button" ng-click="vm.cancel()") 确认
+    button.btn.btn-primary(type="button" ng-click='vm.backToHome()') 回到主页

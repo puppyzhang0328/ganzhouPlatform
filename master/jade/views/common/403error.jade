@@ -1,0 +1,39 @@
+//
+   Created by huang on 2017/4/1.
+.well
+    .h3.mv-sm
+        ul.breadcrumb.pull-right.bg-transparent
+            li
+                a(ui-sref='app.welcome') 主页
+            li(ng-repeat='state in $state.$current.path', ng-switch='$last', ng-if="!state.abstract", ng-class='{active: $last}')
+                a(ng-switch-when='false', href='#{{state.url.format($stateParams)}}') {{state.title}}
+                span(ng-switch-when='true') {{state.title}}
+        | 权限不足
+.panel.panel-danger
+    .panel-heading
+        i.icon.icon-lock 进入失败
+    .panel-body
+        // START panel
+        .text-center.mb-xl
+            .text-lg.mb-lg 没有权限
+            p.lead.m0 对不起，进入失败
+            p 你当前登录的用户似乎没有进入该模块的权限
+
+        .input-group.mb-xl
+            input.form-control(type='text', placeholder="尝试搜索")
+            span.input-group-btn
+                button.btn.btn-default(type='button')
+                    em.fa.fa-search
+
+        ul.list-inline.text-center.text-sm.mb-xl
+            li: a.text-muted(href="", ui-sref="app.welcome") 返回主页
+            li.text-muted |
+            li: a.text-muted(href="", ui-sref="page.login") 返回登录界面
+
+        .p-lg.text-center
+            span &copy;
+            span(ng-bind="app.year")
+            span  -
+            span(ng-bind="app.name")
+            br
+            span(ng-bind="app.description")

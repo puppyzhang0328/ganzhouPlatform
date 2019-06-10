@@ -1,0 +1,11 @@
+.panel(ng-controller="addCardController as vm")
+    .panel-heading.text-bold 新增卡号
+    .panel-body.row
+        form.form-horizontal(style="padding: 130px 130px 0 130px;")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="CardNum") 卡号：
+                .col-md-8
+                    input.form-control(id="CardNum" type="text" placeholder="请输入卡号" ng-model="vm.CardNum")
+    .panel-footer
+        button.btn.btn-primary.pull-right(type="button" ng-click= "vm.addCard()") 确认添加
+        button.btn.btn-danger(type="button" ng-click= "vm.backToPrevious()") 返回上一级菜单

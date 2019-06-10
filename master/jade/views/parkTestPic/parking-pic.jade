@@ -1,0 +1,65 @@
+.panel.panel-primary
+    .panel-heading App上传图片
+    .panel-body
+       form.form-inline(style="margin-bottom:15px")
+           .form-group
+               label(style="color:black") 请选择需要发布的模块:
+               select
+                    option(value="app_start_page" selected="selected") APP启动页图片上传
+                    option(value="app_cover_page") APP轮播图上传
+                    option(value="app_index_page") APP引导页图片上传
+               select(ng-model="owner")
+                   option(value="" selected="selected") 请选择图片所有者
+                   option(value="xxtx") 湘行天下
+                   option(value="ly") 浏阳SDK
+               div(style="font-size:16px;padding-top:20px;") App启动图片上传
+           hr
+
+
+        div
+            div
+                fieldset
+                    .row
+                        .col-md-7
+                            .panel.panel-default
+                                .panel-heading 图片上传
+                                .panel-body
+                                    div
+                                        button.btn.btn-default(type="file" ngf-select ng-model="picFile" name="file" ngf-accept="'image/*'"  required ngf-model-invalid="errorFile")
+                                            i.icon.icon-plus  请选择一张图片
+                                            i(ng-show="myForm.file.$error.required") 请选择一张图片
+                                        i(ng-show="myForm.file.$error.required") * 此项必填
+                                    br
+                                    div.up-buttons
+                                        div.drop-box(ngf-select="" ngf-drop="" ng-model="picFile" ngf-model-invalid="invalidFiles" ngf-model-options="modelOptionsObj" ngf-multiple="multiple" ngf-pattern="pattern" ngf-accept="acceptSelect" ng-disabled="disabled" ngf-capture="capture" ngf-drag-over-class="dragOverClassObj" ngf-validate="validateObj" ngf-resize="resizeObj" ngf-resize-if="resizeIfFn($file, $width, $height)" ngf-dimensions="dimensionsFn($file, $width, $height)" ngf-duration="durationFn($file, $duration)" ngf-keep="keepDistinct ? 'distinct' : keep" ngf-fix-orientation="orientation" ngf-max-files="maxFiles" ngf-ignore-invalid="ignoreInvalid" ngf-run-all-validations="runAllValidations" ngf-allow-dir="allowDir" ngf-drop-available="dropAvailable") 点击选择
+                                            span(ng-show="dropAvailable") 或拖拽一张图片
+                                    br
+                                    br
+                                    //- img.thumb(ng-show="myForm.file.$valid" ngf-thumbnail="picFile")
+                                    i(ng-show="myForm.file.$error.maxSize") 文件过大{{errorFile.size / 1000000|number:1}}MB: max 3MB
+                                    //- button.btn.btn-danger(ng-click="picFile = null" ng-show="picFile") 移除
+                                    br
+
+                                    div(style="padding:10px")
+                                        div
+                                            button.btn.btn-success( ng-click="uploadStartupPic(picFile)")
+                                                i.icon.icon-cloud-upload 开始上传
+                                            button.btn.btn-warning()
+                                                i.fa.fa-stop 暂停上传
+                                            button.btn.btn-danger(ng-click="picFile = null" )
+                                                i.fa.fa-remove 移除已选择图片
+                                    br
+                                    div.progress(ng-show="picFile.progress >= 0" style="width:500px;")
+                                        div.progress-bar.progress-bar-striped.progress-bar-info.active(style="width:{{picFile.progress}}%" ng-bind="picFile.progress + '%'" role="progressbar")
+                                    p.text-primary(ng-show="picFile.result") 上传成功!!!
+                                    p.err(ng-show="errorMsg") {{errorMsg}}
+                        .col-md-5
+                            .panel.panel-dark(style="width:100%;height:auto;")
+                                .panel-heading 图片预览
+                                .panel-body
+                                    img.thumbnail.img-responsive(ngf-src="picFile"  ngf-no-object-url="true")
+
+    .panel-footer
+        p
+            small 如发现数据不合理之处，请联系
+                a(href="www.cszhjt.com") {{ app.name }}

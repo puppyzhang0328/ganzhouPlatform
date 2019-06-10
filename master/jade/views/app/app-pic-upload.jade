@@ -1,0 +1,188 @@
+.panel.panel-default.container-fluid(ng-controller="AdSettingController")
+    .panel-heading APP图片上传：
+    div(style="padding: 20px;border: none;") 请选择需要发布的模块：
+        select(ng-model="mySelectVal")
+            option(value="app_start_page" selected="selected") APP启动页图片上传
+            option(value="app_cover_page") APP轮播图上传
+            option(value="app_index_page") APP引导页图片上传
+            option(value="wechat_page_page") 微信公众号广告图片上传
+        select(ng-model="owner")
+            option(value="" selected="selected") 请选择图片所有者
+            option(value="xxtx") 湘行天下
+            option(value="ly") 浏阳SDK
+    .panel-body(ng-switch="mySelectVal")
+        div(ng-switch-when="app_start_page")
+            fieldset
+                legend APP启动页图片上传
+                .row
+                    .col-md-7
+                        .panel.panel-default
+                            .panel-heading
+                            .panel-body
+                                div
+                                    button.btn.btn-default(type="file" ngf-select ng-model="picFile" name="file" ngf-accept="'image/*'"  required ngf-model-invalid="errorFile")
+                                        i.icon.icon-plus  请选择一张图片
+                                        i(ng-show="myForm.file.$error.required") 请选择一张图片
+                                    i(ng-show="myForm.file.$error.required") * 此项必填
+                                br
+                                div.up-buttons
+                                    div.drop-box(ngf-select="" ngf-drop="" ng-model="picFile" ngf-model-invalid="invalidFiles" ngf-model-options="modelOptionsObj" ngf-multiple="multiple" ngf-pattern="pattern" ngf-accept="acceptSelect" ng-disabled="disabled" ngf-capture="capture" ngf-drag-over-class="dragOverClassObj" ngf-validate="validateObj" ngf-resize="resizeObj" ngf-resize-if="resizeIfFn($file, $width, $height)" ngf-dimensions="dimensionsFn($file, $width, $height)" ngf-duration="durationFn($file, $duration)" ngf-keep="keepDistinct ? 'distinct' : keep" ngf-fix-orientation="orientation" ngf-max-files="maxFiles" ngf-ignore-invalid="ignoreInvalid" ngf-run-all-validations="runAllValidations" ngf-allow-dir="allowDir" ngf-drop-available="dropAvailable") 点击选择
+                                        span(ng-show="dropAvailable") 或拖拽一张图片
+                                br
+                                br
+                                //- img.thumb(ng-show="myForm.file.$valid" ngf-thumbnail="picFile")
+                                i(ng-show="myForm.file.$error.maxSize") 文件过大{{errorFile.size / 1000000|number:1}}MB: max 3MB
+                                //- button.btn.btn-danger(ng-click="picFile = null" ng-show="picFile") 移除
+                                br
+
+                                div(style="padding:10px")
+                                    div
+                                        button.btn.btn-success( ng-click="uploadStartupPic(picFile)")
+                                            i.icon.icon-cloud-upload 开始上传
+                                        button.btn.btn-warning()
+                                            i.fa.fa-stop 暂停上传
+                                        button.btn.btn-danger(ng-click="picFile = null" )
+                                            i.fa.fa-remove 移除已选择图片
+                                br
+                                div.progress(ng-show="picFile.progress >= 0" style="width:500px;")
+                                    div.progress-bar.progress-bar-striped.progress-bar-info.active(style="width:{{picFile.progress}}%" ng-bind="picFile.progress + '%'" role="progressbar")
+                                p.text-primary(ng-show="picFile.result") 上传成功!!!
+                                p.err(ng-show="errorMsg") {{errorMsg}}
+                    .col-md-5
+                        .panel.panel-dark(style="width:100%;height:auto;")
+                            .panel-heading 图片预览
+                            .panel-body
+                                img.thumbnail.img-responsive(ngf-src="picFile"  ngf-no-object-url="true")
+        div(ng-switch-when="app_cover_page" ng-controller="AdSettingController")
+            fieldset
+                legend APP轮播图片上传
+                .row
+                    .col-md-7
+                        .panel.panel-default.container-fluid
+                            .panel-heading
+                            .panel-body
+                                form.form-horizontal(name='uploadCoverPageForm')
+                                    fieldset
+                                        legend
+                                            div.form-group
+                                                label.col-md-2.control-label(for="ad_index") 编号
+                                                div.col-md-6
+                                                    input.form-control(type="text" id="ad_index" ng-model="ad_index")
+                                                span.help-block(style="font-size:10px;color:grey;") *广告图片编号格式为数字，如1,2,3,4……
+                                    fieldset
+                                        legend
+                                            div.form-group
+                                                label.col-md-2.control-label(for="ad_pic") 选择文件
+                                                div.col-md-6
+                                                    input.filestyle.form-control(type="file"  id="ad_pic" ngf-select  name="file" ng-model="ad_pic" ngf-accept="'image/*'"  data-buttonName="btn-primary" data-button-text="请选择要上传的广告图片" required)
+                                                div.col-md-4
+                                                    div.drop-box(ngf-select="" ngf-drop="" ng-model="ad_pic" ngf-model-invalid="invalidFiles" ngf-model-options="modelOptionsObj" ngf-multiple="multiple" ngf-pattern="pattern" ngf-accept="acceptSelect" ng-disabled="disabled" ngf-capture="capture" ngf-drag-over-class="dragOverClassObj" ngf-validate="validateObj" ngf-resize="resizeObj" ngf-resize-if="resizeIfFn($file, $width, $height)" ngf-dimensions="dimensionsFn($file, $width, $height)" ngf-duration="durationFn($file, $duration)" ngf-keep="keepDistinct ? 'distinct' : keep" ngf-fix-orientation="orientation" ngf-max-files="maxFiles" ngf-ignore-invalid="ignoreInvalid" ngf-run-all-validations="runAllValidations" ngf-allow-dir="allowDir" ngf-drop-available="dropAvailable") 点击选择
+                                                        span(ng-show="dropAvailable") 或拖拽一张图片
+                                    div(style="padding:10px")
+                                        div
+                                            button.btn.btn-success(ng-click="uploadCoverPic(ad_pic)")
+                                                i.icon.icon-cloud-upload 开始上传
+                                            button.btn.btn-warning()
+                                                i.fa.fa-stop 暂停上传
+                                            button.btn.btn-danger(ng-click="ad_pic = null")
+                                                i.fa.fa-remove 移除图片
+                                    div
+                                        div.progress.col-md-12(ng-show="ad_pic.progress >= 0")
+                                            div.progress-bar.progress-bar-striped.progress-bar-info.active(style="width:{{ad_pic.progress}}%" ng-bind="ad_pic.progress + '%'" role="progressbar")
+                                        p.text-primary(ng-show="ad_pic.result") 上传成功!!!
+                                        p.err(ng-show="errorMsg") {{errorMsg}}
+                    .col-md-5
+                        .panel.panel-dark(style="width:100%;height:auto;")
+                            .panel-heading 图片预览
+                            .panel-body
+                                img.thumbnail.img-responsive(ngf-src="ad_pic"  ngf-no-object-url="true")
+        div(ng-switch-when="app_index_page" ng-controller="AdSettingController")
+            fieldset
+                legend APP引导页图片上传
+                .row
+                    .col-md-7
+                        .panel.panel-default.container-fluid
+                            .panel-heading
+                            .panel-body
+                                form.form-horizontal(name='uploadCoverPageForm')
+                                    fieldset
+                                        legend
+                                            div.form-group
+                                                label.col-md-2.control-label(for="car_pic_index") 编号
+                                                div.col-md-6
+                                                    input.form-control(type="text" id="car_pic_index" ng-model="car_pic_index")
+                                                span.help-block(style="font-size:10px;color:grey;") *广告图片编号格式为数字，如1,2,3,4……
+                                    fieldset
+                                        legend
+                                            div.form-group
+                                                label.col-md-2.control-label(for="ad_pic") 选择文件
+                                                div.col-md-6
+                                                    input.filestyle.form-control(type="file"  id="car_pic" ngf-select  name="file" ng-model="car_pic" ngf-accept="'*/*'"  data-buttonName="btn-primary" data-button-text="请选择要上传的广告图片" required)
+                                                div.col-md-4
+                                                    div.drop-box(ngf-select="" ngf-drop="" ng-model="car_pic" ngf-model-invalid="invalidFiles" ngf-model-options="modelOptionsObj" ngf-multiple="multiple" ngf-pattern="pattern" ngf-accept="acceptSelect" ng-disabled="disabled" ngf-capture="capture" ngf-drag-over-class="dragOverClassObj" ngf-validate="validateObj" ngf-resize="resizeObj" ngf-resize-if="resizeIfFn($file, $width, $height)" ngf-dimensions="dimensionsFn($file, $width, $height)" ngf-duration="durationFn($file, $duration)" ngf-keep="keepDistinct ? 'distinct' : keep" ngf-fix-orientation="orientation" ngf-max-files="maxFiles" ngf-ignore-invalid="ignoreInvalid" ngf-run-all-validations="runAllValidations" ngf-allow-dir="allowDir" ngf-drop-available="dropAvailable") 点击选择
+                                                        span(ng-show="dropAvailable") 或拖拽一张图片
+                                    div(style="padding:10px")
+                                        div
+                                            button.btn.btn-success(ng-click="uploadIndexPic(car_pic)")
+                                                i.icon.icon-cloud-upload 开始上传
+                                            button.btn.btn-warning()
+                                                i.fa.fa-stop 暂停上传
+                                            button.btn.btn-danger(ng-click="car_pic = null")
+                                                i.fa.fa-remove 移除图片
+                                    div
+                                        div.progress.col-md-12(ng-show="car_pic.progress >= 0")
+                                            div.progress-bar.progress-bar-striped.progress-bar-info.active(style="width:{{car_pic.progress}}%" ng-bind="car_pic.progress + '%'" role="progressbar")
+                                        p.text-primary(ng-show="car_pic.result") 上传成功!!!
+                                        p.err(ng-show="errorMsg") {{errorMsg}}
+                    .col-md-5
+                        .panel.panel-dark(style="width:100%;height:auto;")
+                            .panel-heading 图片预览
+                            .panel-body
+                                img.thumbnail.img-responsive(ngf-src="car_pic"  ngf-no-object-url="true")
+        div(ng-switch-when="wechat_page_page" ng-controller="AdSettingController")
+            fieldset
+                legend 微信公众号广告图片上传
+                .row
+                    .col-md-7
+                        .panel.panel-default.container-fluid
+                            .panel-heading
+                            .panel-body
+                                form.form-horizontal(name='uploadCoverPageForm')
+                                    fieldset
+                                        legend
+                                            div.form-group
+                                                label.col-md-2.control-label(for="wechat_page_index") 编号
+                                                div.col-md-6
+                                                    input.form-control(type="text" id="wechat_page_index" ng-model="wechat_page_index")
+                                                span.help-block(style="font-size:10px;color:grey;") *广告图片编号格式为数字，如1,2,3,4……
+                                    fieldset
+                                        legend
+                                            div.form-group
+                                                label.col-md-2.control-label(for="wechat_page_pic") 选择文件
+                                                div.col-md-6
+                                                    input.filestyle.form-control(type="file"  id="wechat_page_pic" ngf-select  name="file" ng-model="wechat_page_pic" ngf-accept="'*/*'"  data-buttonName="btn-primary" data-button-text="请选择要上传的广告图片" required)
+                                                div.col-md-4
+                                                    div.drop-box(ngf-select="" ngf-drop="" ng-model="wechat_page_pic" ngf-model-invalid="invalidFiles" ngf-model-options="modelOptionsObj" ngf-multiple="multiple" ngf-pattern="pattern" ngf-accept="acceptSelect" ng-disabled="disabled" ngf-capture="capture" ngf-drag-over-class="dragOverClassObj" ngf-validate="validateObj" ngf-resize="resizeObj" ngf-resize-if="resizeIfFn($file, $width, $height)" ngf-dimensions="dimensionsFn($file, $width, $height)" ngf-duration="durationFn($file, $duration)" ngf-keep="keepDistinct ? 'distinct' : keep" ngf-fix-orientation="orientation" ngf-max-files="maxFiles" ngf-ignore-invalid="ignoreInvalid" ngf-run-all-validations="runAllValidations" ngf-allow-dir="allowDir" ngf-drop-available="dropAvailable") 点击选择
+                                                        span(ng-show="dropAvailable") 或拖拽一张图片
+                                    div(style="padding:10px")
+                                        div
+                                            button.btn.btn-success(ng-click="uploadwechatPic(wechat_page_pic)")
+                                                i.icon.icon-cloud-upload 开始上传
+                                            button.btn.btn-warning()
+                                                i.fa.fa-stop 暂停上传
+                                            button.btn.btn-danger(ng-click="wechat_page_pic = null")
+                                                i.fa.fa-remove 移除图片
+                                    div
+                                        div.progress.col-md-12(ng-show="wechat_page_pic.progress >= 0")
+                                            div.progress-bar.progress-bar-striped.progress-bar-info.active(style="width:{{wechat_page_pic.progress}}%" ng-bind="wechat_page_pic.progress + '%'" role="progressbar")
+                                        p.text-primary(ng-show="wechat_page_pic.result") 上传成功!!!
+                                        p.err(ng-show="errorMsg") {{errorMsg}}
+                    .col-md-5
+                        .panel.panel-dark(style="width:100%;height:auto;")
+                            .panel-heading 图片预览
+                            .panel-body
+                                img.thumbnail.img-responsive(ngf-src="wechat_page_pic"  ngf-no-object-url="true")
+    .panel-footer
+        p
+            small 如发现数据不合理之处，请联系
+                a(href="www.cszhjt.com") {{ app.name }}

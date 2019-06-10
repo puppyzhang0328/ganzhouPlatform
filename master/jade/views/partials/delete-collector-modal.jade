@@ -1,0 +1,8 @@
+.modal-header
+    button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+    h4.modal-title 删除 {{vm.username }}
+.modal-body
+    p.text-bold 你确定要离职该用户吗？
+.modal-footer
+    button.btn.btn-default(type="button",ng-click="vm.cancel()",data-dismiss="modal") 取消
+    button.btn.btn-danger(type="button",ng-click="vm.deleteCollectorConfirm()",data-dismiss="modal") 确认

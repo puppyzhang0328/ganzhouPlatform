@@ -1,0 +1,29 @@
+//
+   Created by huang on 2016/12/23.
+.modal-header
+    button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+    h4.modal-title 查看停车场入口坐标
+.modal-body
+    table.table.table-striped
+        thead
+            th 出口编号
+            th 出口名称
+            th 经度
+            th 纬度
+            th 是否默认出口
+            th 操作
+        tbody(ng-repeat="gate in vm.parkgate track by gate.gateid")
+            tr(role="row")
+                th(scope="row") {{:: gate.gateid }}
+                td {{:: gate.gatename }}
+                td {{:: gate.longitude }}
+                td {{:: gate.latitude }}
+                td {{:: gate.isdefault }}
+                td
+                    button.btn.btn-sm.btn-warning(type='button', ng-click='vm.modifyParkGate(gate)') 修改
+                        em.fa.fa-edit
+                    button.btn.btn-sm.btn-danger(type='button', ng-click='vm.deleteParkGate(gate)') 删除
+                        em.fa.fa-trash-o
+.modal-footer
+    button.btn.btn-default.pull-left(type="button" ng-click="vm.addParkGate()") 新增停车场入口
+    button.btn.btn-primary.pull-right(type="button" ng-click="vm.cancel()") 确定

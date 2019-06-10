@@ -1,0 +1,17 @@
+[
+  {
+    "text": "Menu Heading",
+    "heading": "true",
+    "translate": "sidebar.heading.HEADER"
+  },
+  {
+    "text":"诱导屏设置",
+    "icon":"fa fa-home",
+    "sref": "app.inducement"
+  },
+  {
+    "text":"诱导屏卡设置",
+    "icon":"fa fa-home",
+    "sref": "app.induCard"
+  }
+]

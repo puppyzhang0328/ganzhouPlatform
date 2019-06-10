@@ -1,0 +1,39 @@
+.panel.container-fluid(ng-controller="AddParkActionController as vm")
+    .panel-heading.text-bold 配置停车场功能
+    .panel-body
+        div
+            label.control-label.text-center 停车场：
+            div.item-content(style="min-width:200px;vertical-align:middle;display: inline-block;")
+                ui-select(ng-model="vm.parkAsync.selected" theme="bootstrap" on-select="vm.onSelectCallbackPark($item)" title="请选择停车场")
+                    ui-select-match(placeholder="请选择停车场") {{$select.selected.name || $select.selected}}
+                    ui-select-choices(repeat="park.name as park in vm.parkAsync | propsFilter: {name: $select.search}")
+                        div(ng-bind-html="park.name")
+        div.content-main
+            form(enctype="multipart/form-data"  method="post" id="user_form"  novalidate)
+                fieldset.module.aligned
+                    div.form-row.field-user_permissions
+                        label(for="id_user_parkings") 停车场功能:
+                        div.related-widget-wrapper(id="id_user_parkings")
+                            div.selector
+                                div.selector-available
+                                    h2 可选功能
+                                        span.help.help-tooltip.help-icon(title="这是可分配的停车场列表。你可以在选择框下面进行选择，然后点击两选框之间的“选择”箭头。")
+                                    p.selector-filter(id="id_user_parkings_filter")
+                                        label(for="id_user_parkings_input")
+                                            span.help-tooltip.search-label-icon(title="在此框中键入以过滤可用的停车场列表" )
+                                        input(type="text" placeholder="过滤" id="id_user_parkings_input" ng-model="vm.parkSearchText" )
+                                    select.filtered(multiple="multiple" id="id_user_parking_from"  name="parking_lots"  ng-model="vm.ParkSelectedAvailItems" ng-options="i as i.name for i in vm.ParkAvailableListItems | orderBy:'name' | filter: vm.parkSearchText")
+                                    a.selector-chooseall.active(title="点击选择全部组"  id="id_user_parkings_add_all_link" ng-click="vm.ParkBtnAllRight()") 全选
+                                ul.selector-chooser
+                                    li
+                                        a.selector-add.active(title="选择" id="id_user_parkings_add_link" ng-click="vm.ParkBtnRight()")
+                                        a.selector-remove.active(title="删除" id="id_user_parkings_remove_link" ng-click="vm.ParkBtnLeft()")
+                                div.selector-chosen
+                                    h2 已选功能
+                                        span.help.help-icon.help-tooltip(title="这是选中组的列表。你可以在选择框下面进行选择，然后点击两选框之间的的删除箭头进行删除")
+                                    select.filtered(id="id_user_parkings_to" multiple="multiple" name="user_parking"  ng-model="vm.ParkSelectedSelectedListItems" ng-options="i as i.name for i  in vm.ParkSelectedListItems | orderBy:'name'")
+                                    a.selector-clearall.active(title="全部移除" ng-click="vm.ParkBtnAllLeft()") 全部移除
+                        p.help 停车场所拥有的平台功能。一个停车场将得到其归属的组的所有停车场功能。 按住 ”Control“，或者Mac上的 “Command”，可以选择多个。
+    .panel-footer
+        button.btn.btn-primary.pull-right(type="button" ng-click= "vm.addParkAction()") 确认添加
+        button.btn.btn-danger(type="button" ng-click= "vm.backToPrevious()") 返回上一级菜单

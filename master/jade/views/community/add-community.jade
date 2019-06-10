@@ -1,0 +1,26 @@
+.panel(ng-controller="AddCommunityCtr as vm")
+    .panel-heading.text-bold 新增社区
+    .panel-body.row
+        form.form-horizontal(style="padding: 130px 130px 0 130px;")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="code") 社区代码：
+                .col-md-8
+                    input.form-control(id="code" type="text" placeholder="请输入社区代码" ng-model="vm.community.code")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="name") 社区名称：
+                .col-md-8
+                    input.form-control(id="name" type="text" placeholder="请输入社区名称" ng-model="vm.community.name")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="police") 所属于警局：
+                div.limit-width.col-md-8(id="police")
+                    div.item-content
+                        ui-select(ng-model="vm.policeAsync.selected" theme="bootstrap" on-select="vm.onSelectCallbackPolice($item)" title="请选择警局")
+                            ui-select-match(placeholder="请选择警局") {{$select.selected.name || $select.selected}}
+                            ui-select-choices(repeat="police.name as police in vm.policeAsync | propsFilter: {name: $select.search}")
+                                div(ng-bind-html="police.name")
+                                small
+                                    | 警局名称：
+                                    span(ng-bind-html="'' + police.name")
+    .panel-footer
+        button.btn.btn-primary.pull-right(type="button" ng-click= "vm.addCommunity()") 确认添加
+        button.btn.btn-danger(type="button" ng-click= "vm.backToPrevious()") 返回上一级菜单

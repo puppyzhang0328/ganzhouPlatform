@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=61XBb7uTsawT6CzfrUg6KZ8v9EKuEYaC"></script>
+    <script type="text/javascript" src="js/zepto.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+</head>
+<style>
+    .menu-text {
+        color: black;
+        font-weight: bold;
+    }
+    .baidu-maps label {
+        max-width: none;
+    }
+    body, html
+    {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        margin: 0;
+    }
+    #allmap
+    {
+        margin-right: 0px;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+    ul li {
+        margin-left: 50px;
+    }
+    .BMap_Marker>div{
+        height:40px !important;
+        width:40px !important;
+    }
+    img{
+        width: 30px;
+    }
+    .BMapLabel{
+        left:5px !important;
+        top:5px !important;
+        background-color:transparent !important;
+    }
+</style>
+
+<body style="height: 100%; margin: 0">
+<form id="form1" runat="server">
+    <input type="hidden" id="hdCityName" runat="server" />
+</form>
+<div style="width: 100%; height: 100%;">
+    <div id="allmap" style="width: 100%; height: 100%; float: left;" class="baidu-maps">
+    </div>
+</div>
+</div>
+</body>
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");    // 创建Map实例
+
+    map.centerAndZoom(new BMap.Point(112.985002, 28.199722), 18);  // 初始化地图,设置中心点坐标和地图级别
+    map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+</script>
+<script>
+    $(function () {
+        window.start_index = 0;
+        window.parking=[];
+        window.t1 = window.setInterval("initMarker('')",200);
+    })
+    //单击单个苗圃事件
+    function LoadPartial(id, systemid) {
+        initMarker(id);
+    }
+    //加载标注点
+    function initMarker() {
+        $.ajax({
+            type: "Get",
+            url: "http://120.24.249.69/parkhero/v0.1/parking/parking_lots/",
+            dataType: "json",
+            async: false,
+            data: {
+                "city_code": 158,
+                "max_results":100,
+                "start_index":window.start_index,
+                pagedirect:1
+            },
+            success: function (data) {
+                if( data.parking_lots.length !== 0){
+                    window.start_index =  data.parking_lots[data.parking_lots.length - 1].id;
+                    for (var i=0; i < data.parking_lots.length; i++) {
+                        window.parking.push(data.parking_lots[i] );
+                    }
+                    console.log(window.parking);
+                }else{
+                    queryMarker("");
+                    window.clearInterval(window.t1);
+                }
+            },
+            error: function (error) {
+                alert("加载失败，请检查网络或其他原因");
+            }
+        });
+    }
+    function queryMarker(id) {
+        var i = 0;
+        var points = [];
+        map.clearOverlays();
+        for(var i=0;i<window.parking.length;i++) {
+            if (window.parking[i].parkgate.length > 0) {
+                var pt = new BMap.Point(window.parking[i].parkgate[0].longitude, window.parking[i].parkgate[0].latitude);
+                var ab = window.parking[i].parking_space_available / window.parking[i].parking_space_total;
+                var greenIcon = new BMap.Icon("img/ic_close_green.png", new BMap.Size(30, 30));
+                var yellowIcon = new BMap.Icon("img/ic_close_yellow.png", new BMap.Size(30, 30));
+                var redIcon = new BMap.Icon("img/ic_close_red.png", new BMap.Size(30, 30));
+                var d = ab.toFixed(2);
+                var c = Math.abs(Number(d) * 100);
+                points[i] = pt;
+                if (10 >= c && c >= 0) {
+                    marker = new BMap.Marker(pt, {icon: redIcon});
+                } else if (30 >= c && c > 10) {
+                    marker = new BMap.Marker(pt, {icon: yellowIcon});
+                } else if (100 >= c && c > 30) {
+                    marker = new BMap.Marker(pt, {icon: greenIcon});
+                }
+                map.addOverlay(marker);
+                var label = new BMap.Label(window.parking[i].parking_space_available, {offset: new BMap.Size(30, -10)});
+                marker.setLabel(label);
+                label.setStyle({
+                    color: "White",
+                    fontSize: "14px",
+                    border: "0"
+                });
+                //创建信息窗口
+                var opts = {
+                    width: 400,     // 信息窗口宽度
+                    height: 120,     // 信息窗口高度
+                    title: "<strong style=\"font-size:16px;font-weight:bold\">" + window.parking[i].name + "</strong>", // 信息窗口标题
+                    enableMessage: true, //设置允许信息窗发送短息
+                    message: ""
+                }
+                var showInfo = "地址：" + window.parking[i].address + "<br/>剩余车位数：" +window.parking[i].parking_space_available + "<br/>总车位数:" + window.parking[i].parking_space_total;
+                var infoWindow = new BMap.InfoWindow(showInfo, opts);  // 创建信息窗口对象
+                marker.addEventListener("click", function (e) {
+//                                    map.centerAndZoom(new BMap.Point(pt), 14);
+                    map.openInfoWindow(infoWindow,pt); //开启信息窗口
+                });
+                map.addOverlay(marker);
+            }
+        }
+
+        if (id == "") {
+            setTimeout(function () {
+                map.setZoom(14);
+            }, 100);
+        } else {
+            setTimeout(function () {
+                map.setZoom(14);
+            }, 100);  //0.1秒后放大到14级
+        }
+
+    }
+
+
+    //清除覆盖物
+    function cleardd() {
+        for (var i = 0; i < overlays.length; i++) {
+            map.removeOverlay(overlays[i]);
+        }
+        overlays.length = 0;
+    }
+</script>
+</html>

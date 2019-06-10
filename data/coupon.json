@@ -1,0 +1,50 @@
+{
+    "update_time": "2017-07-05T17:29:41.803015",
+    "kind": "parking_lots#nearby",
+    "maxid": 114,
+    "status": 0,
+    "coupon": [
+      {
+        "id":1,
+        "campaign": "002",
+        "campaign_displayname": "003",
+        "denomination":"岳麓区",
+        "num_per_user": "第二医院",
+        "total": "市第二医院",
+        "valid_begintime": "52",
+        "py":"valid_endtime",
+        "coupon_valid_begintime":"1",
+        "coupon_valid_endtime": "52",
+        "isvalid":"valid_endtime",
+        "usemode":"1"
+      },
+      {
+        "id":2,
+        "campaign": "002",
+        "campaign_displayname": "003",
+        "denomination":"岳麓区",
+        "num_per_user": "第二医院",
+        "total": "市第二医院",
+        "valid_begintime": "52",
+        "py":"valid_endtime",
+        "coupon_valid_begintime":"1",
+        "coupon_valid_endtime": "52",
+        "isvalid":"valid_endtime",
+        "usemode":"1"
+      },
+      {
+        "id":3,
+        "campaign": "002",
+        "campaign_displayname": "003",
+        "denomination":"岳麓区",
+        "num_per_user": "第二医院",
+        "total": "市第二医院",
+        "valid_begintime": "52",
+        "py":"valid_endtime",
+        "coupon_valid_begintime":"1",
+        "coupon_valid_endtime": "52",
+        "isvalid":"valid_endtime",
+        "usemode":"1"
+      }
+    ]
+  }

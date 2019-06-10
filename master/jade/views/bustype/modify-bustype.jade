@@ -1,0 +1,19 @@
+.panel.container-fluid(ng-controller="ModifyBusTypeCtr as vm")
+    .panel-heading.text-bold 停车场性质信息表
+    .panel-body.row
+        form.form-horizontal(style="padding: 130px 130px 0 130px;")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="id") 序列号：
+                .col-md-8
+                    input.form-control(id="id" type="text"  ng-model="vm.bustype.id" disabled="disabled")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="genrecode") 类型代码：
+                .col-md-8
+                    input.form-control(id="genrecode" type="text" placeholder="请输入类型代码" ng-model="vm.bustype.genrecode")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="genrename") 类型名称：
+                .col-md-8
+                    input.form-control(id="genrename" type="text" placeholder="请输入类型名称" ng-model="vm.bustype.genrename")
+    .panel-footer
+        button.btn.btn-primary.pull-right(type="button" ng-click= "vm.modifyBusType()") 确认修改
+        button.btn.btn-danger(type="button" ng-click= "vm.backToPrevious()") 返回上一级菜单

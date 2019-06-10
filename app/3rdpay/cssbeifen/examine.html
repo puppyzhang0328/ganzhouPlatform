@@ -1,0 +1,85 @@
+<div ng-controller="examineController as vm" class="panel panel-default container-fluid">
+   <div class="panel-heading text-bold">停车场账单审核</div>
+   <div class="panel-body">
+      <div id="topSearchForm" class="selectedBox row">
+         <div class="form-group form-horizontal col-md-2">
+            <div class="container-fluid">
+               <div class="item-content">
+                  <ui-select ng-init="vm.OrganAsync.selected" ng-model="vm.OrganAsync.selected" theme="bootstrap" on-select="vm.onSelectCallbackOrgan($item)" title="请选择经营单位">
+                     <ui-select-match placeholder="请选择运营单位">{{$select.selected.orgname || $select.selected}}</ui-select-match>
+                     <ui-select-choices repeat="organ.orgname as organ in vm.OrganAsync | propsFilter: {orgname: $select.search}">
+                        <div ng-bind-html="organ.orgname"></div>
+                     </ui-select-choices>
+                  </ui-select>
+               </div>
+            </div>
+         </div>
+         <div class="form-group form-horizontal col-md-2">
+            <item-content class="divBox">
+               <select id="status" ng-model="vm.status" style="width:100%;">
+                  <option value="">请选择账单状态</option>
+                  <option value="0">未发送</option>
+                  <option value="1">待审核</option>
+                  <option value="2">已审核,账明准确</option>
+                  <option value="3">已审核,账明异常</option>
+                  <option value="4">已结算</option>
+               </select>
+            </item-content>
+         </div>
+         <div class="form-group form-horizontal col-md-4">
+            <button ng-click="vm.findBill()" class="btn btn-primary btn-sm">搜索</button>
+            <button ng-click="vm.generateBill()" class="btn btn-success btn-sm">生产账单</button>
+            <button type="button" ng-click="vm.clearAndRefresh()" class="btn btn-sm btn-danger">重置</button>
+         </div>
+      </div>
+      <table datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs" class="row-bordered hover table-striped table-responsive">
+         <thead>
+            <tr>
+               <th>序列</th>
+               <th>账单名称</th>
+               <th>发起者账户名</th>
+               <th>审核者账户名</th>
+               <th>账单状态</th>
+               <th>账单所属组织名称</th>
+               <th>数据结算笔数</th>
+               <th>数据结算金额</th>
+               <th>退款笔数</th>
+               <th>退款金额</th>
+               <th>创建时间</th>
+               <th>操作</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr ng-repeat="examine in vm.examine track by examine.id">
+               <td>{{:: examine.id }}</td>
+               <td>{{:: examine.name }}</td>
+               <td>{{:: examine.initiator_name }}</td>
+               <td>{{:: examine.auditor_name }}</td>
+               <td>{{:: examine.statusName }}</td>
+               <td>{{:: examine.organization_name }}</td>
+               <td>{{:: examine.stroke_count}}</td>
+               <td>{{:: examine.aggregate_amount/100}}</td>
+               <td>{{:: examine.refund_stroke_count }}</td>
+               <td>{{:: examine.refund_amount/100}}</td>
+               <td>{{:: examine.created_time }}</td>
+               <td>
+                  <button type="button" ng-click="vm.jumpPerson(examine)" ng-if="examine.status == 0" class="btn btn-sm btn-info">发起核对</button>
+                  <button ng-if="examine.status == 1" aria-disabled="disabled" class="btn btn-sm btn-info">待核对</button>
+                  <button type="button" ng-click="vm.jumpPerson(examine)" ng-if="examine.status == 2" class="btn btn-sm btn-info">确认结算</button>
+                  <button ng-if="examine.status == 3" aria-disabled="disabled" class="btn btn-sm btn-info">已核对,账目异常</button>
+                  <button ng-if="examine.status == 4" aria-disabled="disabled" class="btn btn-sm btn-info">已结算</button>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+   <div class="panel-footer">
+      <p>
+         <small>如发现数据不合理之处，请联系<a href="www.cszhjt.com">{{ app.name }}</a>
+         </small>
+      </p>
+   </div>
+   <script type="text/ng-template" id="personSelect.html">
+      <div class="modal-header"><button type="button" ng-click="vm.cancel()" data-dismiss="modal" aria-hidden="true" class="close">&times;</button><h4 class="modal-title">选择人员</h4></div><div class="modal-body"><form class="form-horizontal row"><div class="col-md-12"><ui-select ng-model="vm.organName" theme="bootstrap" on-select="vm.onSelectCallbackPerson($item)" title="请选择审核人员"><ui-select-match placeholder="请选择审核人员">{{$select.selected.orgname || $select.selected}}</ui-select-match><ui-select-choices repeat="personAsync.id as personAsync in vm.personAsync | propsFilter: {nick_name: $select.search,organization_name:$select.search}"><div ng-bind-html="personAsync.nick_name"></div><small>所属组织名称：<span ng-bind-html="'' + personAsync.organization_name | highlight: $select.search"></span></small></ui-select-choices></ui-select></div></form><div style="text-align: center;" class="modal-footer"><button type="button" ng-click="vm.putInfo()" data-dismiss="modal" class="btn btn-danger">确认</button></div></div>
+   </script>
+</div>

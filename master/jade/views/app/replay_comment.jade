@@ -1,0 +1,17 @@
+.panel(ng-controller="replayCommentController as vm")
+    .panel-heading 用户反馈
+    .panel-body
+        .relpay-user
+            .replay-advice
+                div 用户：{{vm.advice.user}}
+                div 创建时间：{{vm.advice.created_time}}
+                div 用户建议：{{vm.advice.commentsdata}}
+        .replay-return
+            div(ng-repeat="replay in vm.replay track by replay.comid" ng-class="{true: 'replay-right', false: 'replay-left'}[vm.replay.role]")
+                div {{:: replay.user }} : {{:: replay.commentsdata }}
+        textarea.replay-return(type="text" placeholder="请输入回复内容" ng-model="vm.comments")
+
+    .panel-footer
+        button.btn.btn-primary.pull-right(type="button" ng-click= "vm.replayUser(replay)") 确认回复
+        button.btn.btn-danger(type="button" ng-click= "vm.backToPrevious()") 返回上一级菜单
+

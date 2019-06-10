@@ -1,0 +1,10 @@
+//
+   Created by huang on 2016/12/23.
+.modal-header
+    button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+    h4.modal-title 删除?
+.modal-body
+    p.text-bold 确定要删除该停车场入口吗？
+.modal-footer
+    button.btn.btn-default(type="button",ng-click="vm.cancel()",data-dismiss="modal") 取消
+    button.btn.btn-danger(type="button",ng-click="vm.confirmDeleteGate()",data-dismiss="modal") 确认

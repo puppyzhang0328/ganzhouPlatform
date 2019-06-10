@@ -1,0 +1,33 @@
+//
+   Created by huang on 2016/12/23.
+.modal-header
+    button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+    h4.modal-title 修改停车场入口信息
+.modal-body
+    div.form-group.row
+        label.col-xs-3.col-form-label.text-center(for="mParkgateid") 出入口编号
+        div.col-xs-8
+            input.form-control(type="text" id="mParkgateid" ng-model="vm.currentParkGate.gateid" disabled)
+    div.form-group.row
+        label.col-xs-3.col-form-label.text-center(for="mGatename") 入口名称
+        div.col-xs-8
+            input.form-control(type="text" id="mGatename" ng-model="vm.currentParkGate.gatename")
+    div.form-group.row
+        label.col-xs-3.col-form-label.text-center(for="mIsdefault") 是否默认入口
+        div.col-xs-8
+            select.form-control(id="mIsdefault" ng-model="vm.currentParkGate.isdefault"  ng-options="gate as gate.text for gate in vm.ParkGateItems")
+    div.form-group.row
+        label.col-xs-3.col-form-label.text-center(for="mLongitude") 经度
+        div.col-xs-8
+            input.form-control(type="text" id="mLongitude" ng-model="vm.currentParkGate.longitude")
+    div.form-group.row
+        label.col-xs-3.col-form-label.text-center(for="mLatitude") 纬度
+        div.col-xs-8
+            input.form-control(type="text" id="mLatitude" ng-model="vm.currentParkGate.latitude")
+    div.form-group.row
+        label.col-xs-3.col-form-label.text-center(for="mParklotid") 停车场编号
+        div.col-xs-8
+            input.form-control(type="text" id="mParklotid" ng-model="vm.currentParkGate.currentGateParkId" disabled)
+.modal-footer
+    button.btn.btn-default(type="button",ng-click="vm.cancel()",data-dismiss="modal") 取消
+    button.btn.btn-danger(type="button",ng-click="vm.confirmModifyGate()",data-dismiss="modal") 确认

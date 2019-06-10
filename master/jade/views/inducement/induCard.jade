@@ -1,0 +1,48 @@
+.panel(ng-controller='induCardController as vm')
+    .panel-heading.text-bold 卡信息管理
+    .panel-body
+        .selectedBox.row(id="topSearchForm")
+            .form-horizontal.col-md-2
+                input.form-control(id="CardNum" type="text" placeholder="请输入卡号" ng-model="vm.CardNum")
+            .form-group.form-horizontal.col-md-1
+                item-content.divBox
+                    select( id="IsOnline" ng-model="vm.IsOnline" style="width:100%;")
+                        option(value="") 在线状态
+                        option(value="0") 不在线
+                        option(value="1") 在线
+            .form-group.form-horizontal.col-md-2
+                button.btn.btn-primary.btn-sm(ng-click="vm.queryCard()") 搜索
+                button.btn.btn-sm.btn-danger(type="button" ng-click="vm.clearAndRefresh()") 重置
+        table.row-bordered.hover.table-striped.table-responsive(datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs")
+            thead
+                tr
+                    th 卡id
+                    th 卡号
+                    th 在线状态
+                    th 编辑
+            tbody
+                tr(ng-repeat="card in vm.card track by card.CardId")
+                    td {{:: card.CardId }}
+                    td {{:: card.CardNum }}
+                    td
+                        span(ng-if="card.IsOnline == 0") 不在线
+                        span(ng-if="card.IsOnline == 1") 在线
+                    td
+                        button.btn.btn-sm.btn-warning(type='button', ng-click='vm.modifyCard(card)') 修改
+                            em.fa.fa-edit
+                        button.btn.btn-sm.btn-danger(type='button', ng-click='vm.deleteCard(card)') 删除
+                            em.fa.fa-trash-o
+    .panel-footer
+        button.btn.btn-labeled.btn-primary(type='submit' ng-click="vm.addCard()")
+            span.btn-label
+                em.fa.fa-plus
+            | 卡信息的录入
+    script(type="text/ng-template" id="deleteCard.html")
+        .modal-header
+            button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+            h4.modal-title 删除?
+        .modal-body
+            p.text-bold 你确定要删除该卡信息吗？
+        .modal-footer
+            button.btn.btn-default(type="button",ng-click="vm.cancel()",data-dismiss="modal") 取消
+            button.btn.btn-danger(type="button",ng-click="vm.deleteCard()",data-dismiss="modal") 确认

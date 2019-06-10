@@ -1,0 +1,28 @@
+nav.navbar(role='navigation')
+    //.navbar-header
+    //    a.navbar-brand(href='javascript:void(0);')
+    //        .brand-logo
+    //            img.img-responsive(src="/park/app/img/xny.png", alt="长沙湘行智慧交通科技有限公司" style="width:20%;display:inline-block")
+    //            span(style="font-size:14px;color:#fff;") 湘行天下管理平台
+    //        .brand-logo-collapsed
+    //            img.img-responsive(src="/park/app/img/park-single.png", alt="长沙湘行智慧交通科技有限公司")
+    .nav-wrapper
+        ul.nav.navbar-nav(style="margin-top:10px;")
+            li(style="line-height:60px;padding-left: 20px;")
+                img.img-responsive(src="/park/app/img/xny.png", alt="长沙湘行智慧交通科技有限公司" style="width:60px;display:inline-block")
+                div(style="display:inline-block;vertical-align: middle;")
+                    div(style="font-size:26px;color:#fff;vertical-align: middle;line-height: 34px;") 湘行天下智慧停车信息管理平台
+                    div(style="font-size:15px;color:#fff;vertical-align: middle;line-height: 18px;") XXTX INFORMATION MANAGEMENT PLATEFORM
+        ul.nav.navbar-nav.navbar-right(ng-controller="LogoutController as vm" style="margin-top: 20px;")
+            li
+                a(ui-sref="page.lock",title="锁定屏幕" style="padding:0 10px;")
+                    i.luckUp.backImg
+            li
+                a(href='',toggle-fullscreen data-toggle="tooltip" data-placement="top" title="全屏显示" style="padding:0 10px;")
+                    i.fullScreen.backImg
+            li
+                a(href="" ng-click="app.offsidebarOpen = !app.offsidebarOpen" style="padding:0 10px;")
+                    i.setUp.backImg
+            li
+                a(ng-click="vm.logout()" style="padding:0 10px;")
+                    i.signOut.backImg

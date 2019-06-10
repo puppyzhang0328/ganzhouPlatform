@@ -1,0 +1,69 @@
+//
+   Created by huangxiang on 2016/12/2 0002.
+//
+   Created by Administrator on 2016/11/17 0017.
+.well
+    .h3.mv-sm
+        ul.breadcrumb.pull-right.bg-transparent
+            li
+                a(ui-sref='app.welcome') 主页
+            li(ng-repeat='state in $state.$current.path', ng-switch='$last', ng-if="!state.abstract", ng-class='{active: $last}')
+                a(ng-switch-when='false', href='#{{state.url.format($stateParams)}}') {{state.title}}
+                span(ng-switch-when='true') {{state.title}}
+        | 财务对账
+.panel.panel-dark.container-fluid(ng-controller="ReconciliationController as ctrl")
+    .panel-heading 缴费账单比对
+        button.btn.btn-link(type="button" ng-click="toggleMenu()") 高级搜索 >>
+    .panel-body
+        div.col-lg-12
+            div.ui-grid-25.container-fluid
+                div.record-search-form.record-search-max.limit-width(id="topSearchForm" ng-show="menuState.show")
+                    .form-group.form-horizontal.form-inline
+                        div.container-fluid
+                            label.item-label.text-bold(style="font-size:13px;") 起止日期：
+                            div.item-content
+                                div.dropdown.form-group
+                                    a.dropdown-toggle(id="dropdownStart" role="button" data-toggle="dropdown" )
+                                        div.input-group.date
+                                            input.form-control(type="text" data-ng-model="dateRangeStart" data-date-time-input="YYYY-MM-DD" disabled)
+                                            span.input-group-addon
+                                                i.fa.fa-calendar
+                                    ul.dropdown-menu(role="menu" aria-labelledby="dLabel")
+                                        datetimepicker(data-ng-model="dateRangeStart" data-datetimepicker-config="{dropdownSelector: '#dropdownStart', renderOn: 'end-date-changed'}"
+                                        data-on-set-time="startDateOnSetTime()" data-before-render="startDateBeforeRender($dates)")
+                                span.ui-separator-pd -
+                                div.dropdown.form-group
+                                    a.dropdown-toggle(id="dropdownEnd" role="button" data-toggle="dropdown")
+                                        div.input-group.date
+                                            input.form-control(type="text" data-ng-model="dateRangeEnd" data-date-time-input="YYYY-MM-DD" disabled)
+                                            span.input-group-addon
+                                                i.fa.fa-calendar
+                                    ul.dropdown-menu(role="menu" aria-labelledby="dLabel")
+                                        datetimepicker(data-ng-model="dateRangeEnd" data-datetimepicker-config="{dropdownSelector: '#dropdownEnd', renderOn: 'start-date-changed'}"
+                                        data-on-set-time="endDateOnSetTime()" data-before-render="endDateBeforeRender($view, $dates, $leftDate, $upDate, $rightDate)")
+                            div.quick-link-date.fn-left
+                                span.item-text.fn-left(style="font-size:15px;margin-right:5px;") 最近:
+                                a.item.fn-left.select 1周
+                                a.item.fn-left 1个月
+                                a.item.fn-left 6个月
+                    .form-group.form-horizontal
+                        div.container-fluid
+                            label.item-label.text-bold 选择停车场：
+                            div.item-content
+                                ui-select(ng-model="ctrl.parkingAsync.selected" theme="bootstrap" ng-disable='ctrl.disable' on-select="ctrl.onSelectCallback($item)"  style="width: 300px;" title="请选择停车场")
+                                    ui-select-match(placeholder="请选择要上传的停车场") {{$select.selected.name || $select.selected}}
+                                    ui-select-choices(repeat="parking.name as parking in ctrl.parkingAsync | propsFilter: {name: $select.search, address: $select.search}")
+                                        div(ng-bind-html="parking.name | highlight: $select.search")
+                                        small
+                                            | 停车场地址：
+                                            span(ng-bind-html="'' + parking.address | highlight: $select.search")
+                            p(style="color:red") * 必须选择停车场才能进行查找, 可在输入框直接输入停车场关键字进行查找
+                    .form-group.form-horizontal.row
+                        div.col-xs-3
+                            button.btn.btn-primary.btn-sm(ng-click="SearchBillDetail()") 点击搜索
+        div.col-lg-6
+            .panel.panel-default
+                .panel-heading 平台数据库缴费纪录
+        div.col-lg-6
+            .panel.panel-default
+                .panel-heading 线下数据库缴费纪录

@@ -1,0 +1,45 @@
+.panel(ng-controller='communityCtr as vm')
+    .panel-heading.text-bold 社区信息表
+    .panel-body.newPanel
+        table.row-bordered.hover.table-striped.table-responsive(datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs")
+            thead
+                tr
+                    th 序列号
+                    th 社区代码
+                    th 社区名称
+                    th 所属警局id
+                    th 所属警局代码
+                    th 所属警局名称
+                    th 编辑
+            tbody
+                tr(ng-repeat="community in vm.community track by community.id")
+                    td {{:: community.id }}
+                    td {{:: community.code }}
+                    td {{:: community.name }}
+                    td {{:: community.policeStationid }}
+                    td {{:: community.policeStationCode }}
+                    td {{:: community.policeStationName }}
+                    td
+                        button.btn.btn-sm.btn-warning(type='button', ng-click='vm.modifyCommunity(community)') 修改
+                            em.fa.fa-edit
+                        button.btn.btn-sm.btn-danger(type='button', ng-click='vm.deleteCommunity(community)') 删除
+                            em.fa.fa-trash-o
+        .ui-grid-next
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.readRecords(0)" id="firstPageBtn") 首页
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.readRecords(1)" id="previousPageBtn") 上一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.readRecords(2)" id="nextPageBtn") 下一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.readRecords(3)" id="lastPageBtn") 末页
+    .panel-footer
+        button.btn.btn-labeled.btn-primary(type='submit' ng-click="vm.addCommunity()")
+            span.btn-label
+                em.fa.fa-plus
+            | 社区信息的录入
+    script(type="text/ng-template" id="deleteCommunity.html")
+        .modal-header
+            button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+            h4.modal-title 删除?
+        .modal-body
+            p.text-bold 你确定要删除该停车场性质信息吗？
+        .modal-footer
+            button.btn.btn-default(type="button",ng-click="vm.cancel()",data-dismiss="modal") 取消
+            button.btn.btn-danger(type="button",ng-click="vm.deleteCommunity()",data-dismiss="modal") 确认

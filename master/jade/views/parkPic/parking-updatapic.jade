@@ -1,0 +1,25 @@
+.panel.container-fluid(ng-controller="ParkingPicUploadController as ctrl")
+    .panel-heading.text-bold 停车场图片修改
+    form.form-horizontal(style="margin-top:20px;padding: 100px 0 0 30%;")
+        fieldset
+            .form-group
+                label.col-sm-2.control-label 请选择停车场图片
+                .col-sm-10
+                    button.btn.btn-danger(type="file" ngf-select ng-model="picFile" name="file" ngf-accept="'image/*'"  required ngf-model-invalid="errorFile")
+                        i.icon.icon-plus  请选择一张图片
+                        i(ng-show="myForm.file.$error.required") 请选择一张图片
+                    i(ng-show="myForm.file.$error.required") * 此项必填
+                    div.up-buttons
+                        div.drop-box(ngf-select="" ngf-drop="" ng-model="picFile" ngf-model-invalid="invalidFiles" ngf-model-options="modelOptionsObj" ngf-multiple="multiple" ngf-pattern="pattern" ngf-accept="acceptSelect" ng-disabled="disabled" ngf-capture="capture" ngf-drag-over-class="dragOverClassObj" ngf-validate="validateObj" ngf-resize="resizeObj" ngf-resize-if="resizeIfFn($file, $width, $height)" ngf-dimensions="dimensionsFn($file, $width, $height)" ngf-duration="durationFn($file, $duration)" ngf-keep="keepDistinct ? 'distinct' : keep" ngf-fix-orientation="orientation" ngf-max-files="maxFiles" ngf-ignore-invalid="ignoreInvalid" ngf-run-all-validations="runAllValidations" ngf-allow-dir="allowDir" ngf-drop-available="dropAvailable") 点击选择
+                            span(ng-show="dropAvailable") 或拖拽一张图片
+                    br
+                    img.thumb(ng-show="myForm.file.$valid" ngf-thumbnail="picFile")
+                    //i(ng-show="myForm.file.$error.maxSize") 文件过大{{errorFile.size / 1000000|number:1}}MB: max 3MB
+                    button.btn.btn-danger(ng-click="picFile = null" ng-show="picFile") 移除
+                    br
+        fieldset
+            .form-group
+                button.btn.btn-danger(type="button" ng-click="backToPrevious()") 返回上一级菜单
+                button.btn.btn-primary.block-center.text-bold(ng-click="uploadParkingPic(picFile)") 开始上传
+                span.progress.progress-update(ng-show="picFile.progress >= 0")
+                    div(style="width:{{picFile.progress}}%" ng-bind="picFile.progress + '%'")

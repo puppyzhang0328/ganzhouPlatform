@@ -1,0 +1,41 @@
+{
+    "update_time": "2017-07-05T17:29:41.803015",
+    "kind": "parking_lots#nearby",
+    "maxid": 114,
+    "status": 0,
+    "town": [
+      {
+        "id":1,
+        "code": "002",
+        "pcode": "003",
+        "name":"岳麓区",
+        "region": "第二医院",
+        "fullname": "市第二医院",
+        "pinyin": "52",
+        "py":"13510062771",
+        "level":"1"
+      },
+      {
+        "id":2,
+        "code": "002",
+        "pcode": "003",
+        "name":"岳麓区",
+        "region": "第二医院",
+        "fullname": "170",
+        "pinyin": "52",
+        "py":"13510062771",
+        "level":"3"
+      },
+      {
+        "id":3,
+        "code": "002",
+        "pcode": "003",
+        "name":"岳麓区",
+        "region": "第二医院",
+        "fullname": "170",
+        "pinyin": "52",
+        "py":"13510062771",
+        "level":"3"
+      }
+    ]
+  }

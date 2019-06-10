@@ -1,0 +1,13 @@
+.panel.panel-default(ng-controller='exportController as vm')
+    .panel-heading.text-bold 数据导入
+    .panel-body
+        div.col-md-3
+            input(type="file" id="excel-file")
+        div.col-md-3
+            span 请求地址：
+            input(type="text" id="exportUrl" ng-model="vm.exportUrl")
+    div(style="")
+        p 说明
+        p 本页面数据导入为减少用户的手动数据录入
+
+

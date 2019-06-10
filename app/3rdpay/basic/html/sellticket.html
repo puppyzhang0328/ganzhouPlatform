@@ -1,0 +1,548 @@
+<div class="easyui-layout" data-options="fit:true">
+	<div class="tree-div" data-options="region:'west'" style="width:400px">
+		<div class="easyui-panel" title="出票操作" style="width:400px;height: 800px;background-color: #f6f6f6;">
+			<div style="padding:10px">
+			    <form>
+			    	<table cellpadding="5" style="width: 96%;">
+			    		<tr>
+			    			<td align="right" style="width: 7em;">航线名称:</td>
+			    			<td>
+			    				<select class="easyui-combobox 1" name="language" style="width: 100%;height: 40px;">
+			    					<option value="">徐闻港-海口	</option>
+			    				</select>
+			    			</td>
+			    		</tr>
+			    		<tr>
+			    			<td align="right">始发时间:</td>
+			    			<td><input class="easyui-datetimebox 2" name="birthday"
+    								data-options="required:true,showSeconds:false" value="3/4/2010 2:3" style="height: 40px;width: 100%;">
+			    			</td>
+			    		</tr>
+			    		<tr>
+			    			<td align="right">车辆:</td>
+			    			<td>
+			    				<select class="easyui-combobox 3" name="language" style="width: 20%;height: 40px;">
+			    					<option value="">粤</option>
+			    				</select>
+			    				<input id="car_no" class="easyui-textbox 4" type="text" name="birthday" placeholder="车牌号"
+    								style="height: 40px;width: 30%;" value="A11101">
+			    				<select class="easyui-combobox 5" name="language" style="width: 23%;height: 40px;">
+			    					<option value="">黄色</option>
+			    					<option value="1">红色</option>
+			    					<option value="2">蓝色</option>
+			    				</select>
+			    				<select class="easyui-combobox 6" name="language" style="width: 23%;height: 40px;">
+			    					<option value="">车型</option>
+			    				</select>
+			    			</td>
+			    		</tr>
+			    		<tr>
+			    			<td align="right">车辆尺寸:</td>
+			    			<td>
+			    				<input class="easyui-numberspinner 7" style="height: 40px;width: 32%;" value="1" data-options="increment:1"  placeholder="长"></input>
+			    				<input class="easyui-numberspinner 8" style="height: 40px;width: 32%;" value="1" data-options="increment:1"  placeholder="长"></input>
+			    				<input class="easyui-numberspinner 9" style="height: 40px;width: 33%;" value="1" data-options="increment:1"  placeholder="长"></input>
+			    			</td>
+			    		</tr>
+			    		<tr>
+			    			<td align="right">票型:</td>
+			    			<td>
+			    				<input class="easyui-numberspinner 10" style="height: 40px;width: 24%;" value="2" data-options="increment:0.1"  placeholder="长"></input>
+			    				<input class="easyui-numberspinner 11" style="height: 40px;width: 24%;" value="3" data-options="increment:0.1"  placeholder="长"></input>
+			    				<input class="easyui-numberspinner 12" style="height: 40px;width: 24%;" value="4" data-options="increment:0.1"  placeholder="长"></input>
+			    				<input class="easyui-textbox 13" type="text" name="birthday" placeholder="车牌号"
+    								style="height: 40px;width: 25%;" value="总人数">
+			    			</td>
+			    		</tr>
+			    		<tr>
+			    			<td align="right" style="width: 7em;">支付方式:</td>
+			    			<td>
+			    				<select class="easyui-combobox 14" name="language" style="width: 100%;height: 40px;">
+			    					<option value="">现金</option>
+			    					<option value="1">pos机</option>
+			    					<option value="1">二维码</option>
+			    				</select>
+			    			</td>
+			    		</tr>
+			    		<tr>
+			    			<td align="right">应收金额:</td>
+			    			<td>
+			    				<input class="easyui-textbox 15" type="text" name="name" data-options="required:true" style="height: 40px;width: 100%;"></input>
+			    			</td>
+			    		</tr>
+			    		<tr>
+			    			<td align="right">实收金额:</td>
+			    			<td>
+			    				<input class="easyui-textbox 16" type="text" name="name" data-options="required:true" style="height: 40px;width: 100%;"></input>
+			    			</td>
+			    		</tr>
+			    		<tr>
+			    			<td align="right">找零:</td>
+			    			<td>
+			    				<input class="easyui-textbox 17" type="text" name="name" data-options="required:true" style="height: 40px;width: 100%;"></input>
+			    			</td>
+			    		</tr>
+			    	</table>
+			    </form>
+			    <div style="text-align:center;padding:5px">
+			    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" id="submitForm">查询航班</a>
+			    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-print" id="">出票</a>
+			    	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" onclick="clearForm()">重置</a>
+			    </div>
+		    </div>
+		</div>
+	</div>
+	<!-- 数据表 -->
+	<div class="inner-content" data-options="region:'center'">
+	 	<div class="easyui-panel" style="height: 400px" >
+		 	<table class="easyui-datagrid" title="车辆信息" fit="true" fitColumns="true"
+				url="data/griddata.json" method="get" toolbar="#toolbar" 
+				striped="true" rownumbers="true" pagination="true" remoteSort="false">
+				<thead>
+					<tr>
+						<th field="car_type" width="10" align="center" sortable="true">车辆类型</th>
+						<th field="car_no" width="10" align="center" sortable="true">车牌号</th>
+						<th field="car_weight" width="7" align="center" sortable="true">车重(吨)</th>
+						<th field="car_length" width="7" align="center" sortable="true">车长(米)</th>
+						<th field="car_height" width="7" align="center" sortable="true">车高(米)</th>
+						<th field="goods_type" width="10" align="center" sortable="true">货物类型</th>
+						<th field="is_danger" width="10" align="center" sortable="true">是否危险品</th>
+						<th field="check_result" width="10" align="center" sortable="true">安检结果</th>
+						<th field="explains" width="10" align="center" sortable="true">安检说明</th>
+						<th field="check_time" width="10" align="center" sortable="true">安检时间</th>
+						<th field="check_time" width="9" align="center" sortable="true">操作</th>
+					</tr>
+				</thead>
+			</table>
+			<div class="toolbar" id="toolbar">
+				<div class="search-div">
+					<label>车牌号:</label>
+					<input type="text" class="easyui-textbox"  />
+					<label>是否是危险品：</label>
+					<select class="easyui-combobox" data-options="editable:false">
+						<option value="0">是</option>
+						<option value="1">否</option>
+					</select>
+					<label>是否自定义：</label>
+					<select class="easyui-combobox" data-options="editable:false">
+						<option value="0">是</option>
+						<option value="1">否</option>
+					</select>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
+			   </div>
+			</div>
+		</div>
+		<div class="easyui-panel" style="height: 400px" >
+			<table id="dataGrid" class="easyui-datagrid"  title="售票航班"  fit="true" fitColumns="true" toolbar="#toolbar2" 
+				striped="true" rownumbers="true" pagination="true" remoteSort="false">
+			</table>
+			<div class="toolbar" id="toolbar2">
+				<div class="search-div">
+					<label>航班号:</label>
+					<input type="text" class="easyui-textbox"  />
+					<a href="#" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
+			   </div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="easyui-dialog" title="车辆售票" iconCls="icon-save" modal="true"
+	closed="true" buttons="#dlg-btns" id="dlg-test">
+	<form id="fm" method="post">
+		<div class="fitem">
+			<label>证件类型：</label>
+			<select class="easyui-combobox">
+				<option value="0">身份证</option>
+				<option value="1">驾驶证</option>
+				<option value="2">香港身份证</option>
+				<option value="3">港澳通行证</option>
+				<option value="4">护照</option>
+			</select>
+			<label>人员属性：</label>
+			<select class="easyui-combobox">
+				<option value="1">成人</option>
+				<option value="2">半成人</option>
+				<option value="3">儿童</option>
+				<option value="4">伤残人事</option>
+				<option value="5">军人</option>
+				<option value="6">学生</option>
+			</select>
+			<label>票类型：</label>
+			<select class="easyui-combobox">
+				<option value="1">成人票</option>
+				<option value="2">半票</option>
+				<option value="3">儿童票</option>
+				<option value="4">学生票</option>
+				<option value="5">招待免票</option>
+				<option value="6">小车票</option>
+				<option value="7">客车票</option>
+				<option value="8">货车票</option>
+			</select>
+			<label>身份证号：</label>
+			<input type="text" class="easyui-textbox"  placeholder="请输入身份证号" data-options="required:true"/>
+		</div>
+		<div class="fitem">
+			<label>证件类型：</label>
+			<select class="easyui-combobox">
+				<option value="0">身份证</option>
+				<option value="1">驾驶证</option>
+				<option value="2">香港身份证</option>
+				<option value="3">港澳通行证</option>
+				<option value="4">护照</option>
+			</select>
+			<label>人员属性：</label>
+			<select class="easyui-combobox">
+				<option value="1">成人</option>
+				<option value="2">半成人</option>
+				<option value="3">儿童</option>
+				<option value="4">伤残人事</option>
+				<option value="5">军人</option>
+				<option value="6">学生</option>
+			</select>
+			<label>票类型：</label>
+			<select class="easyui-combobox">
+				<option value="1">成人票</option>
+				<option value="2">半票</option>
+				<option value="3">儿童票</option>
+				<option value="4">学生票</option>
+				<option value="5">招待免票</option>
+				<option value="6">小车票</option>
+				<option value="7">客车票</option>
+				<option value="8">货车票</option>
+			</select>
+			<label>身份证号：</label>
+			<input type="text" class="easyui-textbox"  placeholder="请输入身份证号" data-options="required:true"/>
+		</div>
+		<div class="fitem">
+			<label>实收金额：</label>
+			<input type="text" id="totalMoney" class="easyui-textbox"  data-options="required:true"/>
+			<label>应收金额：</label>
+			<input type="text" class="easyui-textbox"  data-options="required:true"/>
+			<label>找零：</label>
+			<input type="text" class="easyui-textbox"  placeholder="请输入身份证号" data-options="required:true"/>
+		</div>
+	</form>
+</div>
+<!-- /弹出框 -->
+<!-- 弹出框按钮组-->
+<div id="dlg-btns">
+	<a href="#" class="easyui-linkbutton" iconCls="icon-ok" id="saveBtn">购买</a>
+	<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" id="cancelBtn">取消</a>
+</div>
+<!-- /弹出框 按钮组-->
+<script type="text/javascript">
+	$(function() {
+        var url = 'http://120.25.76.96:9088/';
+        $(document).keydown(function (event) {
+            var sequence=event.target.className;
+            sequence=parseInt(sequence);//序列默认是String类型转换为int类型
+            var n;
+            if (event.keyCode == 39) {/* event.keyCode==39判断键盘是按下了左方向键 */
+                sequence=sequence+1;/* 向左序列减一 */
+                n='.'+sequence;/* 拼凑出Jquery的class，例如 '.1' */
+                $(n).focus();/* 将光标移动到相加后对应的class的位置 */
+                return false;
+            }
+            if (event.keyCode == 37) {/* event.keyCode==37判断键盘是按下了右方向键 */
+                sequence=sequence-1;/* 向右序列加一 */
+                n='.'+sequence;
+                $(n).focus();/* 将光标移动到相加后对应的class的位置 */
+                return false;
+            }
+        });
+        //确认订单
+        $("#saveBtn").click(function(e) {
+            var a =  sessionStorage.getItem("orderNo");
+            var b = $('#car_no').val();
+            sureOrder(a,b);
+        });
+		//打开弹出框
+		$("#addBtn, #editBtn").click(function(e) {
+			e.preventDefault();
+			$("#dlg").dialog("open");
+            $("#dlg-test").dialog("open");
+		});
+		//取消订单
+		$("#cancelBtn").click(function(e) {
+			e.preventDefault();
+            unluckOrder();
+		});
+		//查询航班
+        $("#submitForm").click(function(e) {
+            loadData();
+        });
+		loadData();
+		function loadData(){
+		    var a = {
+                "routeCode": "1",
+                "token" : 1435434
+            };
+		    var b = JSON.stringify(a);
+			$('#dataGrid').datagrid({
+				url : 'data/test123.json',
+				fit: true,
+//				url:url+"tickets/schedule_list",
+//				queryParams:b,
+                method:'get',
+				rownumbers:true,
+				pagination : true,
+				singleSelect : true,
+				fitColumns:false,
+				collapsible:true,
+				striped:true,
+				pageSize : 50,
+				remoteSort:false,
+				pageList : [ 10, 20, 30, 40, 50, 100, 200, 300, 400, 500 ],
+				columns : [ [
+					{
+						field : 'scheduleLoadCategory',
+						title : '配载类别',
+						align : 'center'
+					},
+					{
+						field : 'routeName',
+						title : '航线名称',
+						align : 'center'
+					},
+					{
+						field : 'leavePortName',
+						title : '始发港口名称',
+						align : 'center'
+					},
+					{
+						field : 'scheduleRemark',
+						title : '班次备注',
+						align : 'center'
+					},
+					{
+						field : 'shipName',
+						title : '船舶名称',
+						align : 'center'
+					},
+					{
+						field : 'planDepartTime',
+						title : '计划始发时间',
+						align : 'center'
+					},
+					{
+						field : 'surplusPassengerCount',
+						title : '剩余总人数',
+						align : 'center'
+					},
+					{
+						field : 'surplusLength',
+						title : '剩余长度',
+						align : 'center'
+					},
+					{
+						field : 'surplusWeight',
+						title : '剩余重量',
+						align : 'center'
+					},
+					{
+						field : 'surplusIndiPassCount',
+						title : '剩余散客数',
+						align : 'center'
+					},
+//					{
+//						field : 'chanSurplusCarCount',
+//						title : '剩余可售小车数',
+//						align : 'center'
+//					},
+//					{
+//						field : 'chanSurplusCarLength',
+//						title : '剩余可售小车长度',
+//						align : 'center'
+//					},
+//					{
+//						field : 'chanSurplusCoachCount',
+//						title : '剩余可售大中客车数',
+//						align : 'center'
+//					},
+//					{
+//						field : 'chanSurplusTruckCount',
+//						title : '剩余可售货车数',
+//						align : 'center'
+//					},
+//					{
+//						field : 'chanSurplusTruckLength',
+//						title : '剩余可售货车长度（米）',
+//						align : 'center'
+//					},
+//					{
+//						field : 'chanSurplusDangerCount',
+//						title : '剩余可售危险品数',
+//						align : 'center'
+//					},
+//					{
+//						field : 'vehiStowState',
+//						title : '剩余可售危险品车长度（米）',
+//						align : 'center'
+//					},
+					{
+						field : 'action',
+						title : '操作',
+						align : 'center',
+						formatter : function(value, row, index) {
+							console.log(123);
+							return '<a href="javascript:void(0)" class="deleteFun" onclick="deleteFun(this);" >买票</a>';
+					}
+				}] ],
+//				toolbar : '#toolbar',
+				loadFilter:function(data){
+					console.log(data);
+	               var infoData = {
+	               		rows:[],
+	               		total:''
+	               };
+	              infoData.rows = data.data;
+	              infoData.total = data.data.length;
+	              return infoData;
+				},
+				loadsucsss:function(){
+					function deleteFun(a){
+						$("#dlg").dialog("open");
+					}
+				}
+			});
+		}
+		function sureOrder(a,b) {
+		    var orderNo = a;
+			var data = {
+                "orderMobile":"13900000011",
+                "requestType":"1",
+                "scheduleId":74,
+                "scheduleCode":"001",
+                "orderNo":a,
+                "scope":"1",
+                "vehicleCount":1,
+                "passengerCount":2,
+                "pay_method":1,
+                "operCode":"10001",
+                "operId":1,
+                "operator_shift":1,
+                "operName":"小明",
+                "computerMac": "",
+                "vehicles":[{
+                    "car_no":"粤"+b,
+                    "vehiclePassengers":2,
+                    "plateColor":"1",
+                    "is_insurance":0,
+                    "insuranceNo":"保险编号",
+                    "insuranceTypeCode:":"1",
+                    "insuranceMoney":2,
+                    "insuranceCompensateMoney":500000,
+                    "passengerAddr":"湖北省武汉市",
+                    "passengerBirthDay":"1990-09-09",
+                    "passengerGender":"1",
+                    "passengerEmail":"111@qq.com",
+                    "passengerTel": "1368958835",
+                    "passengerName": "张三1",
+                    "passengerIdCard": "4306151999102345711",
+                    "passengerCardType": "1",
+                    "passengers":[
+                        {
+                            "passengerAttribute": "1",
+                            "ticketType":"1",
+                            "passengerTel": "1368958835",
+                            "passengerName": "张三1",
+                            "passengerIdCard": "4306151999102345711",
+                            "passengerCardType": "1",
+                            "is_insurance":0,
+                            "insuranceNo":"保险编号",
+                            "insuranceTypeCode:":"1",
+                            "insuranceMoney":2,
+                            "insuranceCompensateMoney":500000,
+                            "passengerAddr":"湖北省武汉市",
+                            "passengerBirthDay":"1990-09-09",
+                            "passengerGender":"1",
+                            "passengerEmail":"111@qq.com"
+                        },
+                        {
+                            "passengerAttribute": "1",
+                            "ticketType":"1",
+                            "passengerTel": "1368958835",
+                            "passengerName": "张三2",
+                            "passengerIdCard": "4306151999102345711",
+                            "passengerCardType": "1",
+                            "is_insurance":0,
+                            "insuranceNo":"保险编号",
+                            "insuranceTypeCode:":"1",
+                            "insuranceMoney":2,
+                            "insuranceCompensateMoney":500000,
+                            "passengerAddr":"湖北省武汉市",
+                            "passengerBirthDay":"1990-09-09",
+                            "passengerGender":"1",
+                            "passengerEmail":"111@qq.com"
+                        }
+                    ]
+                }],
+                "token":1435434
+            };
+            $.ajax({
+                type:"POST",
+                url:url+'tickets_sell_ticket/sure',
+                async:true,
+                data:JSON.stringify(data),
+                success:function(res){
+                    if(res.status == 0){
+                        alert('车票预定成功');
+                        $("#dlg-test").dialog("close");
+                    }else{
+                        alert(res.detail);
+                    }
+                },
+                error:function(res){
+                    alert('服务器错误！');
+                }
+            });
+        }
+        
+        function unluckOrder() {
+            var a =  sessionStorage.getItem("orderNo");
+            var b = $('#car_no').val();
+			 var  data =   {
+					"orderNo":a,
+					"scope":"1",
+					"operCode":"10001",
+					"operId":1,
+					"operator_shift":1,
+					"operName":"小明",
+					"computerMac": "",
+					"vehicles":[{
+					"car_no":"粤"+b,
+					"vehiclePassengers":2,
+					"plateColor":"1",
+					"passengers":[
+						{
+							"passengerAttribute": "1",
+							"ticketType":"1"
+						},
+						{
+							"passengerAttribute": "1",
+							"ticketType":"1"
+						}
+					]
+				}],
+					"token":1435434
+				}
+            $.ajax({
+                type:"POST",
+                url:url+'tickets_sell_ticket/unluck',
+                async:true,
+                data:JSON.stringify(data),
+                success:function(res){
+                    if(res.status == 0){
+                        alert('车票取消成功');
+                        $("#dlg-test").dialog("close");
+                    }else{
+                        alert(res.detail);
+                    }
+                },
+                error:function(res){
+                    alert('服务器错误！');
+                }
+            });
+        };
+	});
+</script>

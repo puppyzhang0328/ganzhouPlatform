@@ -1,0 +1,132 @@
+.panel(ng-controller='ParkManageController as vm')
+    .panel-heading.text-bold 停车场管理
+        span {{vm.region}}{{vm.town}}{{vm.organ}} 共计停车场
+            i.fontColor {{vm.parkNumber}}个
+    .panel-body
+        .selectedBox.row
+            .form-horizontal.col-md-2
+                .container-fluid
+                    .item-content.analysis-padding
+                        ui-select(ng-model="vm.parkingAsync.selected" theme="bootstrap" ng-disable='vm.disable' on-select="vm.onSelectCallback($item)"  title="请选择停车场")
+                            ui-select-match(placeholder="请选择要查找的停车场") {{$select.selected.name || $select.selected}}
+                            ui-select-choices(repeat="parking.name as parking in vm.parkingAsync | propsFilter: {name: $select.search, address: $select.search}")
+                                div(ng-bind-html="parking.name | highlight: $select.search")
+                                small
+                                    | 停车场地址：
+                                    span(ng-bind-html="'' + parking.address | highlight: $select.search")
+            .form-horizontal.col-md-2
+                .container-fluid
+                    .item-content.analysis-padding
+                        ui-select(ng-model="vm.regiongAsync.selected" theme="bootstrap" on-select="vm.onSelectCallbackRegion($item)"  title="请选择区域")
+                            ui-select-match(placeholder="请选择区域") {{$select.selected.name || $select.selected}}
+                            ui-select-choices(repeat="region.name as region in vm.regiongAsync | propsFilter: {name: $select.search}")
+                                div(ng-bind-html="region.name")
+            .form-horizontal.col-md-2
+                .container-fluid
+                    .item-content.analysis-padding
+                        ui-select(ng-model="vm.BusTypeAsync.selected" theme="bootstrap" on-select="vm.onSelectCallbackBusType($item)"  title="请选择业态类型")
+                            ui-select-match(placeholder="请选择业态类型") {{$select.selected.name || $select.selected}}
+                            ui-select-choices(repeat="business.name as business in vm.BusTypeAsync | propsFilter: {name: $select.search}")
+                                div(ng-bind-html="business.name")
+            //.form-horizontal.col-md-4
+            //    .item-content.divBox.col-md-3(style="padding:0 5px;")
+            //        select( id="picture_no" ng-model="vm.picture_no" style="width:100%;")
+            //            option(value="") 有无图片
+            //            option(value="True") 有图
+            //            option(value="False") 无图
+            //    .item-content.divBox.col-md-3(style="padding:0 5px;")
+            //        select( id="lat_long_no" ng-model="vm.lat_long_no" style="width:100%;")
+            //            option(value="") 请选择有无经纬度
+            //            option(value="True") 有经纬度
+            //            option(value="False") 无经纬度
+            //    .item-content.divBox.col-md-3(style="padding:0 5px;")
+            //        select( id="price_no" ng-model="vm.price_no" style="width:100%;")
+            //            option(value="") 请选择有无费率
+            //            option(value="True") 有费率
+            //            option(value="False") 无费率
+            //    .item-content.divBox.col-md-3(style="padding: 0 5px;")
+            //        select( id="other_platform" ng-model="vm.other_platform" style="width:100%;")
+            //            option(value="") 请选择所属平台
+            //            option(value="True") 第三方
+            //            option(value="False") 非第三方
+            .form-horizontal.col-md-2
+                button.btn.btn-primary.btn-sm(type="button" ng-click="vm.queryParkings(0)") 搜索
+                button.btn.btn-sm.btn-danger(type="button" ng-click="vm.clearAndRefresh()" ng-disabled="vm.parkingAsync.selected == null && vm.regiongAsync.selected == null && vm.BusTypeAsync.selected == null") 重置
+                button.btn.btn-info.btn-sm(type="button" ng-click="vm.parklotExport()") 导出
+        table.row-bordered.hover.table-striped.table-responsive(datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs")
+            thead
+                tr
+                    th 序列号
+                    th 停车场名称
+                    th 停车场地址
+                    th 总车位数
+                    th 区域
+                    th 商圈
+                    th 业态类型
+                    th 签约状态
+                    th 停车场所有人
+                    th 所属派出所
+                    th 是否展示图片
+                    th 停车场入口
+                    th 免费离场时间
+                    th 停车场密钥
+                    th 编辑
+
+            tbody
+                tr(ng-repeat="parking in vm.parking_lots track by parking.id")
+                    td {{:: parking.id}}
+                    td {{:: parking.name }}
+                    td {{:: parking.address }}
+                    td {{:: parking.parking_space_total }}
+                    td
+                        span(ng-if="parking.reg_name == null || parking.reg_name == ''") ----
+                        span(ng-show='parking.reg_name') {{:: parking.reg_name }}
+                    td
+                        span(ng-if="parking.town_name == null || parking.town_name == ''") ----
+                        span(ng-show='parking.town_name') {{:: parking.town_name }}
+                    td
+                        span(ng-if="parking.bus_name == null || parking.bus_name == ''") ----
+                        span(ng-show='parking.bus_name') {{:: parking.bus_name }}
+                    td
+                      span(ng-if="parking.sign") 已签约
+                      span(ng-hide="parking.sign") 未签约
+                    td
+                        span(ng-if="parking.owner_name == null || parking.owner_name == ''") ----
+                        span(ng-show='parking.owner_name') {{:: parking.owner_name }}
+                    td
+                        span(ng-if="parking.pol_name == null || parking.pol_name == ''") ----
+                        span(ng-show='parking.pol_name') {{:: parking.pol_name }}
+                    td
+                        span(ng-if="parking.is_show") 是
+                        span(ng-hide='parking.is_show') 否
+                    td
+                        button.btn.btn-link(type="button",ng-click="vm.queryGates(parking)") 出入口坐标
+                    td  {{:: parking.free_outtime }}
+                    td
+                        button.btn.btn-link(type="button",ng-click="vm.queryParkIdentifier(parking)") 密钥
+                    td
+                        button.btn.btn-sm.btn-warning(type='button', ng-click='vm.modifyParking(parking)') 修改
+                            em.fa.fa-edit
+                        button.btn.btn-sm.btn-danger(type='button', ng-click='vm.deleteParking(parking)') 删除
+                            em.fa.fa-trash-o
+                //.loading.loadmask
+                //    img.loadingimg(src="http://dev.dadapark.com/park/app/img/load.gif")
+        .ui-grid-next
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.queryParkings(0)" id="firstPageBtn") 首页
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.queryParkings(1)" id="previousPageBtn") 上一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.queryParkings(2)" id="nextPageBtn") 下一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.queryParkings(3)" id="lastPageBtn") 末页
+    .panel-footer
+        button.btn.btn-labeled.btn-primary(type='submit' ng-click="vm.addParkingLot()")
+            span.btn-label
+                em.fa.fa-plus
+            | 停车场数据录入
+    script(type="text/ng-template" id="deleteParking.html")
+        .modal-header
+            button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+            h4.modal-title 删除?
+        .modal-body
+            p.text-bold 你确定要删除该停车场吗？
+        .modal-footer
+            button.btn.btn-default(type="button",ng-click="vm.cancel()",data-dismiss="modal") 取消
+            button.btn.btn-danger(type="button",ng-click="vm.deletePark()",data-dismiss="modal") 确认

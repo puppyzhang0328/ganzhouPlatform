@@ -1,0 +1,95 @@
+.panel.panel-default.container-fluid(ng-controller="examineController as vm")
+    .panel-heading.text-bold 停车场账单审核
+    .panel-body
+        .selectedBox.row(id="topSearchForm")
+            .form-group.form-horizontal.col-md-2
+                .container-fluid
+                    .item-content
+                        ui-select(ng-init="vm.OrganAsync.selected" ng-model="vm.OrganAsync.selected" theme="bootstrap" on-select="vm.onSelectCallbackOrgan($item)" title="请选择经营单位")
+                            ui-select-match(placeholder="请选择运营单位") {{$select.selected.orgname || $select.selected}}
+                            ui-select-choices(repeat="organ.orgname as organ in vm.OrganAsync | propsFilter: {orgname: $select.search}")
+                                div(ng-bind-html="organ.orgname")
+            .form-group.form-horizontal.col-md-2
+                item-content.divBox
+                    select( id="status" ng-model="vm.status" style="width:100%;")
+                        option(value="") 请选择账单状态
+                        option(value="0") 未发送
+                        option(value="1") 待审核
+                        option(value="2") 已审核,账明准确
+                        option(value="3") 已审核,账明异常
+                        option(value="4") 已结算
+            .form-group.form-horizontal.col-md-4
+                button.btn.btn-primary.btn-sm(ng-click="vm.findBillSearch()") 搜索
+                button.btn.btn-success.btn-sm(ng-click="vm.generateBill()") 生产账单
+                button.btn.btn-sm.btn-danger(type="button" ng-click="vm.clearAndRefresh()") 重置
+        table.row-bordered.hover.table-striped.table-responsive(datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs")
+                       thead
+                           tr
+                               th 序列
+                               th 账单名称
+                               th 发起者账户名
+                               th 审核者账户名
+                               th 账单状态
+                               th 账单所属组织名称
+                               th 应收金额(元)
+                               th 实收金额(元)
+                               th 优惠金额(元)
+                               th 退款金额(元)
+                               th 手续费(元)
+                               //th 账单结余
+                               th 创建时间
+                               th 异常说明
+                               th 操作
+                               th 详情
+                       tbody
+                           tr(ng-repeat="examine in vm.examine track by examine.id")
+                               td {{:: examine.number }}
+                               td {{:: examine.name }}
+                               td {{:: examine.initiator_name }}
+                               td {{:: examine.auditor_name }}
+                               td {{:: examine.statusName }}
+                               td {{:: examine.organization_name }}
+                               td {{:: examine.aggregate_amount/100}}
+                               td {{:: examine.aggregate_netreceipts/100}}
+                               td {{:: examine.coupon_fee/100}}
+                               td {{:: examine.refund_amount/100}}
+                               td {{:: (examine.aggregate_netreceipts/100*0.006).toFixed(2)}}
+                               //td {{:: examine.general_surplus/100}}
+                               td {{:: examine.created_time }}
+                               td {{:: examine.memo}}
+                               td
+                                   button.btn.btn-sm.btn-info(type='button', ng-click='vm.jumpPerson(examine)' ng-if='examine.status == 0') 发起核对
+                                   button.btn.btn-sm.btn-info(ng-if='examine.status == 1' aria-disabled='disabled') 待核对
+                                   button.btn.btn-sm.btn-info(type='button', ng-click='vm.jumpPerson(examine)' ng-if='examine.status == 2') 确认结算
+                                   button.btn.btn-sm.btn-info(type='button', ng-if='examine.status == 3'  ng-click='vm.jumpPerson(examine)') 已核对,账目异常
+                                   button.btn.btn-sm.btn-info(ng-if='examine.status == 4' aria-disabled='disabled') 已结算
+                                   button.btn.btn-sm.btn-info(ng-if='examine.status == 5' ng-click='vm.jumpPerson(examine)') 异常确认已处理
+                               td
+                                   button.btn.btn-sm.btn-info(type='button', ng-click='vm.jumpDetail(examine)' ) 查看
+    .panel-footer
+        p
+            small 如发现数据不合理之处，请联系
+                a(href="www.cszhjt.com") {{ app.name }}
+    script(type="text/ng-template" id="personSelect.html")
+        .modal-header
+            button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+            h4.modal-title 确定账单
+        .modal-body
+            form.form-horizontal.row
+                .col-md-12(ng-if="vm.Initiate_audit==2")
+                    span(style="display: block;text-align: center") 是否确定账单审核？
+                .col-md-12(ng-if="vm.Initiate_audit==0")
+                    ui-select(ng-model="vm.organName" theme="bootstrap" on-select="vm.onSelectCallbackPerson($item)" title="请选择审核人员")
+                        ui-select-match(placeholder="请选择审核人员") {{$select.selected.orgname || $select.selected}}
+                        ui-select-choices(repeat="personAsync.id as personAsync in vm.personAsync | propsFilter: {nick_name: $select.search,organization_name:$select.search}")
+                            div(ng-bind-html="personAsync.nick_name")
+                            small
+                                | 所属组织名称：
+                                span(ng-bind-html="'' + personAsync.organization_name | highlight: $select.search")
+                .col-md-12(ng-if="vm.Initiate_audit==3")
+                    input.form-control(id="examinememo" type="text" ng-model="vm.memo" disabled)
+                .col-md-12(ng-if="vm.Initiate_audit==5")
+                    span(style="display: block;text-align: center") 异常已处理，重新生成本期账单？
+            .modal-footer(style="text-align: center;")
+                button.btn.btn-danger(type="button",ng-click="vm.putInfo()",data-dismiss="modal") 确认
+

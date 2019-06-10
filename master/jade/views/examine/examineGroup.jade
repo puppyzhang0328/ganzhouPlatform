@@ -1,0 +1,98 @@
+.panel.panel-default.container-fluid(ng-controller="examineGroupController as vm")
+    .panel-heading.text-bold 停车场账单审核
+    .panel-body
+        .selectedBox.row(id="topSearchForm")
+            .form-group.form-horizontal.col-md-2
+                item-content.divBox
+                    select( id="status" ng-model="vm.status" style="width:100%;")
+                        option(value="") 请选择账单状态
+                        option(value="0") 未发送
+                        option(value="1") 待审核
+                        option(value="2") 已审核,账明准确
+                        option(value="3") 已审核,账明异常
+                        option(value="4") 已结算
+            .form-group.form-horizontal.col-md-4
+                button.btn.btn-primary.btn-sm(ng-click="vm.findBill()") 搜索
+                button.btn.btn-sm.btn-danger(type="button" ng-click="vm.clearAndRefresh()") 重置
+        table.row-bordered.hover.table-striped.table-responsive(datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs")
+                       thead
+                           tr
+                               th 序列
+                               th 账单名称
+                               th 发起者账户名
+                               th 审核者账户名
+                               th 账单状态
+                               th 账单所属组织名称
+                               th 应收金额(元)
+                               th 实收金额(元)
+                               th 优惠金额(元)
+                               th 退款金额(元)
+                               th 手续费(元)
+                               th 交易笔数
+                               th 详情
+                               th PDF下载
+                               th 开始时间
+                               th 结束时间
+                               th 操作
+                       tbody
+                           tr(ng-repeat="examine in vm.examine track by examine.id")
+                               td {{:: examine.id }}
+                               td {{:: examine.name}}
+                               td {{:: examine.initiator_name }}
+                               td {{:: examine.auditor_name }}
+                               td {{:: examine.statusName }}
+                               td {{:: examine.organization_name }}
+                               td {{:: examine.aggregate_amount/100}}
+                               td {{:: examine.aggregate_netreceipts/100}}
+                               td {{:: examine.coupon_fee/100}}
+                               td {{:: examine.refund_amount/100}}
+                               td {{:: (examine.aggregate_netreceipts/100 *0.006).toFixed(2)}}
+                               td {{:: examine.stroke_count}}
+                               td
+                                   button.btn.btn-sm.btn-info(type='button', ng-click='vm.jumpDetail(examine)') 查看
+                               td
+                                   button.btn.btn-sm.btn-info(type='button', ng-click='vm.downloadPDF(examine)') 下载
+                               td {{:: examine.startime }}
+                               td {{:: examine.endtime }}
+                               td
+                                   button.btn.btn-sm.btn-info(type='button', ng-click='vm.confirmBill(examine)' ng-if='examine.status == 0 || examine.status == 1') 未审核
+                                   //button.btn.btn-sm.btn-info(type='button', ng-click='vm.confirmBill(examine)' ) 未审核
+                                   span(type='button', ng-if='examine.status == 2') 账目准确,已核对
+                                   span(type='button', ng-if='examine.status == 3') 账目存在异议
+                                   span(type='button', ng-if='examine.status == 4') 已结算
+                                   span(type='button', ng-if='examine.status == 5') 异常确认已处理
+    .panel-footer
+        p
+            small 如发现数据不合理之处，请联系
+                a(href="www.cszhjt.com") {{ app.name }}
+    script(type="text/ng-template" id="confirmBill.html")
+        .modal-header
+            button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+            h4.modal-title 确认?
+        .modal-body
+            p.text-bold 你确定同意此次账单吗？
+            item-content.divBox
+                select(ng-model="vm.status" style="width:100%;" ng-change="vm.selectAction()")
+                    option(value="") 请选择审核状态
+                    option(value="2") 账目准确,已核对
+                    option(value="3") 账目存在异议
+                .col-md-12
+                    input.form-control.opc(id="examineReasult" type="text",placeholder="请输入异常原因" ng-model="vm.memo")
+        .modal-footer
+            button.btn.btn-default(type="button",ng-click="vm.cancel()",data-dismiss="modal") 取消
+            button.btn.btn-danger(type="button",ng-click="vm.confirmBill()",data-dismiss="modal") 确认
+    script(type="text/ng-template" id="exportDetail.html")
+        .modal-header
+            button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+            h4.modal-title 下载选择
+        .modal-body
+            form.form-horizontal
+                .form-group.row
+                    label.col-sm-4.control-label 文件名称
+                    .col-sm-6
+                        span {{vm.sumName}}
+                .form-group.row
+                    label.col-sm-4.control-label
+                    .col-sm-6
+                        button.btn.btn-danger(type="button",ng-click="vm.downloadPDF()",data-dismiss="modal") 下载
+

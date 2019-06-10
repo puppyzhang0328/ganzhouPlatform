@@ -1,0 +1,69 @@
+{
+  "update_time": "2017-07-05T17:29:41.803015",
+  "kind": "parking_lots#nearby",
+  "maxid": 114,
+  "status": 0,
+  "warningMessage": [
+    {
+      "id": 1,
+      "name": "一号桩",
+      "pay_number":"设备报警",
+      "address": "通讯故障-桩自动断开",
+      "pay_car": "VAPEL充电桩",
+      "type": "未确认",
+      "car_number": "",
+      "charging_number": "",
+      "charging_pay": "严重",
+      "fist_time": "正常充电"
+    },
+    {
+      "id": 2,
+      "name": "二号桩",
+      "pay_number":"设备报警",
+      "address": "通讯故障-桩自动断开",
+      "pay_car": "VAPEL充电桩",
+      "type": "未确认",
+      "car_number": "",
+      "charging_number": "",
+      "charging_pay": "严重",
+      "fist_time": "正常充电"
+    },
+    {
+      "id": 3,
+      "name": "五号桩",
+      "pay_number":"设备报警",
+      "address": "通讯故障-桩自动断开",
+      "pay_car": "VAPEL充电桩",
+      "type": "未确认",
+      "car_number": "",
+      "charging_number": "",
+      "charging_pay": "严重",
+      "fist_time": "正常充电"
+    },
+    {
+      "id": 4,
+      "name": "九号桩",
+      "pay_number":"设备报警",
+      "address": "通讯故障-桩自动断开",
+      "pay_car": "VAPEL充电桩",
+      "type": "未确认",
+      "car_number": "",
+      "charging_number": "",
+      "charging_pay": "严重",
+      "fist_time": "正常充电"
+    },
+    {
+      "id": 5,
+      "name": "六号桩",
+      "pay_number":"设备报警",
+      "address": "通讯故障-桩自动断开",
+      "pay_car": "VAPEL充电桩",
+      "type": "未确认",
+      "car_number": "",
+      "charging_number": "",
+      "charging_pay": "严重",
+      "fist_time": "正常充电"
+    }
+
+  ]
+}

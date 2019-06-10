@@ -1,0 +1,106 @@
+<!-- 锁定行列 -->
+<div class="easyui-panel" title="查堵信息" style="width:100%;height: 800px">
+	<table id="tt2" class="easyui-datagrid"  fit="true" fitColumns="true" toolbar="#toolbar3" 
+				striped="true" rownumbers="true" pagination="true" remoteSort="false">
+		<thead data-options="frozen:true" >
+			<tr>
+				<th data-options="field:'car_no',align:'center'">车牌号</th>
+			</tr>
+		</thead>
+		<thead>
+			<tr>
+				<th data-options="field:'optor_id',align:'center'" sortable="true">操作员</th>
+				<th data-options="field:'operator_shift',align:'center'" sortable="true">班次</th>
+				<th data-options="field:'start_time',width:80,align:'center'">班次开始时间</th>
+				<th data-options="field:'end_time',align:'center'">班次结束时间 </th>
+				<th data-options="field:'truck_num',align:'center'">货车总数</th>
+				<th data-options="field:'truck_return_num',align:'center'">货车退票数</th>
+				<th data-options="field:'car_num',align:'center'">小车总数</th>
+				<th data-options="field:'car_return_num',align:'center'">小车退票数</th>
+				<th data-options="field:'bus_num',align:'center'">客车总数</th>
+				<th data-options="field:'bus_return_num',align:'center'">客车退票数</th>
+				<th data-options="field:'truck_people_num',align:'center'">货车人数总数</th>
+				<th data-options="field:'truck_people_return',align:'center'">货车退票人数</th>
+				<th data-options="field:'car_people_num',align:'center'">小车人数总数</th>
+				<th data-options="field:'car_people_return',align:'center'">小车退票人数</th>
+				<th data-options="field:'bus_people_num',align:'center'">客人数车总数</th>
+				<th data-options="field:'truck_cost',align:'center'">货车费用</th>
+				<th data-options="field:'truck_return',align:'center'">货车退还费用</th>
+				<th data-options="field:'car_cost',align:'center'">小车费用</th>
+				<th data-options="field:'car_return',align:'center'">小车退还费用</th>
+				<th data-options="field:'bus_cost',align:'center'">客车费用</th>
+				<th data-options="field:'bus_return',align:'center'">客车退还费用</th>
+				<th data-options="field:'straits_fee',align:'center'">海峡费</th>
+				<th data-options="field:'cash_pay',align:'center'">现金收款</th>
+				<th data-options="field:'pos_pay',align:'center'">pos收款</th>
+				<th data-options="field:'scan_pay',align:'center'">二维码收款</th>
+				<th data-options="field:'weight',align:'center'">总重量</th>
+				<th data-options="field:'description',align:'center'">描述</th>
+			</tr>
+		</thead>
+	</table>
+	<div class="toolbar" id="toolbar3">
+		<div class="search-div">
+			<label>开始时间:</label>
+			<input id="query_begintime" class="easyui-datetimebox" name="birthday"
+				   data-options="required:true,showSeconds:false" value="3/4/2010 2:3">
+			<label>结束时间:</label>
+			<input id="query_endtime" class="easyui-datetimebox" name="birthday"
+				   data-options="required:true,showSeconds:false" value="3/4/2010 2:3">
+		     <label>查询类型</label>
+			<select class="easyui-combobox" id="query_type">
+				<option value="">--操作员id查询所有</option>
+				<option value="0" selected="selected">车牌号按照时间段查询</option>
+				<option value="1" >根据操作员id按照时</option>
+				<option value="2">车牌号查询最新安检记录</option>
+				<option value="3">时间段获取在场所有车辆安检信息</option>
+			</select>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-search" id="queryReport">搜索</a>
+	    </div>
+	</div>
+	<script type="text/javascript">
+		$(function() {
+			//打开弹出框
+			$("#queryReport").click(function(e) {
+				queryReport();
+			});
+			function queryReport(argument) {
+				var data =  {
+			        query_type:0,
+			        optor_id: 123,
+			        pageNo: $('#tt2').datagrid('options').pageNumber,
+			        pageNum: $('#tt2').datagrid('options').pageSize,
+			        begin_time:'2018-08-26 11:11:11',
+			        end_time:'2018-08-31 11:11:11',
+			        token:'1435434'
+			    };
+			    console.log(data);
+				$.ajax({
+			        url : 'http://120.25.76.96:9088/operator/settle_report_query',
+			        type : 'post',
+			        dateType : 'json',
+			        data:JSON.stringify(data),
+			        success : function(data) {
+			            if(data.status == 0){
+                            console.log(data);
+                            var infoData = data;
+                            infoData.rows = data.ticket;
+                            infoData.total = data.ticket.lenght;
+                            console.log(infoData);
+                            $('#tt2').datagrid('loadData',data);
+						}else {
+			                alert(data.detail);
+						}
+			        },
+			        error:function (data) {
+						alert("请求失败，请重新请求");
+                    }
+				});
+			}
+            window.setTimeout(function() {
+                queryReport();
+            }, 800);
+		});
+
+	</script>		
+</div>

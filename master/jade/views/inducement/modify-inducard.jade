@@ -1,0 +1,15 @@
+.panel(ng-controller="modifyCardController as vm")
+    .panel-heading.text-bold 修改卡号
+    .panel-body.row
+        form.form-horizontal(style="padding: 130px 130px 0 130px;")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="CardId") 卡id：
+                .col-md-8
+                    input.form-control(id="CardId" type="text"  ng-model="vm.CardId" disabled="disabled")
+            .form-group.col-md-6
+                label.col-md-3.control-label.text-center(for="code") 卡号：
+                .col-md-8
+                    input.form-control(id="code" type="text" placeholder="请输入社区代码" ng-model="vm.CardNum")
+    .panel-footer
+        button.btn.btn-primary.pull-right(type="button" ng-click= "vm.modifyCard()") 确认修改
+        button.btn.btn-danger(type="button" ng-click= "vm.backToPrevious()") 返回上一级菜单

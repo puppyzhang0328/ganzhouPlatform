@@ -1,0 +1,75 @@
+.panel(ng-controller='OrganController as vm')
+    .panel-heading.text-bold 组织信息
+    .panel-body.newPanel
+        .selectedBox.row
+            .item-content.divBox.col-md-2(id="organ")
+                ui-select(ng-model="vm.OrganmanAsync.selected" theme="bootstrap" on-select="vm.onSelectCallbackOrganman($item)" title="请选择组织机构")
+                    ui-select-match(placeholder="请选择组织机构") {{$select.selected.orgname || $select.selected}}
+                    ui-select-choices(repeat="Organman.orgname as Organman in vm.OrganmanAsync | propsFilter: {orgname: $select.search}")
+                        div(ng-bind-html="Organman.orgname")
+            .item-content.divBox.col-md-2
+                button.btn.btn-primary.btn-sm(type="button" ng-click="vm.queryOne(0)") 搜索
+                button.btn.btn-sm.btn-danger(type="button" ng-click="vm.clearAndRefresh()" ng-disabled="vm.OrganmanAsync.selected == ''") 重置
+        table.row-bordered.hover.table-striped.table-responsive(datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs")
+            thead
+                tr
+                    th 序列号
+                    th 组织名称
+                    th 组织电话
+                    th 组织地址
+                    th 联系人姓名
+                    th 联系人电话
+                    th 是否开通自动对账
+                    //th 联系人邮箱
+                    //th 组织等级
+                    //th 账单自动生成日期(每月)
+                    th 账单日(每月)
+                    //th 组织支付类型
+                    th 最大审核日期
+                    th 是否激活
+                    th 编辑
+            tbody
+                tr(ng-repeat="organ in vm.organ track by organ.id")
+                    td {{:: organ.number }}
+                    td {{:: organ.orgname }}
+                    td {{:: organ.orgphone }}
+                    td {{:: organ.address }}
+                    td {{:: organ.contactname }}
+                    td {{:: organ.contactphone }}
+                    td
+                        span(ng-show="organ.is_settlement") 已开通
+                        span(ng-hide="organ.is_settlement") 未开通
+                    //td {{:: organ.orgemail }}
+                    //td {{:: organ.orggrade }}
+                    //td {{:: organ.generation_time }}
+                    td {{:: organ.settlement_time }}
+                    //td {{:: organ.paytype }}
+                    td {{:: organ.max_settlement }}
+                    td
+                        span(ng-show="organ.isactive") 已激活
+                        span(ng-hide="organ.isactive") 未激活
+                    td
+                        button.btn.btn-sm.btn-warning(type='button', ng-click='vm.modifyOrgan(organ)') 修改
+                            em.fa.fa-edit
+                        button.btn.btn-sm.btn-danger(type='button', ng-click='vm.deleteOrgan(organ)') 删除
+                            em.fa.fa-trash-o
+        .ui-grid-next
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.readRecords(0)" id="firstPageBtn") 首页
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.readRecords(1)" id="previousPageBtn") 上一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.readRecords(2)" id="nextPageBtn") 下一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.readRecords(3)" id="lastPageBtn") 末页
+    .panel-footer
+        button.btn.btn-labeled.btn-primary(type='submit' ng-click="vm.addOrgan()")
+            span.btn-label
+                em.fa.fa-plus
+            | 组织信息录入
+    script(type="text/ng-template" id="deleteOrgan.html")
+        .modal-header
+            button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+            h4.modal-title 删除?
+        .modal-body
+            p.text-bold 你确定要删除该组织吗？
+        .modal-footer
+            button.btn.btn-default(type="button",ng-click="vm.cancel()",data-dismiss="modal") 取消
+            button.btn.btn-danger(type="button",ng-click="vm.deleteOrgan()",data-dismiss="modal") 确认
+

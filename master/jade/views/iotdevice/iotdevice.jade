@@ -1,0 +1,107 @@
+.panel(ng-controller='iotdeviceController as vm')
+    .panel-heading.text-bold 设备管理
+        span
+    .panel-body
+        .selectedBox.row
+                .form-horizontal.divBox.col-md-2(id="region")
+                    ui-select(ng-model="vm.parkingAsync.selected" theme="bootstrap" ng-disable='vm.disable' on-select="vm.onSelectCallback($item)" title="请选择停车场")
+                        ui-select-match(placeholder="请选择要查找的停车场") {{$select.selected.name || $select.selected}}
+                        ui-select-choices(repeat="parking.name as parking in vm.parkingAsync | propsFilter: {name: $select.search, address: $select.search}")
+                            div(ng-bind-html="parking.name | highlight: $select.search")
+                            small
+                                | 停车场地址：
+                                span(ng-bind-html="null + parking.address | highlight: $select.search")
+                .form-horizontal.divBox.col-md-2
+                    select.form-control( id="devtype" ng-model="vm.devtype" style="width:100%;")
+                        option(value="") 请选择设备类型
+                        option(value="1") 数据网关
+                .form-horizontal.divBox.col-md-2
+                    .container-fluid
+                        .item-content
+                            input.form-control(type="text" id="devname" ng-model="vm.devname"  placeholder="请输入要查找的设备名")
+                .form-horizontal.divBox.col-md-2
+                    .container-fluid
+                        .item-content
+                            input.form-control(type="text" id="devfirm" ng-model="vm.devfirm"  placeholder="请输入要查找的设备厂商")
+                .item-content.divBox.col-md-2
+                    button.btn.btn-primary.btn-sm(type="button" ng-click="vm.queryIotdevice(0)") 搜索
+                    button.btn.btn-sm.btn-danger(type="button" ng-click="vm.clearAndRefresh()" ng-disabled="vm.parkingAsync.selected == null && vm.devtype ==null && vm.devname == null && vm.devfirm == null") 重置
+        table.row-bordered.hover.table-striped.table-responsive(datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs")
+            thead
+                tr
+                    th 序列号
+                    th 所属停车场
+                    th 设备类型
+                    th 设备IP
+                    th 设备名
+                    th 录入时间
+                    th 修改时间
+                    th 备忘录
+                    th 设备品牌
+                    th 设备厂商
+                    th 设备厂商联系人
+                    th 设备厂商电话
+                    th 设备开始使用时间
+                    th 设备密钥
+                    th 编辑
+            tbody
+                tr(ng-repeat="iotdevice in vm.iotdevice track by iotdevice.id")
+                    td {{:: iotdevice.id }}
+                    td {{:: iotdevice.parklot_name }}
+                    td {{:: iotdevice.devtype }}
+                    td {{:: iotdevice.ipaddr }}
+                    td {{:: iotdevice.devname }}
+                    td {{:: iotdevice.created_time }}
+                    td {{:: iotdevice.updated_time }}
+                    td {{:: iotdevice.memo}}
+                    td {{:: iotdevice.brand }}
+                    td {{:: iotdevice.devfirm }}
+                    td {{:: iotdevice.firmcontact }}
+                    td {{:: iotdevice.firmphone }}
+                    td {{:: iotdevice.devinuse }}
+                    td
+                        button.btn.btn-link(type="button",ng-click="vm.queryIotdeviceIdentifier(iotdevice)") 密钥
+                    td
+                        button.btn.btn-sm.btn-warning(type='button', ng-click='vm.modifyIotdevice(iotdevice)') 修改
+                            em.fa.fa-edit
+                        button.btn.btn-sm.btn-danger(type='button', ng-click='vm.deleteIotdevice(iotdevice)') 删除
+                            em.fa.fa-trash-o
+        .ui-grid-next
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.queryIotdevice(0)" id="firstPageBtn") 首页
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.queryIotdevice(1)" id="previousPageBtn") 上一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.queryIotdevice(2)" id="nextPageBtn") 下一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.queryIotdevice(3)" id="lastPageBtn") 末页
+    .panel-footer
+        button.btn.btn-labeled.btn-primary(type='submit' ng-click="vm.addIotdevice()")
+            span.btn-label
+                em.fa.fa-plus
+            | 设备信息录入
+    script(type="text/ng-template" id="deleteIotdevice.html")
+        .modal-header
+            button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+            h4.modal-title 删除?
+        .modal-body
+            p.text-bold 你确定要删除该停车场吗？
+        .modal-footer
+            button.btn.btn-default(type="button",ng-click="vm.cancel()",data-dismiss="modal") 取消
+            button.btn.btn-danger(type="button",ng-click="vm.deleteIotdevice()",data-dismiss="modal") 确认
+    script(type="text/ng-template" id="iotdevice-detail.html")
+        .modal-header
+            button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+            h4.modal-title 查看设备密钥
+        .modal-body
+            form.form-horizontal
+                .form-group.row
+                    label.col-sm-4.control-label(for="devidentifier") 设备唯一标示
+                    .col-sm-6
+                        input.form-control(type="text" id="devidentifier"  ng-model="vm.devidentifier" ng-init="vm.devidentifier = '{{vm.devidentifier}}'")
+                .form-group.row
+                    label.col-sm-4.control-label(for="name") 设备名
+                    .col-sm-6
+                        input.form-control(type="text" id="name"  ng-model="vm.name" ng-init="vm.name = '{{vm.name}}'")
+                .form-group.row
+                    label.col-sm-4.control-label(for="Key") 设备私钥
+                    .col-sm-6
+                        input.form-control(type="text" id="Key"  ng-model="vm.private_key" ng-init="vm.private_key = '{{vm.private_key}}'")
+        .modal-footer
+            button.btn.btn-primary(type="button",ng-click="vm.cancel()",data-dismiss="modal") 确定

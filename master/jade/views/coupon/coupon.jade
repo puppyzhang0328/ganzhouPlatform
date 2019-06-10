@@ -1,0 +1,59 @@
+.panel(ng-controller='CouponCtr as vm')
+    .panel-heading.text-bold 优惠券管理
+    .panel-body.newPanel
+        table.row-bordered.hover.table-striped.table-responsive(datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs")
+            thead
+                tr
+                    th 序列号
+                    th 促销活动名称
+                    th 促销活动显示名称
+                    th 面额(元)
+                    th 数额
+                    th 优惠券总数
+                    th 活动开始时间
+                    th 活动结束时间
+                    th 券有效开始时间
+                    th 券有效结束时间
+                    th 活动是否有效
+                    th 使用方式
+                    th 编辑
+            tbody
+                tr(ng-repeat="coupon in vm.coupon track by coupon.id")
+                    td {{:: coupon.id }}
+                    td {{:: coupon.campaign }}
+                    td {{:: coupon.campaign_displayname }}
+                    td {{:: coupon.mony }}
+                    td {{:: coupon.num_per_user }}
+                    td {{:: coupon.total }}
+                    td {{:: coupon.valid_begintime }}
+                    td {{:: coupon.valid_endtime }}
+                    td {{:: coupon.coupon_valid_begintime }}
+                    td {{:: coupon.coupon_valid_endtime }}
+                    td
+                        span(ng-show='coupon.isvalid') 是
+                        span(ng-hide='coupon.isvalid') 否
+                    td
+                        span(ng-show="coupon.usemode") 单张使用
+                        span(ng-hide="coupon.usemode") 混合使用
+                    td
+                        button.btn.btn-sm.btn-warning(type='button', ng-click='vm.modifyCoupon(coupon)') 修改
+                            em.fa.fa-edit
+        .ui-grid-next
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.readRecords(0)" id="firstPageBtn") 首页
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.readRecords(1)" id="previousPageBtn") 上一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.readRecords(2)" id="nextPageBtn") 下一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.readRecords(3)" id="lastPageBtn") 末页
+    .panel-footer
+        button.btn.btn-labeled.btn-primary(type='submit' ng-click="vm.addCoupon()")
+            span.btn-label
+                em.fa.fa-plus
+            | 优惠券信息录入
+    script(type="text/ng-template" id="deleteCoupon.html")
+        .modal-header
+            button(type="button",class="close",ng-click="vm.cancel()",data-dismiss="modal",aria-hidden="true") &times;
+            h4.modal-title 删除?
+        .modal-body
+            p.text-bold 你确定要删除该停车场吗？
+        .modal-footer
+            button.btn.btn-default(type="button",ng-click="vm.cancel()",data-dismiss="modal") 取消
+            button.btn.btn-danger(type="button",ng-click="vm.deleteCoupon()",data-dismiss="modal") 确认
