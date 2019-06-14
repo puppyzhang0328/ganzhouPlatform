@@ -65,7 +65,7 @@
                     start_index: data.start_index,
                     pagedirect: data.pagedirect,
                     staffid: data.staffid,
-                    max_results: 30,
+                    max_results: 50,
                 }
             }
             return $http({

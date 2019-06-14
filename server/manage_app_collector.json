@@ -8,11 +8,6 @@
       "text": "收费员APP用户管理",
       "sref": "app.collector",
       "icon": "icon-user"
-    },
-    {
-      "text": "群组管理",
-      "sref": "app.user-group",
-      "icon": "fa fa-group"
     }
   ]
   

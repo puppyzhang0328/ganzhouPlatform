@@ -28,7 +28,7 @@
             maxId: null,
             minId: null,
         };
-       
+        var maxRecordsId = null, minRecordsId = null; // 记录列表数据中的最大id和最小id
         vm.queryCollectors(0); // 初始化用户列表
 
         /*群组选择-------------------------------------------------*/
@@ -113,24 +113,41 @@
             // console.log(vm.queryParams)
             $rootScope.showLoadingBar = true;
             CollectorManageFactory.readAll(vm.queryParams).then(function (response) {
-                if (response.status === 0) {
-                    vm.users = response.operators;
-                    vm.queryParams.maxId = response.maxid;
-                    vm.queryParams.minId = response.minid;
-                    if(index == 0){
+                if (response.status === 0  && response.operators.length > 0) {
+                    var list = response.operators
+                    vm.users = list;
+                    vm.queryParams.maxId = list[0].id;
+                    vm.queryParams.minId = list[list.length-1].id ;
+                    minRecordsId = minRecordsId?minRecordsId:response.minid;
+                    maxRecordsId = maxRecordsId?maxRecordsId:response.maxid;
+                    if(index == 0 || vm.queryParams.maxId == maxRecordsId ){ // 已经到首页
                         vm.queryParams.maxId = null;
-                    }else if(index ==3){
-                        vm.queryParams.minId = null;
+                        console.log('已经到首页')
                     }
-                   
+                    if(index ==3 || vm.queryParams.minId == minRecordsId ){ // 已经到最后一页
+                        vm.queryParams.minId = null;
+                        console.log('已经到最后一页')
+                    }
+                    console.log('最新数据id:'+maxRecordsId,'最早数据id:'+minRecordsId)
                 } else {
-                    logger.error('获取用户失败',response.detail,'获取用户数据失败！！！');
+                    if(response.operators.length == 0){
+                        logger.warning('查询到0条数据','','数据为空');
+                    }else{
+                        logger.error('获取用户失败',response.detail,'获取用户数据失败！！！');
+                    }
+                    
                 }
 
                 $timeout(function(){
                     $rootScope.showLoadingBar = false;
                 }); 
             });
+            $timeout(function(){
+                if($rootScope.showLoadingBar){
+                    $rootScope.showLoadingBar = false;
+                    console.log('数据加载超时')
+                }
+            },8000); 
         }
 
         function searchUsers() {
