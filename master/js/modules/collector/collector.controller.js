@@ -89,7 +89,7 @@
         function queryCollectors(index, staffid) {
 
             if(index == 0){ // 查询首页
-                vm.queryParams.start_index = -1;
+                vm.queryParams.start_index = 0;
                 vm.queryParams.pagedirect = ''
             }else if(index == 1){ // 查询上一页
                 if( !vm.queryParams.maxId){
@@ -97,16 +97,16 @@
                     return;
                 }
                 vm.queryParams.start_index= vm.queryParams.maxId;
-                vm.queryParams.pagedirect=1;
+                vm.queryParams.pagedirect=0;
             }else if(index == 2){ // 查询下一页
                 if( !vm.queryParams.minId ){
                     logger.warning('已经到最后一页！','','没有下一页');
                     return;
                 }
                 vm.queryParams.start_index= vm.queryParams.minId;
-                vm.queryParams.pagedirect=0;
+                vm.queryParams.pagedirect=1;
             }else if(index == 3){ // 查询末页
-                vm.queryParams.start_index= 0;
+                vm.queryParams.start_index= -1;
                 vm.queryParams.pagedirect= '';
             }
             vm.queryParams.staffid = staffid || '';
