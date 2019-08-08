@@ -14,13 +14,47 @@
     function Mobile_User($http, URL_SEED) {
         var APP_USER_URL = URL_SEED.API_URL + 'user'; // 获取APP用户列表API, allow: GET
         var APP_USER_COMMENT = URL_SEED.API_URL + 'user/comment/'; // 用户反馈建议API, allow: GET/POST
+        var APP_ACCOUNT_VERIFY_URL = URL_SEED.API_URL + 'user/account_appeal/'
         return {
             queryHome: queryHome,
             queryMobileUser: queryMobileUser,
             queryLast: queryLast,
             queryUserComment: queryUserComment,
-            ReplyUserComment: ReplyUserComment
+            ReplyUserComment: ReplyUserComment,
+            queryVerifyList: queryVerifyList,
+            verifyAccount: verifyAccount
         };
+        
+        // APP用户审核列表
+        function queryVerifyList(_params){
+            return $http({
+                method: 'GET',
+                url: APP_ACCOUNT_VERIFY_URL,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                params: _params,
+                withCredentials: true
+            }).then(function (response) {
+                return response.data;
+            });
+        }
+
+        function verifyAccount(_params){
+            console.log(angular.toJson(_params))
+            return $http({
+                method: 'PUT',
+                url: APP_ACCOUNT_VERIFY_URL,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: angular.toJson(_params),
+                withCredentials: true
+            }).then(function (response) {
+                return response.data;
+            });
+        }
+
         /**
          * 查询首页
          * @returns {*}

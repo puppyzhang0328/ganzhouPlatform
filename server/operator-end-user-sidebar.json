@@ -13,5 +13,11 @@
     "text":"APP用户建议",
     "icon":"fa fa-android",
     "sref": "app.mobile-user-comment"
+  },
+  {
+    "text":"APP用户申诉",
+    "icon":"fa fa-android",
+    "sref": "app.account-verify"
   }
 ]
+

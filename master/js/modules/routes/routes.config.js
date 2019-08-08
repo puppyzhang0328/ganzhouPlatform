@@ -333,6 +333,12 @@
                 title: '用户反馈建议',
                 templateUrl: helper.basepath('app/replay_comment.html')
             })
+            .state('app.account-verify', {
+                url: '/account-verify',
+                title: 'APP用户申诉',
+                templateUrl: helper.basepath('app/account-verify.html'),
+                resolve: helper.resolveFor('datatables', 'datatables.bootstrap', 'datatables.buttons')
+            })
             // Pages Routes
             .state('page', {
                 url: '/page',

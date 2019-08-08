@@ -1,0 +1,35 @@
+
+/parkhero/v0.1/operation/user/account_appeal
+
+method:get
+{
+	"page_num":5 , #页码
+}
+
+response:
+{
+	"code":"0",
+	"msg":"success"
+	data:[
+	{
+		"id":1,  
+		"username":"张三",                           #用户名
+		"phone_number":15077786352 ,                 #手机号
+		"account_name":"kdfksdf" ,                   #账号名
+		"parklot_name":"贺龙体育馆"，                #名下停车场
+		"create_time"："2019-08-06 19:01:57",        #创建时间
+		"pro_status":True or False, (已处理和未处理) #处理状态
+	},
+	{
+		"id":2,  
+		"username":"王五",                           #用户名
+		"phone_number":15077786352 ,                 #手机号
+		"account_name":"app账号" ,                   #账号名
+		"parklot_name":"贺龙体育馆"，                #名下停车场
+		"create_time"："2019-08-06 19:01:57",        #创建时间
+		"pro_status":True or False, (已处理和未处理) #处理状态
+
+	}
+
+	]
+}
