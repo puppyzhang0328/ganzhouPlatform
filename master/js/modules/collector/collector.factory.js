@@ -6,8 +6,8 @@
     function CollectorManageFactory($http, URL_SEED) {
 
         var OPERATOR_URL = URL_SEED.API_URL + 'operation/charge_app/conf/'; // 查询所有用户
-        var AVAILABLE_PARK_URL =URL_SEED.API_URL + 'operation/charge_app/parking/'
-        
+        var AVAILABLE_PARK_URL = URL_SEED.API_URL + 'operation/charge_app/parking/'
+        var HAS_BIND_PHONE_URL = URL_SEED.API_URL + 'operation/charge_app/user_search/'
        
         var currentClickUser = {
             userid: 0,
@@ -24,9 +24,23 @@
             setUserId: setUserId,
             getUserId: getUserId,
             setUsername: setUsername,
-            getUsername: getUsername
+            getUsername: getUsername,
+            hasBindPhone: hasBindPhone
         };
 
+        function hasBindPhone(username){
+            return $http({
+                method: 'GET',
+                url: HAS_BIND_PHONE_URL,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                params: {username: username},
+                withCredentials: true
+            }).then(function (response) {
+                return response.data;
+            });
+        }
         // /*查询单个操作员*/
         function readOneCollector(staffid) {
             return $http({
@@ -82,8 +96,8 @@
         }
 
         /*新增操作员*/
-        function addCollector(collector, pwd) {
-            var collectorJson = angular.toJson({staffname: collector, password: pwd});
+        function addCollector(collector) {
+            var collectorJson = angular.toJson(collector);
             console.log(collectorJson)
             return $http({
                 method: 'POST',
@@ -93,9 +107,7 @@
                 },
                 data: collectorJson,
                 withCredentials: true
-            }).success(function (response) {
-                return response.data;
-            }).error(function (response) {
+            }).then(function (response) {
                 return response.data;
             });
         }
