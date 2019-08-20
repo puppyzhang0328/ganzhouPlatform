@@ -184,16 +184,5 @@
                 vm.queryCollectors();
             });
         }
-
-        // function deleteCollector(user){
-        //     CollectorManageFactory.deleteCollector(user.id).then(function (response) {
-        //         if (response.status == 0) {
-        //             logger.success('操作成功', response.detail, '员工' + '‘' + vm.currentCollector.username + '’离职成功！');
-        //             queryCollectors(0);
-        //         } else {
-        //             alert('修改失败！！' + response.detail);
-        //         }
-        //     });
-        // }
     }
 })();

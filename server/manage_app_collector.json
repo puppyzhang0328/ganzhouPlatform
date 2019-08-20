@@ -8,6 +8,11 @@
       "text": "收费员APP用户管理",
       "sref": "app.collector",
       "icon": "icon-user"
+    },
+    {
+      "text": "停车场管理",
+      "sref": "app.collector-parklotconfig",
+      "icon": "fa fa-car"
     }
   ]
   

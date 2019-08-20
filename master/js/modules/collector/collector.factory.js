@@ -6,9 +6,9 @@
     function CollectorManageFactory($http, URL_SEED) {
 
         var OPERATOR_URL = URL_SEED.API_URL + 'operation/charge_app/conf/'; // 查询所有用户
-        var AVAILABLE_PARK_URL = URL_SEED.API_URL + 'operation/charge_app/parking/'
-        var HAS_BIND_PHONE_URL = URL_SEED.API_URL + 'operation/charge_app/user_search/'
-       
+        var AVAILABLE_PARK_URL = URL_SEED.API_URL + 'operation/charge_app/parking/';
+        var HAS_BIND_PHONE_URL = URL_SEED.API_URL + 'operation/charge_app/user_search/';
+        var PARKLOTS_URL = URL_SEED.API_URL + 'operation/charge_app/parking/'; // 查询停车场
         var currentClickUser = {
             userid: 0,
             username: ''
@@ -25,8 +25,51 @@
             getUserId: getUserId,
             setUsername: setUsername,
             getUsername: getUsername,
-            hasBindPhone: hasBindPhone
+            hasBindPhone: hasBindPhone,
+            queryParklots: queryParklots,
+            parklotConfigUpdate: parklotConfigUpdate
         };
+        
+        function parklotConfigUpdate(params){
+            return $http({
+                method: 'POST',
+                url: PARKLOTS_URL,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: angular.toJson(params),
+                withCredentials: true
+            }).then(function (response) {
+                return response.data;
+            });
+        }
+        function queryParklots(data) {
+            // console.log(data)
+            var _params = {}
+            if(data.id){
+                _params = {
+                    id: data.id,
+                }
+            }else{
+                _params = {
+                    start_index: data.start_index,
+                    pagedirect: data.pagedirect,
+                    max_results: data.max_results ||50,
+                }
+            }
+            return $http({
+                method: 'GET',
+                url: PARKLOTS_URL,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                params:_params,
+                withCredentials: true
+            }).then(function (response) {
+                return response.data;
+            });
+        }
+
 
         function hasBindPhone(username){
             return $http({

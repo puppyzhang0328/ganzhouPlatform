@@ -84,6 +84,12 @@
                 templateUrl: helper.basepath('collector/modify-collector.html'),
                 resolve: helper.resolveFor('lodash')
             })
+            .state('app.collector-parklotconfig', {
+                url: '/collector-parklotconfig',
+                title: '停车场管理',
+                templateUrl: helper.basepath('collector/collector-parklotconfig.html'),
+                resolve: helper.resolveFor('lodash')
+            })
             //- 群组管理
             .state('app.user-group', {
                 url: '/user-group',

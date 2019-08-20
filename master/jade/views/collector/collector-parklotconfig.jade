@@ -1,0 +1,45 @@
+.panel(ng-controller='CollectorParklotController as vm')
+    .panel-heading 用户管理
+    .panel-body
+        .container-fluid.ui-container(id="container")
+            .container-fluid.ui-content.fn-clear
+                .ui-grid-25
+                    .record-search-form.record-search-max.limit-width(id="topSearchForm")
+                        .row
+                            .col-md-5.col-sm-7
+                                label.text-bold.col-md-4(style="line-height:34px;text-align:center;") 按用户查找：
+                                .col-md-8
+                                    ui-select(ng-model="vm.parklotAsync.selected" theme="bootstrap" ng-disable='vm.disable' on-select="vm.onSelectCallback($item)" title="请选择用户")
+                                        ui-select-match(placeholder="请选择需要查找的用户") {{$select.selected.name || $select.selected}}
+                                        ui-select-choices(repeat="parklot.name as parklot in vm.parklotAsync | propsFilter: {name: $select.search}")
+                                            div(ng-bind-html="parklot.name")
+                            .col-md-7.col-sm-5
+                                .item-content
+                                    button.btn.btn-primary.btn-sm(type="button" ng-click="vm.searchParklots()") 点击搜索
+                                    button.btn.btn-danger(ng-click="vm.clearAndRefresh()"  ng-disabled="vm.OrganmanAsync.selected == ''" type="button") 重置
+        table.row-bordered.hover.table-striped.table-responsive(datatable='ng',dt-options='vm.dtOptions',dt-column-defs='vm.dtColumnDefs')
+            thead
+                tr
+                    th 序号
+                    th 停车场名称
+                    th 停车场地址
+                    th 是否开启收费APP
+                    th 操作
+            tbody
+                tr(ng-repeat='parklot in vm.parklots track by $index')
+                    td {{:: parklot.id}}
+                    td {{:: parklot.name}}
+                    td {{:: parklot.address}}
+                    td {{:: parklot.is_active==0 ?'未开启' :'已开启'}}
+                    td
+                        button.btn.btn-sm.btn-danger(type='button', ng-click='vm.updateParklot(parklot, "1")', ng-if="parklot.is_active == 0") 开启
+                        button.btn.btn-sm.btn-default(type='button', ng-click='vm.updateParklot(parklot, "0")', ng-if="parklot.is_active == 1") 关闭
+                        
+        .ui-grid-next(style="bottom:-40px;")
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.queryCollectors(0)" ng-disabled="!vm.queryParams.maxId") 首页
+            button.btn.btn-primary.btn-sm(type="button" ng-click="vm.queryCollectors(1)" ng-disabled="!vm.queryParams.maxId") 上一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.queryCollectors(2)" ng-disabled="!vm.queryParams.minId") 下一页
+            button.btn.btn-primary.btn-sm(type="button"  ng-click="vm.queryCollectors(3)" ng-disabled="!vm.queryParams.minId") 末页
+p
+    small 如发现数据不合理之处，请联系
+        a(href="www.cszhjt.com") {{ :: app.name }} 
