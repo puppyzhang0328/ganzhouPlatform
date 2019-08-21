@@ -1,5 +1,5 @@
 .panel(ng-controller='CollectorParklotController as vm')
-    .panel-heading 用户管理
+    .panel-heading 停车场管理
     .panel-body
         .container-fluid.ui-container(id="container")
             .container-fluid.ui-content.fn-clear
@@ -7,9 +7,9 @@
                     .record-search-form.record-search-max.limit-width(id="topSearchForm")
                         .row
                             .col-md-5.col-sm-7
-                                label.text-bold.col-md-4(style="line-height:34px;text-align:center;") 按用户查找：
+                                label.text-bold.col-md-4(style="line-height:34px;text-align:center;") 按停车场查找：
                                 .col-md-8
-                                    ui-select(ng-model="vm.parklotAsync.selected" theme="bootstrap" ng-disable='vm.disable' on-select="vm.onSelectCallback($item)" title="请选择用户")
+                                    ui-select(ng-model="vm.parklotAsync.selected" theme="bootstrap" ng-disable='vm.disable' on-select="vm.onSelectCallback($item)" title="请选择停车场")
                                         ui-select-match(placeholder="请选择需要查找的用户") {{$select.selected.name || $select.selected}}
                                         ui-select-choices(repeat="parklot.name as parklot in vm.parklotAsync | propsFilter: {name: $select.search}")
                                             div(ng-bind-html="parklot.name")

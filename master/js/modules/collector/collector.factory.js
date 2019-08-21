@@ -6,7 +6,7 @@
     function CollectorManageFactory($http, URL_SEED) {
 
         var OPERATOR_URL = URL_SEED.API_URL + 'operation/charge_app/conf/'; // 查询所有用户
-        var AVAILABLE_PARK_URL = URL_SEED.API_URL + 'operation/charge_app/parking/';
+        var AVAILABLE_PARK_URL = URL_SEED.API_URL + 'operation/charge_app/parklot/';
         var HAS_BIND_PHONE_URL = URL_SEED.API_URL + 'operation/charge_app/user_search/';
         var PARKLOTS_URL = URL_SEED.API_URL + 'operation/charge_app/parking/'; // 查询停车场
         var currentClickUser = {
