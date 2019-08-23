@@ -10,7 +10,7 @@
                                 label.text-bold.col-md-4(style="line-height:34px;text-align:center;") 按停车场查找：
                                 .col-md-8
                                     ui-select(ng-model="vm.parklotAsync.selected" theme="bootstrap" ng-disable='vm.disable' on-select="vm.onSelectCallback($item)" title="请选择停车场")
-                                        ui-select-match(placeholder="请选择需要查找的用户") {{$select.selected.name || $select.selected}}
+                                        ui-select-match(placeholder="请选择需要查找的停车场") {{$select.selected.name || $select.selected}}
                                         ui-select-choices(repeat="parklot.name as parklot in vm.parklotAsync | propsFilter: {name: $select.search}")
                                             div(ng-bind-html="parklot.name")
                             .col-md-7.col-sm-5
